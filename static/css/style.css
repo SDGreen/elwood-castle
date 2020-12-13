@@ -20,30 +20,60 @@
     font-size: 2.5em;
 }
 
+.text-l{
+    font-size: 1.5em;
+}
 
-/*------------ Navbar ----------*/
+/*------------ Colors ------------*/
 
+.dropdown-menu,
 header {
     background-color: #7D8BAD;
 }
 
-#main-navbar {
-    padding: 0em;
+#block-content {
+    background-color: #eaedef;
 }
 
+button.navbar-toggler,
 #main-navbar a{
     color: white;
 }
 
+
+
+/*------------ Navbar ----------*/
+
+#main-navbar {
+    padding: 0em 1em;
+}
+
+button.navbar-toggler,
 #main-navbar ul>li>a {
     padding-right: .5rem;
     padding-left: .5rem;
 }
 
+.navbar-brand {
+    margin: 0;
+}
 .navbar-brand>img{
     vertical-align: top;
 }
 
+.dropdown-menu{
+    border: 0;
+}
+
+div[aria-labelledby="account-dropdownMenuLink"]>.dropdown-item{
+    padding-left: .5em;
+}
+
+/*----------Base template----------------*/
+
+#block-content{
+    height: calc(100vh - 84px);
+}
 
 @media (max-width: 992px){
 }
