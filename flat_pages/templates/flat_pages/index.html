@@ -1,1 +1,18 @@
 {% extends "base.html" %}
+{% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'flat_pages/css/flat_pages.css' %}">
+{% endblock %}
+
+{% block content %}
+<div id="image-overlay">
+
+    <!-- Image proloaded here to prevent flashing on transition -->
+    <img class="d-none" src="{% static 'flat_pages/images/background.jpg' %}">
+    <img class="d-none" src="{% static 'flat_pages/images/background-grounds.jpg' %}">
+    <img class="d-none" src="{% static 'flat_pages/images/background-gardens.jpg' %}">
+    <div class="wrapper">
+
+    </div>
+</div>
+{% endblock %}

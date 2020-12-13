@@ -75,5 +75,11 @@ div[aria-labelledby="account-dropdownMenuLink"]>.dropdown-item{
     height: calc(100vh - 84px);
 }
 
+.wrapper{
+    height: 100%;
+    width: 100%;
+    background-color: rgba(176, 180, 188, 0.3);
+}
+
 @media (max-width: 992px){
 }

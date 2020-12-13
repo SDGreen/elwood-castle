@@ -1,0 +1,20 @@
+#image-overlay {
+    height: 100%;
+    width: 100%;
+    background-image: url('/static/flat_pages/images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    animation: castle-image 15s 10s infinite;
+}
+
+@keyframes castle-image {
+    33% {
+    background-image: url('/static/flat_pages/images/background-grounds.jpg');
+  }
+    66% {
+    background-image: url('/static/flat_pages/images/background-gardens.jpg');
+  }
+    99% {
+    background-image: url('/static/flat_pages/images/background.jpg');
+  }
+}
