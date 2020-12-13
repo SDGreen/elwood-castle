@@ -1,5 +1,49 @@
-@import url('https://fonts.googleapis.com/css2?family=IM+Fell+French+Canon&family=Lora:wght@400;600&family=Raleway:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+French+Canon+SC&family=Lora:wght@400;600&family=Raleway:wght@400;600&display=swap');
 
 /* palette
 
 #E7D7C3 #A7B4BC #7D8BAD #1C1E12 #404245 */
+
+.logo-text{
+    font-family: 'IM Fell French Canon SC', serif;
+}
+
+.heading-text{
+    font-family: 'Lora', serif;
+}
+
+.body-text{
+    font-family: 'Raleway', sans-serif;
+}
+
+.text-xxl{
+    font-size: 2.5em;
+}
+
+
+/*------------ Navbar ----------*/
+
+header {
+    background-color: #7D8BAD;
+}
+
+#main-navbar {
+    padding: 0em;
+}
+
+#main-navbar a{
+    color: white;
+}
+
+#main-navbar ul>li>a {
+    padding-right: .5rem;
+    padding-left: .5rem;
+}
+
+.navbar-brand>img{
+    vertical-align: top;
+}
+
+
+@media (max-width: 992px){
+}
