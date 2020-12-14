@@ -1,15 +1,17 @@
 from django.shortcuts import render
 
+from .models import Category, Event
+
 
 # Create your views here.
 def all_events(request):
 
-    print('working')
+    events = Event.objects.all()
 
     template = 'events/events.html'
 
     context = {
-        'sam': 'sam'
+        'events': events
     }
 
     return render(request, template, context)

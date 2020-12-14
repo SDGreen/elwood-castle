@@ -4,6 +4,10 @@
 
 #E7D7C3 #A7B4BC #7D8BAD #1C1E12 #404245 */
 
+h5{
+    margin: 0;
+}
+
 .logo-text{
     font-family: 'IM Fell French Canon SC', serif;
 }
@@ -23,6 +27,10 @@
 .text-l{
     font-size: 1.5em;
 }
+
+.text-m{
+    font-size:1em;
+}
 /*------------default margins-------------*/
 .col {
     padding: 0;
@@ -41,6 +49,20 @@ header {
 button.navbar-toggler,
 #main-navbar a{
     color: white;
+}
+
+a i {
+    color: #7D8BAD;
+    transition: color ease-in 0.25s;
+}
+
+i:hover {
+    color: #A7B4BC;
+}
+
+.card-body-title{
+    color: white;
+    background-color: #1C1E12;
 }
 
 /*-------key element styling----------*/
@@ -66,6 +88,13 @@ button.navbar-toggler,
 
 .btn:focus{
     box-shadow: 0 0 0 0.2rem rgba(176,180,186,.25);
+}
+
+.icon {
+    display: inline-block;
+    text-align: center;
+    font-size: 2em;
+    line-height: normal;
 }
 
 /*------------ Navbar ----------*/
@@ -112,5 +141,16 @@ div[aria-labelledby="account-dropdownMenuLink"]>.dropdown-item{
     display: none;
 }
 
-@media (max-width: 992px){
+/*--------events------------*/
+
+.card-body-title>h5{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media (min-width: 580px){
+    .guttered-row{
+        width: 80%;
+    }
 }
