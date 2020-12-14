@@ -1,0 +1,13 @@
+{
+   "pk":1,
+   "model":"events.event",
+   "fields":{
+      "name":"",
+      "description":"",
+      "price":,
+      "category":6,
+      "max_tickets_per_day":,
+      "start_time":,
+      "rating":,
+      "image":"DP0709201205510679M.jpg"
+   }

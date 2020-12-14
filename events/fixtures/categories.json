@@ -1,0 +1,35 @@
+[{
+   "pk":1,
+   "model":"events.category",
+   "fields":{
+      "name":"tours",
+      "friendly_name": "Guided Tours"
+   }},
+{
+   "pk":2,
+   "model":"events.category",
+   "fields":{
+      "name":"outdoor",
+      "friendly_name":"Outdoor Activities"
+   }},
+{
+   "pk":3,
+   "model":"events.category",
+   "fields":{
+      "name":"indoor",
+      "friendly_name":"Indoor Activities"
+   }},
+{
+   "pk":4,
+   "model":"events.category",
+   "fields":{
+      "name":"meals_shows",
+      "friendly_name":"Meals & Shows"
+   }},
+{
+   "pk":5,
+   "model":"events.category",
+   "fields":{
+      "name":"kids",
+      "friendly_name":"Kid Club"
+   }}]

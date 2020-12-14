@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
 
     'flat_pages',
+    'events',
 
 ]
 
