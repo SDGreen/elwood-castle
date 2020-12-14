@@ -23,8 +23,8 @@
    "pk":4,
    "model":"events.category",
    "fields":{
-      "name":"meals_shows",
-      "friendly_name":"Meals & Shows"
+      "name":"food_drink",
+      "friendly_name":"Food & Drink"
    }},
 {
    "pk":5,

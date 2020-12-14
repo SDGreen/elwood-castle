@@ -147,6 +147,7 @@ div[aria-labelledby="account-dropdownMenuLink"]>.dropdown-item{
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    padding-bottom: 0.2em;
 }
 
 @media (min-width: 580px){

@@ -7,7 +7,8 @@
       "price": 20.00,
       "category":1,
       "day_ticket_limit": 30,
-      "age_restricted": true,
+      "supervision": true,
+      "age_restricted": false,
       "start_time": "12:00",
       "rating": 4.9,
       "image":"library.jpg"
@@ -22,7 +23,8 @@
       "category":1,
       "day_ticket_limit": 25,
       "start_time": "13:00",
-      "age_restricted": true,
+      "supervision": true,
+      "age_restricted": false,
       "rating": 4.8,
       "image":"kitchen.jpg"
    }},
@@ -36,7 +38,8 @@
       "category":1,
       "day_ticket_limit": 25,
       "start_time": "13:00",
-      "age_restricted": true,
+      "supervision": true,
+      "age_restricted": false,
       "rating": 4.8,
       "image":"swords.jpg"
    }},
@@ -50,6 +53,7 @@
       "category":1,
       "day_ticket_limit": 30,
       "start_time": "18:00",
+      "supervision": true,
       "age_restricted": true,
       "rating": 3.9,
       "image":"spooky.jpg"
@@ -64,7 +68,8 @@
       "category":1,
       "day_ticket_limit": 30,
       "start_time": "12:00",
-      "age_restricted": true,
+      "supervision": true,
+      "age_restricted": false,
       "rating": 4.3,
       "image":"halls.jpg"
    }},
@@ -78,6 +83,7 @@
       "category":2,
       "day_ticket_limit": 100,
       "start_time": "14:00",
+      "supervision": true,
       "age_restricted": false,
       "rating": 4.9,
       "image":"joust.jpg"
@@ -92,7 +98,8 @@
       "category":2,
       "day_ticket_limit": 30,
       "start_time": "11:00",
-      "age_restricted": true,
+      "supervision": true,
+      "age_restricted": false,
       "rating": 3.5,
       "image":"falcon.jpg"
    }},
@@ -106,6 +113,7 @@
       "category":2,
       "day_ticket_limit": 100,
       "start_time": "15:00",
+      "supervision": true,
       "age_restricted": false,
       "rating": 4.9,
       "image":"knight.jpg"
@@ -120,7 +128,8 @@
       "category":2,
       "day_ticket_limit": 200,
       "start_time": "19:00",
-      "age_restricted": true,
+      "supervision": true,
+      "age_restricted": false,
       "rating": 4.8,
       "image":"sparkler.jpg"
    }},
@@ -134,7 +143,234 @@
       "category":2,
       "day_ticket_limit": 150,
       "start_time": "12:00",
+      "supervision": true,
       "age_restricted": false,
       "rating": 4.7,
       "image":"archer.jpg"
-   }}]
+   }},
+{
+   "pk":11,
+   "model":"events.event",
+   "fields":{
+      "name":"Dagger Smithing",
+      "description":"",
+      "price": 50.00,
+      "category":3,
+      "day_ticket_limit": 10,
+      "start_time": "10:30",
+      "supervision": true,
+      "age_restricted": true,
+      "rating": 4.7,
+      "image":"blacksmith.jpg"
+   }},
+{
+   "pk":12,
+   "model":"events.event",
+   "fields":{
+      "name":"Perfume Making",
+      "description":"",
+      "price": 20.00,
+      "category":3,
+      "day_ticket_limit": 10,
+      "start_time": "11:00",
+      "supervision": true,
+      "age_restricted": false,
+      "rating": 4.9,
+      "image":"perfume.jpg"
+   }},
+{
+   "pk":13,
+   "model":"events.event",
+   "fields":{
+      "name":"Coat of Arms Basics",
+      "description":"",
+      "price": 5.00,
+      "category":3,
+      "day_ticket_limit": 30,
+      "start_time": "15:30",
+      "supervision": true,
+      "age_restricted": false,
+      "rating": 4.9,
+      "image":"crest.jpg"
+   }},
+{
+   "pk":14,
+   "model":"events.event",
+   "fields":{
+      "name":"Cookery Class",
+      "description":"",
+      "price": 5.00,
+      "category":3,
+      "day_ticket_limit": 25,
+      "start_time": "13:30",
+      "supervision": true,
+      "age_restricted": false,
+      "rating": 3.8,
+      "image":"baking.jpg"
+   }},
+{
+   "pk":15,
+   "model":"events.event",
+   "fields":{
+      "name":"Tapestry Weaving",
+      "description":"",
+      "price": 15.00,
+      "category":3,
+      "day_ticket_limit": 15,
+      "start_time": "14:00",
+      "supervision": true,
+      "age_restricted": false,
+      "rating": 4.5,
+      "image":"tapestry.jpg"
+   }},
+{
+   "pk":16,
+   "model":"events.event",
+   "fields":{
+      "name":"Candlelit Dinner",
+      "description":"",
+      "price": 30.00,
+      "category": 4,
+      "day_ticket_limit": 40,
+      "start_time": "19:30",
+      "supervision": true,
+      "age_restricted": true,
+      "rating": 4.0,
+      "image":"romantic.jpg"
+   }},
+{
+   "pk":17,
+   "model":"events.event",
+   "fields":{
+      "name":"Old Spice Market",
+      "description":"",
+      "price": 1.00,
+      "category": 4,
+      "day_ticket_limit": 100,
+      "start_time": "10:15",
+      "supervision": true,
+      "age_restricted": false,
+      "rating": 4.9,
+      "image":"spices.jpg"
+   }},
+{
+   "pk":18,
+   "model":"events.event",
+   "fields":{
+      "name":"Traditional Banquet",
+      "description":"",
+      "price": 50.00,
+      "category": 4,
+      "day_ticket_limit": 50,
+      "start_time": "18:30",
+      "supervision": true,
+      "age_restricted": false,
+      "rating": 4.9,
+      "image":"banquet.jpg"
+   }},
+{
+   "pk":19,
+   "model":"events.event",
+   "fields":{
+      "name":"Afternoon Tea",
+      "description":"",
+      "price": 15.00,
+      "category": 4,
+      "day_ticket_limit": 60,
+      "start_time": "14:00",
+      "supervision": true,
+      "age_restricted": false,
+      "rating": 3.7,
+      "image":"tea.jpg"
+   }},
+{
+   "pk":20,
+   "model":"events.event",
+   "fields":{
+      "name":"Mead Tasting",
+      "description":"",
+      "price": 15.00,
+      "category": 4,
+      "day_ticket_limit": 30,
+      "start_time": "16:30",
+      "supervision": true,
+      "age_restricted": true,
+      "rating": 4.6,
+      "image":"bottles.jpg"
+   }},
+{
+   "pk":21,
+   "model":"events.event",
+   "fields":{
+      "name":"Kid's Castle",
+      "description":"",
+      "price": 2.50,
+      "category": 5,
+      "day_ticket_limit": 50,
+      "start_time": "12:00",
+      "supervision": false,
+      "age_restricted": false,
+      "rating": 4.9,
+      "image":"small-castle.jpg"
+   }},
+{
+   "pk":22,
+   "model":"events.event",
+   "fields":{
+      "name":"Puppet Theatre",
+      "description":"",
+      "price": 2.50,
+      "category": 5,
+      "day_ticket_limit": 60,
+      "start_time": "13:00",
+      "supervision": false,
+      "age_restricted": false,
+      "rating": 3.3,
+      "image":"puppet.jpg"
+   }},
+{
+   "pk":23,
+   "model":"events.event",
+   "fields":{
+      "name":"Traditional Dress Up",
+      "description":"",
+      "price": 1.00,
+      "category": 5,
+      "day_ticket_limit": 20,
+      "start_time": "13:30",
+      "supervision": false,
+      "age_restricted": false,
+      "rating": 4.7,
+      "image":"helmet.jpg"
+   }},
+{
+   "pk":24,
+   "model":"events.event",
+   "fields":{
+      "name":"Kid's Fairground",
+      "description":"",
+      "price": 5.00,
+      "category": 5,
+      "day_ticket_limit": 100,
+      "start_time": "11:00",
+      "supervision": true,
+      "age_restricted": false,
+      "rating": 4.9,
+      "image":"carousel.jpg"
+   }},
+{
+   "pk":25,
+   "model":"events.event",
+   "fields":{
+      "name":"Elwood Crèche",
+      "description":"",
+      "price": 5.00,
+      "category": 5,
+      "day_ticket_limit": 25,
+      "start_time": "10:30",
+      "supervision": false,
+      "age_restricted": false,
+      "rating": 4.3,
+      "image":"crayons.jpg"
+   }}
+]

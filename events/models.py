@@ -32,6 +32,7 @@ class Event(models.Model):
                                                    validators=[
                                                       MaxValueValidator(100)
                                                     ])
+    supervision = models.BooleanField(default=True, null=True, blank=True)
     age_restricted = models.BooleanField(default=True, null=True, blank=False)
     image = models.ImageField(null=True, blank=True)
 
