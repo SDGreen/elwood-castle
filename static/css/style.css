@@ -23,7 +23,10 @@
 .text-l{
     font-size: 1.5em;
 }
-
+/*------------default margins-------------*/
+.col {
+    padding: 0;
+}
 /*------------ Colors ------------*/
 
 .dropdown-menu,
@@ -40,7 +43,30 @@ button.navbar-toggler,
     color: white;
 }
 
+/*-------key element styling----------*/
 
+.button{
+    border-radius: 0;
+    border: 1px solid #1C1E12;
+    background-color: #1C1E12;
+    color: white;
+    transition: all 0.25s ease-out;
+}
+
+.button.fixed-width{
+    width: 5em;
+}
+
+.button:hover{
+    color: #1C1E12;
+    border: 1px solid #1C1E12;
+    background-color: #eaedef;
+    font-weight: 600;
+}
+
+.btn:focus{
+    box-shadow: 0 0 0 0.2rem rgba(176,180,186,.25);
+}
 
 /*------------ Navbar ----------*/
 
@@ -76,9 +102,14 @@ div[aria-labelledby="account-dropdownMenuLink"]>.dropdown-item{
 }
 
 .wrapper{
+    position: relative;
     height: 100%;
     width: 100%;
     background-color: rgba(176, 180, 188, 0.3);
+}
+
+#main-logo>div{
+    display: none;
 }
 
 @media (max-width: 992px){

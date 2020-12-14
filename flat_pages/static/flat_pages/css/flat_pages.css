@@ -4,7 +4,7 @@
     background-image: url('/static/flat_pages/images/background.jpg');
     background-size: cover;
     background-position: center;
-    animation: castle-image 15s 10s infinite;
+    animation: castle-image 15s 5s infinite;
 }
 
 @keyframes castle-image {
@@ -17,4 +17,16 @@
     99% {
     background-image: url('/static/flat_pages/images/background.jpg');
   }
+}
+
+.wrapper>div {
+    position: absolute;
+    width: 80%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#main-logo {
+    height: 200px;
 }

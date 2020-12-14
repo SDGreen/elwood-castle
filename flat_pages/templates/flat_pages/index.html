@@ -7,12 +7,35 @@
 {% block content %}
 <div id="image-overlay">
 
-    <!-- Image proloaded here to prevent flashing on transition -->
+    <!-- Images proloaded here to prevent flashing on transition -->
     <img class="d-none" src="{% static 'flat_pages/images/background.jpg' %}">
     <img class="d-none" src="{% static 'flat_pages/images/background-grounds.jpg' %}">
     <img class="d-none" src="{% static 'flat_pages/images/background-gardens.jpg' %}">
-    <div class="wrapper">
 
+    <div class="wrapper">
+        <div class="my-auto align-middle">
+            <div id="main-logo">
+                <div>
+                    <img class="d-block mx-auto" height="200px" src="{% static 'logos/logo_dark_large.png' %}">
+                </div>
+            </div>
+            <div class="row text-center heading-text">
+                <div class="col-12">
+                    <a href="#" class="btn button fixed-width">Visit</a>
+                    <a href="#" class="btn button fixed-width mx-2">Events</a>
+                    <a href="#" class="btn button fixed-width">Events</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+{% endblock %}
+
+{% block postload_js %}
+{{block.super}}
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#main-logo>div").delay(500).fadeIn(5000);
+        })
+    </script>
 {% endblock %}
