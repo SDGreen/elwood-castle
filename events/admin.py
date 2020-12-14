@@ -1,5 +1,18 @@
 from django.contrib import admin
-from .models import Category
+from .models import Category, Event
+
+
+class EventAdmin(admin.ModelAdmin):
+
+    list_display = (
+        'pk',
+        'name',
+        'category',
+        'price',
+        'day_ticket_limit'
+    )
+
+    ordering = ('pk',)
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -11,3 +24,4 @@ class CategoryAdmin(admin.ModelAdmin):
 
 # Register your models here.
 admin.site.register(Category, CategoryAdmin)
+admin.site.register(Event, EventAdmin)

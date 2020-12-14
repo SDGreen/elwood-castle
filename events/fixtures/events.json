@@ -1,0 +1,70 @@
+[{
+   "pk":1,
+   "model":"events.event",
+   "fields":{
+      "name":"Full Elwood Tour",
+      "description":"",
+      "price": 20.00,
+      "category":1,
+      "day_ticket_limit": 30,
+      "age_restricted": true,
+      "start_time": "12:00",
+      "rating": 4.9,
+      "image":"library.jpg"
+   }},
+{
+   "pk":2,
+   "model":"events.event",
+   "fields":{
+      "name":"Servant's Life Tour",
+      "description":"",
+      "price": 10.00,
+      "category":1,
+      "day_ticket_limit": 25,
+      "start_time": "13:00",
+      "age_restricted": true,
+      "rating": 4.8,
+      "image":"kitchen.jpg"
+   }},
+{
+   "pk":3,
+   "model":"events.event",
+   "fields":{
+      "name":"Armoury & Stables",
+      "description":"",
+      "price": 10.00,
+      "category":1,
+      "day_ticket_limit": 25,
+      "start_time": "13:00",
+      "age_restricted": true,
+      "rating": 4.8,
+      "image":"swords.jpg"
+   }},
+{
+   "pk":4,
+   "model":"events.event",
+   "fields":{
+      "name":"Ghosts of Elwood Tour",
+      "description":"",
+      "price": 15.00,
+      "category":1,
+      "day_ticket_limit": 30,
+      "start_time": "18:00",
+      "age_restricted": true,
+      "rating": 3.9,
+      "image":"spooky.jpg"
+   }},
+{
+   "pk":5,
+   "model":"events.event",
+   "fields":{
+      "name":"Speedy Tour",
+      "description":"",
+      "price": 5.00,
+      "category":1,
+      "day_ticket_limit": 30,
+      "start_time": "12:00",
+      "age_restricted": true,
+      "rating": 4.3,
+      "image":"halls.jpg"
+   }}]
