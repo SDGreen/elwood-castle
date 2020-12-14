@@ -21,6 +21,8 @@ class CategoryAdmin(admin.ModelAdmin):
         'name'
     )
 
+    ordering = ('pk',)
+
 
 # Register your models here.
 admin.site.register(Category, CategoryAdmin)

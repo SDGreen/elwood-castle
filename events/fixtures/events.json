@@ -67,4 +67,74 @@
       "age_restricted": true,
       "rating": 4.3,
       "image":"halls.jpg"
+   }},
+{
+   "pk":6,
+   "model":"events.event",
+   "fields":{
+      "name":"Knight's Joust",
+      "description":"",
+      "price": 5.00,
+      "category":2,
+      "day_ticket_limit": 100,
+      "start_time": "14:00",
+      "age_restricted": false,
+      "rating": 4.9,
+      "image":"joust.jpg"
+   }},
+{
+   "pk":7,
+   "model":"events.event",
+   "fields":{
+      "name":"Falconry Show",
+      "description":"",
+      "price": 5.00,
+      "category":2,
+      "day_ticket_limit": 30,
+      "start_time": "11:00",
+      "age_restricted": true,
+      "rating": 3.5,
+      "image":"falcon.jpg"
+   }},
+{
+   "pk":8,
+   "model":"events.event",
+   "fields":{
+      "name":"Battle for Elwood",
+      "description":"",
+      "price": 10.00,
+      "category":2,
+      "day_ticket_limit": 100,
+      "start_time": "15:00",
+      "age_restricted": false,
+      "rating": 4.9,
+      "image":"knight.jpg"
+   }},
+{
+   "pk":9,
+   "model":"events.event",
+   "fields":{
+      "name":"Firework Show",
+      "description":"",
+      "price": 15.00,
+      "category":2,
+      "day_ticket_limit": 200,
+      "start_time": "19:00",
+      "age_restricted": true,
+      "rating": 4.8,
+      "image":"sparkler.jpg"
+   }},
+{
+   "pk":10,
+   "model":"events.event",
+   "fields":{
+      "name":"Archery Contest",
+      "description":"",
+      "price": 2.50,
+      "category":2,
+      "day_ticket_limit": 150,
+      "start_time": "12:00",
+      "age_restricted": false,
+      "rating": 4.7,
+      "image":"archer.jpg"
    }}]
