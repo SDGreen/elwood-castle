@@ -6,12 +6,12 @@
     <div id="event-search" class="row mx-auto guttered heading-text pt-4 mb-4">
 
         <div class="col-12 col-lg-6">
-            <form class="d-block form-inline ">
+            <form method="GET" action="{% url 'events' %}" class="d-block form-inline ">
                 <div class="input-group">
-                    <input type="text" class="form-control rounded-0" placeholder="Search Events..."
-                        aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    <input type="text" name="q" class="form-control rounded-0" placeholder="Search Events..."
+                        aria-label="Search Box">
                     <div class="input-group-append">
-                        <button class="btn button rounded-0" type="button"><i class="fas fa-search"></i></button>
+                        <button class="btn button rounded-0" type="submit"><i class="fas fa-search"></i></button>
                     </div>
                 </div>
             </form>
@@ -22,7 +22,7 @@
                     aria-expanded="false">Category</a>
                 <div class="dropdown-menu rounded-0">
                     {% for category in categories %}
-                    <a class="dropdown-item" href="#">{{category.friendly_name}}</a>
+                    <a class="dropdown-item" href="{% url 'events' %}?category={{ category.name }}">{{category.friendly_name}}</a>
                     {% endfor %}
                 </div>
             </li>
@@ -34,7 +34,7 @@
                 
                 </a>
                 <div class="dropdown-menu rounded-0">
-                    <a class="dropdown-item" href="#">Low to High</a>
+                    <a class="dropdown-item" href="{% url 'events' %}?sort=price">Low to High</a>
                     <a class="dropdown-item" href="#">High to Low</a>
                 </div>
             </li>
@@ -50,12 +50,19 @@
                 </div>
             </li>
         </div>
-        </div>
     </div>
     <div class="row mx-auto guttered mb-4">
 
         <div class="col-12">
-            <h2 class="text-l heading-text">Results:</h2>
+            <h2 class="text-l heading-text">
+                {% if query %}
+                    Found: {{ events|length }} Events
+                {% elif selected_category %}
+                    {{selected_category.friendly_name}}: {{ events | length }} Events
+                {% else %}
+                    All Events
+                {% endif %}
+            </h2>
 
         </div>
         <div class="col-12">
