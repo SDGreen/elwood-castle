@@ -1,4 +1,64 @@
 {% extends 'base.html' %}
 {% block content %}
-    {{event.name}}
+<div class="color-overlay">
+    <div class="container-fluid guttered p-3">
+        <div class="row pt-2 mb-2">
+            <div class="col-12 text-center">
+                <h2 class="heading-text color-title underlined mb-2">{{event.name}}</h2>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-12 col-lg-6 mb-2">
+                <img class="img-fluid below-shadow" src="{{ event.image.url }}" alt="{{event.name}} image">
+            </div>
+            <div class="col-12 col-lg-6">
+                <h3 class="heading-text text-l">Description:</h3>
+                <p class="text-m body-text order-1 order-md-0">{{event.description}}</p>
+                <div class="order-0 order-md-1">
+                    <p class="d-inline heading-text">£{{ event.price }} per ticket</p>
+                    <a href="#" class="float-right btn button">Book</a>
+                </div>
+            </div>
+        </div>
+        <div  class="row py-3">
+            <div class="col-12 col-md-6">
+                <div class="row">
+                    <div class="col-12">
+                        <h3 class="heading-text text-l">Key Details:</h3>  
+                    </div>
+                    <div class="col-12">
+                        <p class="body-text">Starts: {{event.start_time|time:"H:i"}}</p>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <p class="body-text">Age: Anyone age can attend</p>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <p class="body-text">Children under 12 require adult supervision</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="row">
+                    <div class="col-12">
+                        <h3 class="heading-text text-l">Notes:</h3>  
+                    </div>
+                    <div class="col-12">
+                        <p class="body-text">
+                            {% if event.category.name == "tours" %}
+                                It's reccomended to arrive 15 minutes before our tour begins at the main entrance, late comers can still take part but may miss some information.
+                            {% endif %}
+                        </p>
+                    </div>
+                    <div class="col-12">
+                        <p class="body-text">If you have any other questions please read our <a href="#" class="text-link">FAQ</a>
+                            or get in touch <a href="#" class="text-link">here</a></p>
+                    </div>
+                    <div class="col-12">
+                        <a href="{% url 'events' %}" class="text-link">Back to events</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

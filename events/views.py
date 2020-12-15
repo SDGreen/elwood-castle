@@ -8,11 +8,13 @@ from .models import Category, Event
 def all_events(request):
 
     events = Event.objects.all()
+    categories = Category.objects.all()
 
     template = 'events/events.html'
 
     context = {
-        'events': events
+        'events': events,
+        'categories': categories
     }
 
     return render(request, template, context)

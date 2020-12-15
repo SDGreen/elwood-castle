@@ -4,6 +4,15 @@
 
 #E7D7C3 #A7B4BC #7D8BAD #1C1E12 #404245 */
 
+.somthing {
+    color: #e7d7c3;
+    color: #eaedef;
+    color: #A7B4BC;
+    color: #7D8BAD;
+    color: #1C1E12;
+    color: #404245;
+
+}
 /*----------Default Overrides--------------*/
 
 h5{
@@ -49,7 +58,7 @@ a:hover {
 header {
     background-color: #7D8BAD;
 }
-#events-container,
+.color-overlay,
 #block-content {
     background-color: #eaedef;
 }
@@ -69,9 +78,28 @@ i:hover {
     color: #A7B4BC;
 }
 
+.text-link {
+    cursor: pointer;
+    color: #7D8BAD;
+    transition: color ease-in 0.25s;
+}
+
 .card-body-title{
     color: white;
     background-color: #1C1E12;
+}
+
+.text-link:hover,
+.color-title {
+  color: #1C1E12;
+}
+
+.above-shadow{
+    box-shadow: 0px -5px 5px -5px #777;;
+}
+
+.below-shadow{
+    box-shadow: 0px 7px 5px -5px #777;;
 }
 
 /*-------key element styling----------*/
@@ -82,6 +110,14 @@ i:hover {
     background-color: #1C1E12;
     color: white;
     transition: all 0.25s ease-out;
+}
+
+.s-btn{
+    text-align: center;
+    vertical-align: middle;
+    padding: .2rem .5rem;
+    font-size: 0.75rem;
+    line-height: 1.5;
 }
 
 .button.fixed-width{
@@ -100,15 +136,10 @@ i:hover {
 }
 
 .icon {
-    display: inline-block;
-    text-align: center;
-    font-size: 2em;
-    line-height: normal;
+
 }
 
 .short-hr{
-    border: 2px solid #A7B4BC;
-    background-color: #A7B4BC;
     width: 75%;
 }
 
@@ -166,12 +197,40 @@ div[aria-labelledby="account-dropdownMenuLink"]>.dropdown-item{
 }
 
 .card-body:not(.card-body-title){
-    display: flex;
-    padding: 1rem 1.25em;
+    padding: .75rem 1.25rem;
+}
+
+#event-search>* {
+    padding: 0;
+}
+@media (max-width: 575px){
+   .guttered{
+        width: 90%
+    }
+
 }
 
 @media (min-width: 580px){
-    .guttered-row{
+    .guttered{
         width: 80%;
+    }
+}
+
+/*----prevents the rating dropdown clipping out the page on small screens----*/
+@media (max-width: 750px){
+    #event-search>div:nth-child(2)>li:last-child>div {
+        left: -60px;
+    }
+}
+
+@media (max-width: 991px){
+    #banner{
+        padding-top: 80px;
+    }
+}
+
+@media (min-width: 992px){
+    #banner{
+        padding-top: 84.4px;
     }
 }
