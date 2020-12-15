@@ -4,9 +4,17 @@
 
 #E7D7C3 #A7B4BC #7D8BAD #1C1E12 #404245 */
 
+/*----------Default Overrides--------------*/
+
 h5{
     margin: 0;
 }
+
+a:hover {
+    text-decoration: none;
+}
+
+/*--------Text Presets--------*/
 
 .logo-text{
     font-family: 'IM Fell French Canon SC', serif;

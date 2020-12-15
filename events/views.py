@@ -1,4 +1,5 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.contrib import messages
 
 from .models import Category, Event
 
@@ -18,9 +19,17 @@ def all_events(request):
 
 
 def event_info(request, event_id):
+    """
+    Returns event details for induvidual events or redirects to
+    events page if the event id doesn't exist
+    """
 
-    print("triggered")
-    event = get_object_or_404(Event, pk=event_id)
+
+    try:
+        event = Event.objects.get(pk=event_id)
+    except Event.DoesNotExist:
+        messages.error(request, "Sorry, we couldn't find that event")
+        return redirect(reverse('events'))
 
     template = 'events/event_details.html'
     context = {
