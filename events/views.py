@@ -16,12 +16,17 @@ def all_events(request):
     selected_category = None
     query = None
     sort = None
+    direction = None
 
     if request.method == "GET":
-        if sort in request.GET:
+        if 'sort' in request.GET:
             sort = request.GET['sort']
-
-            events = events.order_by('price')
+            if 'direction' in request.GET:
+                direction = request.GET['direction']
+                if direction == "desc":
+                    sort = f"-{sort}"
+            
+            events = events.order_by(sort, "name")
 
         if "category" in request.GET:
             selected_category = request.GET['category']
