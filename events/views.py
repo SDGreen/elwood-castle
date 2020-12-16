@@ -25,7 +25,7 @@ def all_events(request):
                 direction = request.GET['direction']
                 if direction == "desc":
                     sort = f"-{sort}"
-            
+
             events = events.order_by(sort, "name")
 
         if "category" in request.GET:
@@ -77,4 +77,9 @@ def event_info(request, event_id):
         'event': event,
     }
 
+    return render(request, template, context)
+
+def book_event(request, event_id):
+
+    template = 'events/book_event.html'
     return render(request, template, context)
