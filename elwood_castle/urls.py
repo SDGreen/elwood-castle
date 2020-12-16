@@ -22,7 +22,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('account/', include('allauth.urls')),
     path('', include('flat_pages.urls')),
-    path('events/', include('events.urls'))
+    path('events/', include('events.urls')),
+    path('basket/', include('basket.urls')),
 ]
 
 if settings.DEBUG:

@@ -44,8 +44,10 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
 
-    'flat_pages',
+    'basket',
     'events',
+    'flat_pages',
+    
 
 ]
 
