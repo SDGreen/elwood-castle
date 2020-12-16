@@ -16,7 +16,7 @@
                 <p class="text-m body-text order-1 order-md-0">{{event.description}}</p>
                 <div class="order-0 order-md-1">
                     <p class="d-inline heading-text">£{{ event.price }} per ticket</p>
-                    <a href="#" class="float-right btn button">Book</a>
+                    <a href="{% url 'book_event' event.id %}" class="float-right btn button">Book</a>
                 </div>
             </div>
         </div>

@@ -29,10 +29,12 @@ a:hover {
     font-family: 'IM Fell French Canon SC', serif;
 }
 
+.datepicker-days th,
 .heading-text{
     font-family: 'Lora', serif;
 }
 
+.datepicker-days td,
 .body-text{
     font-family: 'Raleway', sans-serif;
 }
@@ -45,7 +47,7 @@ a:hover {
     font-size: 1.5em;
 }
 
-.text-m{
+.text-m {
     font-size:1em;
 }
 /*------------default margins-------------*/
@@ -54,7 +56,8 @@ a:hover {
 }
 /*------------ Colors ------------*/
 
-.dropdown-menu,
+
+.navbar .dropdown-menu,
 header {
     background-color: #7D8BAD;
 }
@@ -211,10 +214,31 @@ div[aria-labelledby="account-dropdownMenuLink"]>.dropdown-item{
 }
 
 @media (min-width: 580px){
+    #booking-form {
+        width: 50%;
+    }
     .guttered{
         width: 80%;
     }
 }
+
+/*---------------Event Booking ------------*/
+
+.form-wrapper{
+    height: 100%;
+    width: 100%;
+    background-color: rgba(176, 180, 188, 0.9);
+}
+body .datepicker table tr td.active:hover.active,
+body .datepicker table tr td.active.active,
+body .datepicker table tr td.active.active {
+    color: white;
+    background-color: #1C1E12;
+    background-image: none;
+    border-radius: 0;
+}
+
+
 
 /*----prevents the rating dropdown clipping out the page on small screens----*/
 @media (max-width: 750px){
