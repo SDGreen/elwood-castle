@@ -6,7 +6,13 @@ from events.models import Event
 
 # Create your views here.
 def view_basket(request):
-    return redirect(reverse('index'))
+
+    basket = request.session.get('basket', {})
+    if not basket:
+        messages.error(request, 'Your basket is empty.')
+        return redirect(reverse('events'))
+
+    return render(request, 'basket/view_basket.html')
 
 
 @require_POST

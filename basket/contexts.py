@@ -1,3 +1,6 @@
+from events.models import Event
+
+
 def basket_items(request):
 
     basket_items = []
@@ -6,11 +9,16 @@ def basket_items(request):
     basket = request.session.get('basket', {})
 
     for event_id, event_dates in basket.items():
+        event = Event.objects.get(pk=event_id)
         for date, ticket_quantity in event_dates["event_dates"].items():
+            total += ticket_quantity * event.price
+            subtotal = ticket_quantity * event.price
             basket_items.append({
+                "event": event,
                 "event_id": event_id,
                 "date": date,
                 "ticket_quantity": ticket_quantity,
+                "subtotal": subtotal
             })
 
     context = {
