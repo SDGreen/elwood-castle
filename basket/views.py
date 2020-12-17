@@ -4,6 +4,7 @@ from django.contrib import messages
 
 from events.models import Event
 
+
 # Create your views here.
 def view_basket(request):
 
@@ -44,6 +45,3 @@ def add_to_basket(request, event_id):
     request.session['basket'] = basket
 
     return redirect(reverse('events'))
-
-
-

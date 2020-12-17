@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="color-overlay">
+    <div class="container-fluid guttered p-3">
+        <div class="row pt-2 mb-2">
+            <div class="col-12 ">
+                <h2 class="heading-text color-title text-l underlined mb-2">Your Basket</h2>
+                <hr>
+            </div>
+        </div>
+        <div class="row mt-2 mb-3">
+            <div class="col-12">
+                {% for event in basket_items %}
+                <div class="media">
+                    <img class="mr-3" height="50px" src="{{ event.event.image.url }}" alt="{{ event.event.name }}">
+                    <div class="media-body">
+                        <h5 class="mt-0">{{ event.event.name}}</h5>
+                    </div>
+                </div>
+                <table class="table table-responsive-sm">
+                    <thead>
+                        <tr>
+                            <th scope="col">Date:</th>
+                            <th scope="col">Tickets:</th>
+                            <th scope="col">Subtotal:</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ event.date }}</td>
+                            <td>
+                                {{ event.ticket_quantity}}
+                                <div>
+                                    <a>update</a>
+                                    <a class="ml-5">remove</a>
+                                </div>
+                            </td>
+                            <td>{{ event.subtotal }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <hr class="mt-0 mb-4">
+                 {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
