@@ -23,6 +23,10 @@ a:hover {
     text-decoration: none;
 }
 
+button:focus{
+    outline: none;
+}
+
 /*--------Text Presets--------*/
 
 .logo-text{
@@ -50,6 +54,10 @@ a:hover {
 .text-m {
     font-size:1em;
 }
+
+.text-s {
+    font-size: 0.5em;
+}
 /*------------default margins-------------*/
 .col {
     padding: 0;
@@ -73,12 +81,12 @@ button.navbar-toggler,
     color: white;
 }
 
-a i {
+a>i {
     color: #7D8BAD;
     transition: color ease-in 0.25s;
 }
 
-i:hover {
+a>i:hover {
     color: #A7B4BC;
 }
 
@@ -180,6 +188,42 @@ button.navbar-toggler,
 
 div[aria-labelledby="account-dropdownMenuLink"]>.dropdown-item{
     padding-left: .5em;
+}
+
+/*----------Toasts ----------------------*/
+
+.toast {
+    position: absolute;
+    top: 84.4px;
+    right: 1px;
+    z-index: 10000;
+    border-radius: 0;
+    background-color: white;
+    box-sizing: content-box;
+    border: 1px solid rgba(0,0,0,.1);
+    box-shadow: 0 0.25rem 0.75rem rgba(0,0,0,.1);
+}
+
+.close{
+    color: white;
+    text-shadow: none;
+    transition: color 0.25s ease-out;
+}
+
+.close:hover {
+    color: #1C1E12;
+}
+
+.toast-header{
+    color: white;
+}
+
+.toast-success>.toast-header{
+    background-color: #90ee90;
+    
+}
+.toast-error>.toast-header{
+    background-color: #ff6961;
 }
 
 /*----------Base template----------------*/

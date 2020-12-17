@@ -35,11 +35,11 @@ def add_to_basket(request, event_id):
                             {basket[event_id]['event_dates'][date]}''')
         else:
             basket[event_id]['event_dates'][date] = ticket_quantity
-            messages.success(request, f'''{ticket_quantity} tickets added for the {event.name}
+            messages.success(request, f'''{ticket_quantity} ticket(s) added for the {event.name}
                                          on {date}''')
     else:
         basket[event_id] = {'event_dates': {date: ticket_quantity}}
-        messages.success(request, f'''{ticket_quantity} tickets added for the {event.name}
+        messages.success(request, f'''{ticket_quantity} ticket(s) added for the {event.name}
                                          on {date}''')
 
     request.session['basket'] = basket
@@ -60,13 +60,12 @@ def remove_from_basket(request, event_id):
             return HttpResponse(status=200)
         elif date in basket[str(event_id)]['event_dates']:
             del basket[str(event_id)]['event_dates'][date]
-            if not basket[str(event_id)]['event_dates']:
-                basket.pop(event_id)
+            if len(basket[str(event_id)]['event_dates']) == 0:
+                del basket[str(event_id)]
             messages.success(request, f'''Tickets for {event.name} on the {date}
                                         removed from your basket''')
-
-            request.session[basket] = basket
-            return HttpResponse(stat=200)
+            request.session['basket'] = basket
+            return HttpResponse(status=200)
     except Exception as e:
         messages.error(request, f'''There was a problem removing this event from you bag:
                                     {e}''')
