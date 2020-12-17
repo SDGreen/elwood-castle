@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, HttpResponse
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 
@@ -45,3 +45,28 @@ def add_to_basket(request, event_id):
     request.session['basket'] = basket
 
     return redirect(reverse('events'))
+
+@require_POST
+def remove_from_basket(request, event_id):
+
+    try:
+        event = Event.objects.get(pk=event_id)
+        basket = request.session.get('basket', {})
+        date = request.POST.get('date')
+
+        if date not in basket[str(event_id)]['event_dates']:
+            messages.error(request, f'''You have no tickets for {event.name} on
+                                    {date}''')
+            return HttpResponse(status=200)
+        elif date in basket[str(event_id)]['event_dates']:
+            del basket[str(event_id)]['event_dates'][date]
+            if not basket[str(event_id)]['event_dates']:
+                basket.pop(event_id)
+            messages.success(request, f'''Tickets for {event.name} on the {date}
+                                        removed from your basket''')
+
+            request.session[basket] = basket
+            return HttpResponse(stat=200)
+    except Exception as e:
+        messages.error(request, f'''There was a problem removing this event from you bag:
+                                    {e}''')
