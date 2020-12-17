@@ -74,17 +74,6 @@
                         </a>
                     </li>
                 </ul>
-
-                
-                
-
-
-
-
-                
-
-
-
                 <div class=" order-lg-1 collapse navbar-collapse" id="navbarText">
                     <ul class="navbar-nav ml-auto heading-text">
                         <li class="nav-item active">
@@ -113,9 +102,17 @@
 
         <!--padding against fixed header here-->
         <div id="banner">
-        {% block header %}
-        {% endblock %}
+            {% block header %}
+            {% endblock %}
         </div>
+
+        
+        <div class="message-box">
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}                
+        </div>
+        
 
         <div id="block-content">
             {% block content %}

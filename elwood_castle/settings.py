@@ -64,6 +64,8 @@ EMAIL_BACKEND = ('django.core.mail.backends.console.EmailBackend')
 LOGIN_URL = ('/account/login')
 LOGIN_REDIRECT_URL = ('/')
 
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

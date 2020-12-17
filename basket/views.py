@@ -70,3 +70,4 @@ def remove_from_basket(request, event_id):
     except Exception as e:
         messages.error(request, f'''There was a problem removing this event from you bag:
                                     {e}''')
+        return HttpResponse(status=500)
