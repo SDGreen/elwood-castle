@@ -7,12 +7,6 @@ from events.models import Event
 
 # Create your views here.
 def view_basket(request):
-
-    basket = request.session.get('basket', {})
-    if not basket:
-        messages.error(request, 'Your basket is empty.')
-        return redirect(reverse('events'))
-
     return render(request, 'basket/view_basket.html')
 
 
@@ -26,7 +20,7 @@ def add_to_basket(request, event_id):
 
     basket = request.session.get('basket', {})
     event_id = str(event_id)
-    
+
     if event_id in basket.keys():
         if date in basket[event_id]['event_dates'].keys():
             basket[event_id]['event_dates'][date] += ticket_quantity
@@ -58,13 +52,15 @@ def remove_from_basket(request, event_id):
             messages.error(request, f'''You have no tickets for {event.name} on
                                     {date}''')
             return HttpResponse(status=200)
-        elif date in basket[str(event_id)]['event_dates']:
+
+        if date in basket[str(event_id)]['event_dates']:
             del basket[str(event_id)]['event_dates'][date]
             if len(basket[str(event_id)]['event_dates']) == 0:
                 del basket[str(event_id)]
-            messages.success(request, f'''Tickets for {event.name} on the {date}
-                                        removed from your basket''')
+            messages.success(request, f'''Ticket(s) for {event.name}
+                                         on {date} removed from basket''')
             request.session['basket'] = basket
+
             return HttpResponse(status=200)
     except Exception as e:
         messages.error(request, f'''There was a problem removing this event from you bag:

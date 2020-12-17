@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
 
     'basket',
+    'checkout'
     'events',
     'flat_pages',
     
