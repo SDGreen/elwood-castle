@@ -97,6 +97,10 @@ i:hover {
   color: #1C1E12;
 }
 
+body .datepicker table tr td.disabled{
+   color: #ff6961;
+}
+
 .above-shadow{
     box-shadow: 0px -5px 5px -5px #777;;
 }

@@ -30,13 +30,13 @@
                                 <label class="font-weight-bold" for="date_input">Date of visit:</label>
                                 
                                     <input type="text" class="form-control rounded-0" id="data_input"
-                                    name="date" placeholder="Pick a date">
+                                    name="date" placeholder="Pick a date..." required>
             
                                 </div>
                                 <div class="form-group">
                                     <label class="font-weight-bold" for="ticket_input">Number of Tickets:</label>
                                     <input type="number" min="1" max="{{ event.day_ticket_limit }}" class="form-control rounded-0" id="ticket_input"
-                                        name="ticket_quantity" placeholder="1">
+                                        name="ticket_quantity" placeholder="Add tickets..." required>
                                 </div>
                                 <div class="form-group">
                                     <button class="button d-block mx-auto" type="submit">

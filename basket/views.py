@@ -32,13 +32,10 @@ def add_to_basket(request, event_id):
         basket[event_id] = {'event_dates': {date: ticket_quantity}}
         messages.success(request, f'''{ticket_quantity} tickets added for the {event.name}
                                          on {date}''')
-    
+
     request.session['basket'] = basket
 
-    return redirect(reverse('events'))
-
-
-    print(date, ticket_quantity)
+    print(event_id, date, ticket_quantity)
 
     return redirect(reverse('events'))
     
