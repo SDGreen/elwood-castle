@@ -3,45 +3,51 @@
 
 <div class="color-overlay">
     <div class="container-fluid guttered p-3">
-        <div class="row pt-2 mb-2">
-            <div class="col-12 ">
-                <h2 class="heading-text color-title text-l underlined mb-2">Your Basket</h2>
-                <hr>
+        <div class="row pt-1 mb-2">
+            <div class="col-12 mb-2">
+                <h2 class="heading-text color-title text-l mb-0">Your Basket <span class="d-none d-md-inline float-right">Total: £{{ total }}</span></h2>
+                <h2 class="heading-text color-title text-m mt-1 d-md-none">Total: £{{ total }}</h2>
+                <hr class="mb-1">
             </div>
         </div>
-        <div class="row mt-2 mb-3">
+        <div class="row mt-1 mb-3">
             <div class="col-12">
+            <div id="basket-container" class="px-2 below-shadow">
                 {% for event in basket_items %}
                 <div class="media">
                     <img class="mr-3" height="50px" src="{{ event.event.image.url }}" alt="{{ event.event.name }}">
                     <div class="media-body">
-                        <h5 class="mt-0">{{ event.event.name}}</h5>
+                        <h5 class="mt-0 heading-text text-l">{{ event.event.name}}</h5>
                     </div>
                 </div>
-                <table class="table table-responsive-sm">
-                    <thead>
+                <table class="table mb-1 table-responsive-sm">
+                    <thead class="heading-text text-m">
                         <tr>
                             <th scope="col">Date:</th>
                             <th scope="col">Tickets:</th>
                             <th scope="col">Subtotal:</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="body-text text-m">
                         <tr>
                             <td>{{ event.date }}</td>
                             <td>
-                                {{ event.ticket_quantity}}
-                                <div>
-                                    <a>update</a>
-                                    <a class="ml-5">remove</a>
-                                </div>
+                                {{ event.ticket_quantity}}<a class="ml-3">Update</a>
                             </td>
-                            <td>{{ event.subtotal }}</td>
+                            <td>£{{ event.subtotal }}<a class="ml-3">Remove</a>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
-                <hr class="mt-0 mb-4">
+                <hr class="mt-0 mb-3">
                  {% endfor %}
+                 </div>
+            </div>
+        </div>
+        <div class="row mt-1 mb-3">
+            <div class="col-12 d-flex justify-content-between">
+                <a href="{% url 'events' %}"class="btn button"><i class="fas fa-arrow-left"></i> Continue Shopping</a>
+                <a class="btn button">Checkout <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
     </div>

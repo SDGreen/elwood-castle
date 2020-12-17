@@ -66,6 +66,7 @@ header {
     background-color: #eaedef;
 }
 
+
 #main-navbar i,
 button.navbar-toggler,
 #main-navbar a{
@@ -107,6 +108,10 @@ body .datepicker table tr td.disabled{
 
 .below-shadow{
     box-shadow: 0px 7px 5px -5px #777;;
+}
+
+a.button i{
+color: inherit
 }
 
 /*-------key element styling----------*/
@@ -243,6 +248,15 @@ body .datepicker table tr td.active.active {
 }
 
 /*--------------Basket----------*/
+
+#basket-container{
+    height: 50vh;
+    overflow: hidden;
+    overflow-y: scroll;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 1px solid #1C1E12;
+}
 
 .table td,
 .table th {
