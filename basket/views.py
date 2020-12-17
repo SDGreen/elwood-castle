@@ -15,11 +15,13 @@ def add_to_basket(request, event_id):
     event = Event.objects.get(pk=event_id)
     date = request.POST.get('date')
     ticket_quantity = int(request.POST.get('ticket_quantity'))
+    event_id = str(event_id)
 
     basket = request.session.get('basket', {})
-
+    event_id = str(event_id)
+    
     if event_id in basket.keys():
-        if date in basket[event_id]['event_dates']:
+        if date in basket[event_id]['event_dates'].keys():
             basket[event_id]['event_dates'][date] += ticket_quantity
             messages.success(request, f'''Ticket quanty for {event.name} on the
                             {date} updated to
@@ -35,9 +37,7 @@ def add_to_basket(request, event_id):
 
     request.session['basket'] = basket
 
-    print(event_id, date, ticket_quantity)
-
     return redirect(reverse('events'))
-    
+
 
 
