@@ -28,9 +28,11 @@ class Order(models.Model):
             self.order_number = generate_random_number()
         super().save(*args, **kwargs)
 
+    def update_total(self):
+        self.total = self.bookings.aggregate(sum('bookings_total'))
+
     def __str__(self):
         return f'{self.order_number} - {self.date}'
-
 
 
 class EventBooking(models.Model):
@@ -53,9 +55,9 @@ class EventBooking(models.Model):
 
         if not self.confirmation_number:
             self.confirmation_number = generate_random_number()
+        self.booking_total = self.ticket_quantity * self.event.price
+
         super().save(*args, **kwargs)
 
     def __str__(self):
         return f'{self.event.name} on {self.date} - {self.order.order_number}'
-
-
