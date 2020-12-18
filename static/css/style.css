@@ -327,6 +327,26 @@ body .datepicker table tr td.active.active {
     transform: translate(-50%, -50%);
 }
 
+/*-----------Checkout--------------*/
+
+#checkout-form label{
+    margin-bottom: 0;
+}
+
+#checkout-form .form-group{
+    margin-bottom: 5px;
+}
+
+#checkout-form label{
+    font-size: small;
+}
+
+#checkout-form input{
+    max-width: 80%;
+    margin: 0;
+    font-size: small;
+}
+
 /*----prevents the rating dropdown clipping out the page on small screens----*/
 @media (max-width: 750px){
     #event-search>div:nth-child(2)>li:last-child>div {
