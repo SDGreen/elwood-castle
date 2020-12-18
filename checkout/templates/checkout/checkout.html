@@ -10,56 +10,67 @@
             </div>
         </div>
         <div class="row mt-1 mb-3">
-            <div class="col-12">
-                <div id="{% if basket_items|length == 0%}empty-basket{% else %}basket-container{% endif %}"
-                    class="px-2 below-shadow">
-                    {% if basket_items|length == 0 %}
-                    <div class="align">
-                        <h5 class="heading-text text-m">Your basket is empty</h5>
-                        <a class="body-text text-m d-block text-center" href="{% url 'events' %}">See events</a>
+            <div class="col-sm-12 col-md-6">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="d-inline-block heading-text text-m">Please enter your details:</h2>
                     </div>
-                    {% endif %}
-        
-        
-                    {% for event in basket_items %}
-                    <div class="media">
-                        <img class="mr-3" height="50px" src="{{ event.event.image.url }}" alt="{{ event.event.name }}">
-                        <div class="media-body">
-                            <h5 class="mt-0 heading-text text-l">{{ event.event.name}}</h5>
-                        </div>
+                    <div class="col-12">
+                        <form action="{% url 'checkout' %}" method="POST">
+                            {% csrf_token %}
+                            {{ order_form }}
+                        </form>
                     </div>
-                    <table class="table mb-1 table-responsive-sm">
-                        <thead class="heading-text text-m">
-                            <tr>
-                                <th scope="col">Date:</th>
-                                <th scope="col">Tickets:</th>
-                                <th scope="col">Subtotal:</th>
-                            </tr>
-                        </thead>
-                        <tbody class="body-text text-m">
-                            <tr>
-                                <td>{{ event.date }}</td>
-                                <td>
-                                    {{ event.ticket_quantity}}<a class="ml-3">Update</a>
-                                </td>
-                                <td>£{{ event.subtotal }}<span id="{{event.date}}_{{event.event.id}}"
-                                        class="remove_event ml-3">Remove</span>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <hr class="mt-0 mb-3">
-                    {% endfor %}
                 </div>
+
             </div>
-            <div class="col-12">
-                
+            <div class="col-sm-12 col-md-6">
+                <div class="row">
+                    <div class="col-12 px-0">
+                        <h2 class="d-inline-block heading-text text-m">Order Summary:</h2>
+                        <span class="float-right"><a>Edit</a></span>
+                    </div>
+                    <div id="basket-container" class="col-12">
+                        {% for event in basket_items %}
+                        <div class="media">
+                            <img class="mr-3" height="50px" src="{{ event.event.image.url }}"
+                                alt="{{ event.event.name }}">
+                            <div class="media-body">
+                                <h5 class="mt-0 heading-text text-l">{{ event.event.name}}</h5>
+                            </div>
+                        </div>
+                        <table class="table mb-1 table-responsive-sm">
+                            <thead class="heading-text text-m">
+                                <tr>
+                                    <th scope="col">Date:</th>
+                                    <th scope="col">Tickets:</th>
+                                    <th scope="col">Subtotal:</th>
+                                </tr>
+                            </thead>
+                            <tbody class="body-text text-m">
+                                <tr>
+                                    <td>{{ event.date }}</td>
+                                    <td>
+                                        {{ event.ticket_quantity}}
+                                    </td>
+                                    <td>
+                                        £{{ event.subtotal }}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <hr class="mt-0 mb-3">
+                        {% endfor %}
+                    </div>
+                </div>
+
             </div>
         </div>
         <div class="row mt-1 mb-3">
             <div class="col-12 d-flex justify-content-between">
                 <a href="{% url 'events' %}" class="btn button"><i class="fas fa-arrow-left"></i> Continue Shopping</a>
-                <a class="btn button {% if basket_items|length == 0 %}disabled{% endif %}">Checkout <i class="fas fa-arrow-right"></i></a>
+                <a class="btn button {% if basket_items|length == 0 %}disabled{% endif %}">Checkout <i
+                        class="fas fa-arrow-right"></i></a>
             </div>
         </div>
     </div>
@@ -67,17 +78,4 @@
 {% endblock %}
 
 {% block postload_js %}
-    <script type="text/javascript">
-     $('.remove_event').click(function(e) {
-        var csrfToken = "{{ csrf_token }}";
-        var date = $(this).attr('id').split('_')[0];
-        var eventId = $(this).attr('id').split('_')[1]
-        var url = `/basket/remove/${eventId}/`;
-        var data = {'csrfmiddlewaretoken': csrfToken, 'date': date};
-
-        $.post(url, data).done(function() {
-             location.reload();
-         });
-    })
-    </script>
 {% endblock %}
