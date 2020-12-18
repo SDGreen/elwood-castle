@@ -192,16 +192,22 @@ div[aria-labelledby="account-dropdownMenuLink"]>.dropdown-item{
 
 /*----------Toasts ----------------------*/
 
+#message-box{
+    position: relative;
+    width: 100%;
+}
+
 .toast {
-    position: absolute;
-    top: 84.4px;
+    position: fixed;
+    margin-top: 1px;
     right: 1px;
-    z-index: 99999;
+    z-index: 9999;
     border-radius: 0;
     background-color: white;
     box-sizing: content-box;
     border: 1px solid rgba(0,0,0,.1);
     box-shadow: 0 0.25rem 0.75rem rgba(0,0,0,.1);
+    opacity: 1;
 }
 
 .close{
@@ -256,9 +262,6 @@ div[aria-labelledby="account-dropdownMenuLink"]>.dropdown-item{
     padding: .75rem 1.25rem;
 }
 
-#event-search>* {
-    padding: 0;
-}
 @media (max-width: 575px){
    .guttered{
         width: 90%

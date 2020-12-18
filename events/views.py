@@ -79,8 +79,9 @@ def book_event(request, event_id):
 
     try:
         event = Event.objects.get(pk=event_id)
-    except Event.DoesNotExist:
-        messages.error(request, "Sorry, that event can't be booked right now")
+    except Exception as e:
+        messages.error(request, f"""Sorry, that event can't be booked right now:
+                                    {e}""")
         return redirect(reverse('events'))
 
     template = 'events/book_event.html'

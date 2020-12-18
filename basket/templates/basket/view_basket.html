@@ -55,7 +55,7 @@
         <div class="row mt-1 mb-3">
             <div class="col-12 d-flex justify-content-between">
                 <a href="{% url 'events' %}" class="btn button"><i class="fas fa-arrow-left"></i> Continue Shopping</a>
-                <a class="btn button {% if basket_items|length == 0 %}disabled{% endif %}">Checkout <i class="fas fa-arrow-right"></i></a>
+                <a href="{% url 'checkout' %}" class="btn button {% if basket_items|length == 0 %}disabled{% endif %}">Checkout <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
     </div>
@@ -63,6 +63,7 @@
 {% endblock %}
 
 {% block postload_js %}
+{{ block.super }}
     <script type="text/javascript">
      $('.remove_event').click(function(e) {
         var csrfToken = "{{ csrf_token }}";

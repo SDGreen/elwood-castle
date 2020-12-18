@@ -52,7 +52,7 @@
             </button>
 
             <a class="navbar-brand" href="{% url 'index' %}">
-                <img height="70px" src="{% static 'logos/navbar_logo.png' %}">
+                <img height="70px" src="{% static 'logos/navbar_logo.png' %}" alt="Elwood Logo">
                 <span class="ml-3 logo-text text-xxl d-none d-lg-inline">Elwood Castle</span>
             </a>
 
@@ -113,7 +113,7 @@
     </div>
 
     {% if messages %}
-    <div class="message-box">
+    <div id="message-box">
         {% for message in messages %}
             {% with message.tags as tag %}
                 {% if tag == 'success' %}
