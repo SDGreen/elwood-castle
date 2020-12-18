@@ -50,7 +50,6 @@ INSTALLED_APPS = [
     'events',
     'flat_pages',
     
-
 ]
 
 SITE_ID = 1  # required by allauth
