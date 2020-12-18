@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Sum
 
 from events.models import Event
 
@@ -20,7 +21,7 @@ class Order(models.Model):
     phone_number = models.CharField(max_length=20, null=True, blank=True)
     date = models.DateTimeField(auto_now_add=True)
     total = models.DecimalField(max_digits=7, decimal_places=2,
-                                null=False, blank=False)
+                                null=True, blank=False, default=0)
 
     def save(self, *args, **kwargs):
 
@@ -29,10 +30,13 @@ class Order(models.Model):
         super().save(*args, **kwargs)
 
     def update_total(self):
-        self.total = self.bookings.aggregate(sum('bookings_total'))
+        self.total = self.bookings.aggregate(
+                                             Sum('booking_total')
+                                             )['booking_total__sum']
+        self.save()
 
     def __str__(self):
-        return f'{self.order_number} - {self.date}'
+        return f'{self.order_number}: {self.date}'
 
 
 class EventBooking(models.Model):
@@ -49,14 +53,13 @@ class EventBooking(models.Model):
     ticket_quantity = models.IntegerField()
     booking_total = models.DecimalField(max_digits=7, decimal_places=2,
                                         null=False, blank=False,
-                                        editable=False)
+                                        editable=False, default=0)
 
     def save(self, *args, **kwargs):
 
         if not self.confirmation_number:
             self.confirmation_number = generate_random_number()
-        self.booking_total = self.ticket_quantity * self.event.price
-
+        self.booking_total = self.ticket_quantity * (self.event.price)
         super().save(*args, **kwargs)
 
     def __str__(self):
