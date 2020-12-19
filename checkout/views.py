@@ -10,6 +10,7 @@ from basket.contexts import basket_items
 from events.models import Event
 
 import stripe
+import datetime
 
 
 # Create your views here.
@@ -40,18 +41,21 @@ def checkout(request):
         print(form_data)
 
         order_form = OrderForm(form_data)
-        if order.is_valid():
+        if order_form.is_valid():
             order = order_form.save()
-            for event in basket:
+            for event in basket['basket_items']:
+                date = datetime.datetime.strptime(event["date"], '%d/%m/%Y').strftime('%Y-%m-%d')
+                print(date)
                 booking = EventBooking(
                     order=order,
                     event=event["event"],
-                    date=event["date"],
+                    date=date,
                     ticket_quantity=event['ticket_quantity'],
                     booking_total=event["subtotal"]
                 )
                 booking.save()
-
+            messages.success(request, f"{order.order_number} successfully processed")
+            return redirect(reverse('events'))
 
         else:
             messages.error(request, """Something has gone wrong during
