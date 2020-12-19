@@ -1,7 +1,7 @@
 $(document).ready(function () {
      // Getting the key and client_secret values
-    var stripe_public_key = $("#id_stripe_public_key").text().slice(1, -1)
-    var client_secret = $("#id_client_secret").text().slice(1, -1)
+    var stripe_public_key = $("#id_stripe_public_key").text().slice(1, -1);
+    var client_secret = $("#id_client_secret").text().slice(1, -1);
 
     // Creating the card
     var stripe = Stripe(stripe_public_key);
@@ -28,6 +28,29 @@ $(document).ready(function () {
     card.mount('#card-element');
 
     // Form action after submit
+    var form = document.getElementById("checkout-form");
+    form.addEventListener('submit', function(event){
+        event.preventDefault()
+        card.update({'disabled': true})
+        $("#checkout-form .button").attr('disabled', true)
+
+        stripe.confirmCardPayment(client_secret, {
+            payment_method: {
+                card: card
+            }
+        }).then(function(paymentResult){
+            if (paymentResult.error){
+                console.log(paymentResult.error)
+                card.update({'disabled': true})
+                $("#checkout-form .button").attr('disabled', false)
+                
+            }else{
+                if (paymentResult.paymentIntent.status == 'succeeded'){
+                    form.submit()
+                }
+            }
+        })
+    })
 
 
 })

@@ -23,8 +23,7 @@ def checkout(request):
         # Verify your integration in this guide by including this parameter
         metadata={'integration_check': 'accept_a_payment'},
     )
-    print(intent)
-    
+
     basket = request.session.get('basket', {})
     if not basket:
         messages.error(request, 'Your basket is empty')
@@ -34,7 +33,7 @@ def checkout(request):
 
     context = {
         'order_form': order_form,
-        'stripe_public_key': '7934729837492782',
+        'stripe_public_key': settings.STRIPE_PUBLIC_KEY,
         'client_secret': intent.client_secret
     }
 
