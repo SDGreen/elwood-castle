@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'checkout',
     'events',
     'flat_pages',
-    
+
 ]
 
 SITE_ID = 1  # required by allauth
@@ -172,3 +172,9 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
+
+# Stripe
+
+STRIPE_CURRENCY = "GBP"
+STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY')
+STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
