@@ -3,7 +3,7 @@ from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
 
-from .models import EventBooking
+from .models import EventBooking, Order
 from .forms import OrderForm
 
 from basket.contexts import basket_items
@@ -55,7 +55,7 @@ def checkout(request):
                 )
                 booking.save()
             messages.success(request, f"{order.order_number} successfully processed")
-            return redirect(reverse('events'))
+            return redirect(reverse('checkout_success', args=[order.order_number]))
 
         else:
             messages.error(request, """Something has gone wrong during
@@ -113,3 +113,12 @@ def checkout_validator(request):
                                    your form, please contact us so we can fix
                                    it for you. {e}""")
         return HttpResponse(status=500)
+
+def checkout_success(request, order_id):
+
+    order = Order.objects.get(pk=order_id)
+
+    context = {
+        'order': order
+    }
+    return render(request, 'checkout/checkout_success.html', context)
