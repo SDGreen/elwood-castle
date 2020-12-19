@@ -35,7 +35,7 @@ def checkout(request):
     context = {
         'order_form': order_form,
         'stripe_public_key': '7934729837492782',
-        'client_secret': 'Client Secret'
+        'client_secret': intent.client_secret
     }
 
     return render(request, 'checkout/checkout.html', context)
