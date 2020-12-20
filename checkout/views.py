@@ -54,7 +54,7 @@ def checkout(request):
                     booking_total=event["subtotal"]
                 )
                 booking.save()
-            messages.success(request, f"{order.order_number} successfully processed")
+            messages.success(request, f"Order: {order.order_number} successfully processed, please keep your confirmation email safe")
             return redirect(reverse('checkout_success', args=[order.order_number]))
 
         else:
@@ -114,9 +114,17 @@ def checkout_validator(request):
                                    it for you. {e}""")
         return HttpResponse(status=500)
 
-def checkout_success(request, order_id):
 
-    order = Order.objects.get(pk=order_id)
+def checkout_success(request, order_number):
+
+    try:
+        order = Order.objects.get(order_number=order_number)
+    except Exception:
+        messages.error(request, """Sorry, look like something went wrong,
+                                   if you've made an order please wait for
+                                   your confirmation email and get in contact
+                                   with us""")
+        return redirect(reverse('view_basket'))
 
     context = {
         'order': order

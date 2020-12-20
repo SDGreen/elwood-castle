@@ -7,74 +7,14 @@
     <div class="container-fluid guttered p-3">
         <div class="row pt-1 mb-2">
             <div class="col-12 mb-2">
-                <h2 class="heading-text color-title text-l mb-0">Checkout</h2>
+                <h2 class="heading-text color-title text-l d-block mx-auto">Thank You!</h2>
                 <hr class="mb-1">
             </div>
         </div>
         <div class="row mt-1 mb-3">
-            <div id="checkout-summary" class="col-sm-12 col-md-6">
-                <div class="row">
-                    <div class="col-12">
-                        <h2 class="d-inline-block heading-text text-m">Please enter your details:</h2>
-                    </div>
-                    <div class="col-12">
-                        <form id="checkout-form" action="{% url 'checkout' %}" method="POST">
-                            {% csrf_token %}
-                            <fieldset class="mb-2">
-                            {{ order_form|crispy }}
-                            </fieldset>
-                            <fieldset class="mb-2">
-                            <div id="card-element">
-                                <!-- A Stripe Element will be inserted here. -->
-                            </div>
-                            
-                            <!-- Used to display form errors. -->
-                            <div id="card-errors" role="alert"></div>
-                            </fieldset>
-                            <button class="btn button d-block mx-auto heading-text text-m" type="submit">Confirm Payment</button>
-                    </form>
-                </div>
-            </div>
-
-        </div>
-        <div class="col-sm-12 col-md-6">
-            <div class="row">
-                <div id="order-summary" class="col-12 px-0">
-                    <h2 class="d-inline-block heading-text text-m">Order Summary:</h2>
-                    <span class="float-right"><a>Edit</a></span>
-                </div>
-                <div id="basket-container" class="col-12 below-shadow">
-                    {% for event in basket_items %}
-                    <div class="media">
-                        <img class="mr-3" height="50px" src="{{ event.event.image.url }}" alt="{{ event.event.name }}">
-                        <div class="media-body">
-                            <h5 class="mt-0 heading-text text-l">{{ event.event.name}}</h5>
-                        </div>
-                    </div>
-                    <table class="table mb-1 table-responsive-sm">
-                        <thead class="heading-text text-m">
-                            <tr>
-                                <th scope="col">Date:</th>
-                                <th scope="col">Tickets:</th>
-                                <th scope="col">Subtotal:</th>
-                            </tr>
-                        </thead>
-                        <tbody class="body-text text-m">
-                            <tr>
-                                <td>{{ event.date }}</td>
-                                <td>
-                                    {{ event.ticket_quantity}}
-                                </td>
-                                <td>
-                                    £{{ event.subtotal }}
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <hr class="mt-0 mb-3">
-                    {% endfor %}
-                </div>
-            </div>
+        <div class="col-sm-12">
+            <h5 class="heading-text text-m">Order: {{ order.order_number }} is confirmed</h5>
+            <p class="body-text text-s">The following events have been booked:</p>
 
         </div>
     </div>
