@@ -24,7 +24,6 @@ def checkout(request):
     basket = basket_items(request)
     stripe_total = int(basket["total"] * 100)
 
-
     stripe.api_key = settings.STRIPE_SECRET_KEY
     intent = stripe.PaymentIntent.create(
         amount=stripe_total,
@@ -38,7 +37,6 @@ def checkout(request):
         for key, post_data in request.POST.items():
             if key != 'csrfmiddlewaretoken':
                 form_data[key] = post_data
-        print(form_data)
 
         order_form = OrderForm(form_data)
         if order_form.is_valid():
@@ -111,6 +109,34 @@ def checkout_validator(request):
     except Exception as e:
         messages.error(request, f"""Something has gone wrong whilst checking
                                    your form, please contact us so we can fix
+                                   it for you. {e}""")
+        return HttpResponse(status=500)
+
+
+@require_POST
+def save_checkout_data(request):
+    """
+    This validates the form and basket items before payment takes place
+    """
+    try:
+        form_data = {}
+        for key, value in request.POST.items():
+            if key != "csrfmiddlewaretoken":
+                key = key.split('[')[1].split(']')[0]
+                form_data[key] = value
+        stripe.api_key = settings.STRIPE_SECRET_KEY
+        print(form_data['pid'])
+        stripe.PaymentIntent.modify(form_data['pid'], metadata={
+            'user': request.user,
+            'first_name': form_data['first_name'],
+            'last_name': form_data['last_name'],
+            'email': form_data['email']
+            })
+        return HttpResponse(status=200)
+
+    except Exception as e:
+        messages.error(request, f"""Something has gone wrong whilst saving
+                                   your order, please contact us so we can fix
                                    it for you. {e}""")
         return HttpResponse(status=500)
 
