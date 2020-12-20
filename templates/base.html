@@ -122,6 +122,7 @@
                 {% elif tag == 'error' %}
                     {% include 'includes/toasts/toast_error.html' %}
                 {% else %}
+                    {% include 'includes/toasts/toast_other.html' %}
                 {% endif %}
             {% endwith %}
         {% endfor %}

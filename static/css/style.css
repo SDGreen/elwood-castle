@@ -236,6 +236,10 @@ div[aria-labelledby="account-dropdownMenuLink"]>.dropdown-item{
     background-color: #ff6961;
 }
 
+.toast-other>.toast-header{
+    background-color: #7ec0EE;
+}
+
 /*----------Base template----------------*/
 
 #block-content{
