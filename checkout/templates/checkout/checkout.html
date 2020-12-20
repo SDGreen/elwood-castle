@@ -12,7 +12,7 @@
             </div>
         </div>
         <div class="row mt-1 mb-3">
-            <div id="checkout-summary" class="col-sm-12 col-md-6">
+            <div id="checkout-summary" class="col-sm-12 col-md-6 mb-2 mb-m-0">
                 <div class="row">
                     <div class="col-12">
                         <h2 class="d-inline-block heading-text text-m">Please enter your details:</h2>
@@ -24,6 +24,8 @@
                             {{ order_form|crispy }}
                             </fieldset>
                             <fieldset class="mb-2">
+                            
+                            <span class="d-inline-block text-m heading-text mb-2">Payment Amount: £{{ total }}</span>
                             <div id="card-element">
                                 <!-- A Stripe Element will be inserted here. -->
                             </div>

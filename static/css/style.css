@@ -56,7 +56,7 @@ button:focus{
 }
 
 .text-s {
-    font-size: 0.5em;
+    font-size: 0.75em;
 }
 /*------------default margins-------------*/
 .col {
@@ -106,6 +106,7 @@ a>i:hover {
   color: #1C1E12;
 }
 
+#card-errors,
 body .datepicker table tr td.disabled{
    color: #ff6961;
 }

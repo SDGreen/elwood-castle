@@ -27,6 +27,19 @@ $(document).ready(function () {
     var card = elements.create('card', { style: style });
     card.mount('#card-element');
 
+    //Handles card errors on input
+    card.addEventListener('change', function (event) {
+    var errorBox = document.getElementById('card-errors');
+    if (event.error) {
+        var errorMessage = `
+            <span class="heading-text text-s"><strong>${event.error.message}</strong></span>
+        `;
+        $(errorBox).html(errorMessage);
+    } else {
+        errorBox.textContent = '';
+    }
+});
+
     // Form action after submit
     var form = document.getElementById("checkout-form");
     form.addEventListener('submit', function (event) {
@@ -56,10 +69,7 @@ $(document).ready(function () {
                 }
             }).then(function (paymentResult) {
                 if (paymentResult.error) {
-                    console.log(paymentResult.error)
-                    card.update({ 'disabled': true })
-                    $("#checkout-form .button").attr('disabled', false)
-
+                    location.reload()
                 } else {
                     if (paymentResult.paymentIntent.status == 'succeeded') {
                         form.submit()

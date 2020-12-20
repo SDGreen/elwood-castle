@@ -2,6 +2,9 @@ from django.conf import settings
 from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
+
+from .webhook_handler import Stripe_WH_Handler
+
 import stripe
 
 @csrf_exempt
@@ -38,5 +41,15 @@ def webhook(request):
             content=e,
             status=400
             )
-    print('success')
-    return HttpResponse(status=200)
+
+    handler = Stripe_WH_Handler(request)
+
+    event_map = {
+             'payment_intent.succeeded': handler.handle_payment_succeeded,
+             'payment_intent.payment_failed': handler.handle_payment_failed,
+             }
+    event_type = event['type']
+    event_handler = event_map.get(event_type, handler.handle_other_event)
+    response = event_handler(event)
+
+    return response
