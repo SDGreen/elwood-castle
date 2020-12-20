@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'dzoki1lcv8ig)o1&whyq*om1+s&d87y20l+@9wz&!b1o4l8ro7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEVELOPMENT')
 
 ALLOWED_HOSTS = []
 
@@ -178,3 +178,10 @@ STATICFILES_DIRS = [
 STRIPE_CURRENCY = "GBP"
 STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY')
 STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
+
+# Stripe Webhook
+
+if DEBUG:
+    STRIPE_WH_SECRET = os.getenv('ELWOOD_STRIPE_WH_SECRET')
+else:
+    STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET')
