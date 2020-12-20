@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load filter_tags %}
 {% load crispy_forms_tags %}
 {% block content %}
 
@@ -33,6 +34,7 @@
                             <!-- Used to display form errors. -->
                             <div id="card-errors" role="alert"></div>
                             </fieldset>
+                            <input type="hidden" value="{% with client_secret|split:'_secret' as pid_array %}{{ pid_array.0 }}{% endwith %}" name="pid">
                             <button class="btn button d-block mx-auto heading-text text-m" type="submit">Confirm Payment</button>
                     </form>
                 </div>

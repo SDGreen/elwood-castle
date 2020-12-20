@@ -20,6 +20,7 @@ class Order(models.Model):
     email = models.EmailField(max_length=200, null=False, blank=False)
     phone_number = models.CharField(max_length=20, null=True, blank=True)
     date = models.DateTimeField(auto_now_add=True)
+    stripe_id = models.CharField(max_length=27, null=False, blank=False)
     total = models.DecimalField(max_digits=7, decimal_places=2,
                                 null=True, blank=False, default=0)
 

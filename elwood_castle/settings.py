@@ -97,6 +97,9 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'basket.contexts.basket_items',
             ],
+            'libraries':{
+               'filter_tags': 'checkout.templatetags.filter',
+            }
         },
     },
 ]

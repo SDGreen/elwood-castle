@@ -40,7 +40,9 @@ def checkout(request):
 
         order_form = OrderForm(form_data)
         if order_form.is_valid():
-            order = order_form.save()
+            order = order_form.save(commit=False)
+            order.stripe_id = request.POST.get('pid')
+            order.save()
             for event in basket['basket_items']:
                 date = datetime.datetime.strptime(event["date"], '%d/%m/%Y').strftime('%Y-%m-%d')
                 print(date)
@@ -52,8 +54,11 @@ def checkout(request):
                     booking_total=event["subtotal"]
                 )
                 booking.save()
-            messages.success(request, f"Order: {order.order_number} successfully processed, please keep your confirmation email safe")
-            return redirect(reverse('checkout_success', args=[order.order_number]))
+            messages.success(request, f"""Order: {order.order_number}
+                                          successfully processed, please keep
+                                          your confirmation email safe""")
+            return redirect(reverse('checkout_success',
+                                    args=[order.order_number]))
 
         else:
             messages.error(request, """Something has gone wrong during

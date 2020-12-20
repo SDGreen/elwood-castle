@@ -18,10 +18,10 @@ class OrderAdmin(admin.ModelAdmin):
 
     inlines = (EventBookingAdminInline,)
 
-    readonly_fields = ('order_number', 'date', 'total')
+    readonly_fields = ('order_number', 'date', 'total', 'stripe_id')
 
     fields = (('order_number', 'date'), ('first_name', 'last_name'),
-              ('email', 'phone_number'), 'total',)
+              ('email', 'phone_number'), 'stripe_id', 'total',)
 
 
 # Register your models here.
