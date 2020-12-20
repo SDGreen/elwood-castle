@@ -373,6 +373,20 @@ fieldset {
     margin: 0;
 }
 
+/*--------------Checkout Success---------*/
+
+#checkout-container .img-fluid{
+    max-width: 140px;
+}
+
+#checkout-container{
+    height: fit-content;
+    max-height: 50vh;
+    overflow: hidden;
+    overflow-y: scroll;
+    border: 1px solid #1C1E12;
+}
+
 /*----prevents the rating dropdown clipping out the page on small screens----*/
 @media (max-width: 750px){
     #event-search>div:nth-child(2)>li:last-child>div {
@@ -389,5 +403,9 @@ fieldset {
 @media (min-width: 992px){
     #banner{
         padding-top: 84.4px;
+    }
+
+    #checkout-container .img-fluid{
+    max-width: 140px;
     }
 }
