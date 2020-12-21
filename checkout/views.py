@@ -11,6 +11,7 @@ from events.models import Event
 
 import stripe
 import datetime
+import json
 
 
 # Create your views here.
@@ -27,7 +28,7 @@ def checkout(request):
     stripe.api_key = settings.STRIPE_SECRET_KEY
     intent = stripe.PaymentIntent.create(
         amount=stripe_total,
-        currency= settings.STRIPE_CURRENCY,
+        currency=settings.STRIPE_CURRENCY,
         # Verify your integration in this guide by including this parameter
         metadata={'integration_check': 'accept_a_payment'},
     )
@@ -44,7 +45,9 @@ def checkout(request):
             order.stripe_id = request.POST.get('pid')
             order.save()
             for event in basket['basket_items']:
-                date = datetime.datetime.strptime(event["date"], '%d/%m/%Y').strftime('%Y-%m-%d')
+                date = datetime.datetime.strptime(event["date"],
+                                                  '%d/%m/%Y').strftime(
+                                                      '%Y-%m-%d')
                 print(date)
                 booking = EventBooking(
                     order=order,
@@ -121,7 +124,8 @@ def checkout_validator(request):
 @require_POST
 def save_checkout_data(request):
     """
-    This validates the form and basket items before payment takes place
+    This saves the data to our payment intent incase the
+    webhook has to create the order
     """
     try:
         form_data = {}
@@ -129,20 +133,30 @@ def save_checkout_data(request):
             if key != "csrfmiddlewaretoken":
                 key = key.split('[')[1].split(']')[0]
                 form_data[key] = value
+        basket = basket_items(request)
+        for event in basket['basket_items']:
+            event.pop('event')
+            event['subtotal'] = float(event['subtotal'])
+        basket.pop('total')
+        basket = json.dumps(basket)
         stripe.api_key = settings.STRIPE_SECRET_KEY
-        print(form_data['pid'])
+
         stripe.PaymentIntent.modify(form_data['pid'], metadata={
             'user': request.user,
             'first_name': form_data['first_name'],
             'last_name': form_data['last_name'],
-            'email': form_data['email']
+            'email': form_data['email'],
+            'phone_number': form_data['phone_number'],
+            'basket': basket
             })
+
         return HttpResponse(status=200)
 
     except Exception as e:
         messages.error(request, f"""Something has gone wrong whilst saving
                                    your order, please contact us so we can fix
                                    it for you. {e}""")
+        print(e)
         return HttpResponse(status=500)
 
 
