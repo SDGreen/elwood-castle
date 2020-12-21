@@ -86,7 +86,7 @@ $(document).ready(function () {
                         location.reload()
                     } else {
                         if (paymentResult.paymentIntent.status == 'succeeded') {
-                            form.submit()
+                            //form.submit()
                         }
                     }
                 });

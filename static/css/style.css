@@ -33,11 +33,13 @@ button:focus{
     font-family: 'IM Fell French Canon SC', serif;
 }
 
+#allauth-content label,
 .datepicker-days th,
 .heading-text{
     font-family: 'Lora', serif;
 }
 
+#allauth-content input,
 .datepicker-days td,
 .body-text{
     font-family: 'Raleway', sans-serif;
@@ -271,22 +273,6 @@ div[aria-labelledby="account-dropdownMenuLink"]>.dropdown-item{
     padding: .75rem 1.25rem;
 }
 
-@media (max-width: 575px){
-   .guttered{
-        width: 90%
-    }
-
-}
-
-@media (min-width: 580px){
-    #booking-form {
-        width: 50%;
-    }
-    .guttered{
-        width: 80%;
-    }
-}
-
 /*---------------Event Booking ------------*/
 
 .form-wrapper{
@@ -392,7 +378,48 @@ fieldset {
     border: 1px solid #1C1E12;
 }
 
-/*----prevents the rating dropdown clipping out the page on small screens----*/
+
+/*----------All Auth---------------*/
+
+.alert-danger {
+    color: white;
+    background-color: #ff6961;
+    border-radius: 0;
+}
+
+.invalid-feedback{
+    color: #ff6961;
+    margin-bottom: .25rem;
+}
+
+.form-control.is-invalid, .was-validated .form-control:invalid{
+    border-color: #ff6961;
+}
+
+
+/*----media breakpoints----*/
+
+@media (max-width: 575px){
+   .guttered{
+        width: 90%
+    }
+
+}
+
+@media (min-width: 580px){
+    #booking-form {
+        width: 50%;
+    }
+    .guttered{
+        width: 80%;
+    }
+
+    #allauth-content input{
+        max-width: 400px;
+    }
+}
+
+
 @media (max-width: 750px){
     #event-search>div:nth-child(2)>li:last-child>div {
         left: -60px;
