@@ -1,0 +1,1 @@
+Booking Confirmation for {{ booking.event__name }} on {{ booking.date }}

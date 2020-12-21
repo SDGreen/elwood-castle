@@ -1,9 +1,13 @@
 from django.shortcuts import HttpResponse
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+from django.conf import settings
 
 from .models import Order, EventBooking
 
 from events.models import Event
 
+import time
 import datetime
 import json
 
@@ -12,6 +16,42 @@ class Stripe_WH_Handler:
 
     def __init__(self, request):
         self.request = request
+
+    def _send_order_and_booking_emails(self, order):
+        print("order_emails activated")
+        order = Order.objects.get(order_number=order.order_number)
+        customer_email = order.email
+        order_email_subject = render_to_string(
+            'checkout/emails/order_confirmation_head.txt',
+            {'order': order}
+        )
+        order_email_body = render_to_string(
+            'checkout/emails/order_confirmation_body.txt',
+            {'order': order, 'elwood_email': settings.DEFAULT_FROM_EMAIL}
+        )
+        send_mail(
+            order_email_subject,
+            order_email_body,
+            settings.DEFAULT_FROM_EMAIL,
+            [customer_email]
+        )
+        for booking in order.bookings.all():
+            order_email_subject = render_to_string(
+                'checkout/emails/booking_confirmation_head.txt',
+                {'booking': booking}
+            )
+            order_email_body = render_to_string(
+                'checkout/emails/booking_confirmation_body.txt',
+                {'booking': booking,
+                 'elwood_email': settings.DEFAULT_FROM_EMAIL}
+            )
+            send_mail(
+                order_email_subject,
+                order_email_body,
+                settings.DEFAULT_FROM_EMAIL,
+                [customer_email]
+            )
+
 
     def handle_payment_succeeded(self, event):
         intent = event.data.object
@@ -35,7 +75,9 @@ class Stripe_WH_Handler:
                 attempt += 1
                 time.sleep(5)
         if order_exists:
+            self._send_order_and_booking_emails(order)
             return HttpResponse(
+
                 content=f"""webhook recieved: {event['type']}, Order created in
                             database by views.checkout""",
                 status=200
@@ -71,6 +113,7 @@ class Stripe_WH_Handler:
                                 processed, contact customer""",
                     status=500
                 )
+            self._send_order_and_booking_emails(order)
             return HttpResponse(
                 content=f"Order {order.order_number} created in webhook",
                 status=200

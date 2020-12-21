@@ -1,0 +1,27 @@
+Hello {{ booking.order.first_name }} {{ booking.order.last_name }}
+
+Thanks for booking {{ booking.ticket_quantity }} tickets for the {% autoescape off %}{{ booking.event.name }}{% endautoescape %}.
+Your tickets are for {{ booking.date|date:"d/m/Y" }}, if this is incorrect please contact us as soon as possible.
+
+The confirmation number for this booking is: {{ booking.confirmation_number }}
+
+Please keep this email safe as you'll need it to pick up your tickets on the day.
+Tickets kept at the reception, just inside the main entrance.
+
+It's reccomended to arrive 15 minutes before each event starts, other than the Crèche & Old Spice Market, which are open from their start times and can be accessed at any time after that.
+
+If you have any other questions, please as at reception of contact us either by:
+
+Email - {{ elwood_email }}
+Phone - (+44) 20 7946 0559
+
+Booking Summary:
+
+Confirmation Number - {{ booking.confirmation_number }}
+Event - {% autoescape off %}{{ booking.event.name }}{% endautoescape %}
+Name - {{ booking.order.first_name }} {{ booking.order.last_name }}
+Date - {{ booking.date|date:"d/m/Y" }}
+Total: £{{ booking.booking_total }}
+
+Thanks again,
+We can't wait to see you at Elwood Castle!

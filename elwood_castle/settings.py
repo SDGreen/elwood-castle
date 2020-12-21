@@ -64,6 +64,8 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 EMAIL_BACKEND = ('django.core.mail.backends.console.EmailBackend')
 
+DEFAULT_FROM_EMAIL = 'services@elwoodcastle.com'
+
 LOGIN_URL = ('/account/login')
 LOGIN_REDIRECT_URL = ('/')
 

@@ -58,14 +58,16 @@ def checkout(request):
                 )
                 booking.save()
             messages.success(request, f"""Order: {order.order_number}
-                                          successfully processed, please keep
-                                          your confirmation email safe""")
+                                          successfully processed!\
+                                          please keep your confirmation
+                                          email safe""")
             return redirect(reverse('checkout_success',
                                     args=[order.order_number]))
 
         else:
             messages.error(request, """Something has gone wrong during
-                                       checkout, please contact us as soon as
+                                       checkout.\
+                                       Please contact us as soon as
                                        possible as you may have been
                                        charged""")
 
@@ -105,9 +107,9 @@ def checkout_validator(request):
                     event = Event.objects.get(pk=item['event_id'])
                 except event.DoesNotExist:
                     messages.error(request, """One of the events does not
-                                                exist in out database, please
-                                                contact us. Your card has not
-                                                been charged""")
+                                                exist in out database.\
+                                                Please contact us, your card
+                                                has not been charged""")
                     return HttpResponse(status=500)
             return HttpResponse(status=200)
         else:
@@ -116,8 +118,9 @@ def checkout_validator(request):
             return HttpResponse(status=500)
     except Exception as e:
         messages.error(request, f"""Something has gone wrong whilst checking
-                                   your form, please contact us so we can fix
-                                   it for you. {e}""")
+                                    your form.\
+                                    Please contact us so we can fix
+                                    it for you. {e}""")
         return HttpResponse(status=500)
 
 
@@ -154,8 +157,9 @@ def save_checkout_data(request):
 
     except Exception as e:
         messages.error(request, f"""Something has gone wrong whilst saving
-                                   your order, please contact us so we can fix
-                                   it for you. {e}""")
+                                    your order.\
+                                    Please contact us so we can fix
+                                    this for you. {e}""")
         print(e)
         return HttpResponse(status=500)
 
@@ -165,11 +169,14 @@ def checkout_success(request, order_number):
     try:
         order = Order.objects.get(order_number=order_number)
     except Exception:
-        messages.error(request, """Sorry, look like something went wrong,
-                                   if you've made an order please wait for
+        messages.error(request, """Sorry, look like something went wrong!\
+                                   If you've made an order please wait for
                                    your confirmation email and get in contact
                                    with us""")
         return redirect(reverse('view_basket'))
+
+    if 'basket' in request.session:
+        del request.session['basket']
 
     context = {
         'order': order
