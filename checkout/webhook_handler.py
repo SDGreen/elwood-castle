@@ -2,7 +2,8 @@ from django.shortcuts import HttpResponse
 
 from .models import Order, EventBooking
 
-import time
+from events.models import Event
+
 import datetime
 import json
 
@@ -16,7 +17,6 @@ class Stripe_WH_Handler:
         intent = event.data.object
         pid = intent.id
         basket = json.loads(intent.metadata.basket)
-        print(basket)
         del intent.metadata.basket
         form_data = {}
         for key, value in intent.metadata.items():
@@ -33,7 +33,7 @@ class Stripe_WH_Handler:
                 break
             except Order.DoesNotExist:
                 attempt += 1
-                #time.sleep(5)
+                time.sleep(5)
         if order_exists:
             return HttpResponse(
                 content=f"""webhook recieved: {event['type']}, Order created in
@@ -52,22 +52,23 @@ class Stripe_WH_Handler:
                     phone_number=phone_number,
                     stripe_id=pid,
                 )
-                for event in basket:
-                    date = datetime.datetime.strptime(date,
-                                                      '%d/%m/%Y').strftime(
-                                                      '%Y-%m-%d')
-                    print('sam')
+                for event_booking in basket['basket_items']:
+                    event = Event.objects.get(pk=event_booking['event_id'])
+                    date = datetime.datetime.strptime(event_booking['date'],'%d/%m/%Y').strftime('%Y-%m-%d')
                     booking = EventBooking(
                         order=order,
-                        event=event_id,
+                        event=event,
                         date=date,
-                        ticket_quantity=ticket_quantity,
-                        booking_total=event["subtotal"]
+                        ticket_quantity=event_booking['ticket_quantity'],
+                        booking_total=event_booking['subtotal']
                     )
                     booking.save()
             except Exception as e:
+                if order:
+                    order.delete()
                 return HttpResponse(
-                    content=f"Issue saving order in webhook {e}",
+                    content=f"""Issue saving order in webhook {e}, payment still
+                                processed, contact customer""",
                     status=500
                 )
             return HttpResponse(
