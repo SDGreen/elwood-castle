@@ -2,6 +2,7 @@ from django.db import models
 from django.db.models import Sum
 
 from events.models import Event
+from user_account.models import UserAccount
 
 import uuid
 
@@ -14,9 +15,9 @@ def generate_random_number():
 # Create your models here.
 class Order(models.Model):
 
-    user_account = models.ForeignKey(Order, null=True, blank=True,
-                              on_delete=models.SET_NULL,
-                              related_name='orders')
+    user_account = models.ForeignKey(UserAccount, null=True, blank=True,
+                                     on_delete=models.SET_NULL,
+                                     related_name='orders')
     order_number = models.CharField(max_length=32, null=False, editable=False)
     first_name = models.CharField(max_length=100, null=False, blank=False)
     last_name = models.CharField(max_length=200, null=False, blank=False)
