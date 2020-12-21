@@ -6,6 +6,7 @@ from django.conf import settings
 from .models import Order, EventBooking
 
 from events.models import Event
+from user_account.models import UserAccount
 
 import time
 import datetime
@@ -62,6 +63,17 @@ class Stripe_WH_Handler:
         for key, value in intent.metadata.items():
             if key != ("integration_check" or "basket"):
                 form_data[key] = value.strip()
+        if form_data['user_account'] == "AnonymousUser":
+            form_data['user_account'] = None
+        else:
+            try:
+                form_data['user_account'] = UserAccount.objects.get(
+                    user__username=form_data['user_account']
+                    )
+            except Exception as e:
+                print(e)
+                form_data['user_account'] = None
+
         order_exists = False
         attempt = 1
         while attempt <= 5:
@@ -88,6 +100,7 @@ class Stripe_WH_Handler:
                 if form_data['phone_number']:
                     phone_number = form_data['phone_number']
                 order = Order.objects.create(
+                    user_account=form_data['user_account'],
                     first_name=form_data['first_name'],
                     last_name=form_data['last_name'],
                     email=form_data['email'],

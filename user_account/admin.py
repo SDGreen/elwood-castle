@@ -9,5 +9,8 @@ class UserAccountAdmin(admin.ModelAdmin):
     class Meta:
         verbose_name_plural = "User Accounts"
 
-    readonly_fields = ('user')
+    readonly_fields = ('user',)
     fields = ('user', ('first_name', 'last_name'), 'email', 'phone_number')
+
+
+admin.site.register(UserAccount, UserAccountAdmin)

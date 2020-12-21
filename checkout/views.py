@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, reverse, HttpResponse
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
+from django.contrib.auth.models import User
 
 from .models import EventBooking, Order
 from .forms import OrderForm
@@ -42,6 +43,9 @@ def checkout(request):
         order_form = OrderForm(form_data)
         if order_form.is_valid():
             order = order_form.save(commit=False)
+            if request.user.is_authenticated:
+                user = User.objects.get(username=request.user)
+                order.user_account = user.useraccount
             order.stripe_id = request.POST.get('pid')
             order.save()
             for event in basket['basket_items']:
@@ -145,7 +149,7 @@ def save_checkout_data(request):
         stripe.api_key = settings.STRIPE_SECRET_KEY
 
         stripe.PaymentIntent.modify(form_data['pid'], metadata={
-            'user': request.user,
+            'user_account': request.user,
             'first_name': form_data['first_name'],
             'last_name': form_data['last_name'],
             'email': form_data['email'],
