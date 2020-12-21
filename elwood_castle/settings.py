@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'checkout',
     'events',
     'flat_pages',
+    'user_account',
 
 ]
 

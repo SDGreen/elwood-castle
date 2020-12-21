@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="color-overlay">
+    <div class="container-fluid guttered p-3">
+        <div class="row pt-1 mb-2">
+            <div class="col-12 mb-2">
+                <h2 class="heading-text color-title text-center ext-l mb-0">Welcome {{request.user}}</h2>
+                <hr class="mb-1">
+            </div>
+        </div>
+        <div class="row mt-1 mb-3">
+            <div class="col-12 col-md-6">
+                <h2 class="heading-text color-title text-m mb-0">Your Details:</h2>
+                <hr class="mb-1">
+
+            </div>
+            <div class="col-12 col-md-6">
+                <h2 class="heading-text color-title text-m mb-0">Your Bookings:</h2>
+                <hr class="mb-1">
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

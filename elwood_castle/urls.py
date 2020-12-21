@@ -24,7 +24,8 @@ urlpatterns = [
     path('', include('flat_pages.urls')),
     path('events/', include('events.urls')),
     path('basket/', include('basket.urls')),
-    path('checkout/', include('checkout.urls'))
+    path('checkout/', include('checkout.urls')),
+    path('user/', include('user_account.urls'))
 ]
 
 if settings.DEBUG:
