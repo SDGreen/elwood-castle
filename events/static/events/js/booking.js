@@ -13,9 +13,11 @@
     yy = yy +1
     var endDate = dd + '/' + mm + '/' + yy;
 
+    var soldOutDates = JSON.parse(document.getElementById('soldOutDates').textContent);
     var datesDisabled = [`24/12/${yy -1}`, `25/12/${yy -1}`, `26/12/${yy -1}`, `31/12/${yy -1}`, `01/01/${yy}`]
+    datesDisabled = datesDisabled.concat(soldOutDates)
 
-    console.log(datesDisabled)
+
     $('#data_input').datepicker({
         format: "dd/mm/yyyy",
         orientation: 'bottom',

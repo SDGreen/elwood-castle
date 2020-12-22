@@ -21,10 +21,10 @@
                     <div class="col-12">
                         <form id="checkout-form" action="{% url 'checkout' %}" method="POST">
                             {% csrf_token %}
-                            <fieldset class="mb-2">
+                            <fieldset class="mb-2 below-shadow">
                             {{ order_form|crispy }}
                             </fieldset>
-                            <fieldset class="mb-2">
+                            <fieldset class="mb-2 below-shadow">
                             
                             <span class="d-inline-block text-m heading-text mb-2">Payment Amount: £{{ total }}</span>
                             <div id="card-element">
@@ -45,9 +45,9 @@
             <div class="row">
                 <div id="order-summary" class="col-12 px-0">
                     <h2 class="d-inline-block heading-text text-m">Order Summary:</h2>
-                    <span class="float-right"><a>Edit</a></span>
+                    <span class="float-right"><a href="{% url 'view_basket' %}" class="text-link"><i class="fas fa-pencil-alt"></i> Edit</a></span>
                 </div>
-                <div id="basket-container" class="col-12 below-shadow">
+                <div id="basket-container" class="col-12 below-shadow mb-2">
                     {% for event in basket_items %}
                     <div class="media">
                         <img class="mr-3" height="50px" src="{{ event.event.image.url }}" alt="{{ event.event.name }}">
@@ -78,15 +78,11 @@
                     <hr class="mt-0 mb-3">
                     {% endfor %}
                 </div>
+                <div class="col-12 text-center">
+                    <a href="{% url 'events' %}" class="btn button">Continue Shopping</a>
+                </div>
             </div>
 
-        </div>
-    </div>
-    <div class="row mt-1 mb-3">
-        <div class="col-12 d-flex justify-content-between">
-            <a href="{% url 'events' %}" class="btn button"><i class="fas fa-arrow-left"></i> Continue Shopping</a>
-            <a class="btn button {% if basket_items|length == 0 %}disabled{% endif %}">Checkout <i
-                    class="fas fa-arrow-right"></i></a>
         </div>
     </div>
 </div>

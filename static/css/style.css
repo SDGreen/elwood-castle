@@ -83,31 +83,18 @@ button.navbar-toggler,
     color: white;
 }
 
-a>i {
-    color: #7D8BAD;
-    transition: color ease-in 0.25s;
-}
-
-a>i:hover {
-    color: #A7B4BC;
-}
-
-.text-link {
-    cursor: pointer;
-    color: #7D8BAD;
-    transition: color ease-in 0.25s;
-}
 
 .card-body-title{
     color: white;
     background-color: #1C1E12;
 }
 
-.text-link:hover,
 .color-title {
   color: #1C1E12;
 }
 
+.text-link.remove_event:hover,
+body .datepicker table tr td.disabled:hover,
 #card-errors,
 body .datepicker table tr td.disabled{
    color: #ff6961;
@@ -119,10 +106,6 @@ body .datepicker table tr td.disabled{
 
 .below-shadow{
     box-shadow: 0px 7px 5px -5px #777;;
-}
-
-a.button i{
-color: inherit
 }
 
 /*-------key element styling----------*/
@@ -168,6 +151,17 @@ color: inherit
 
 .short-hr{
     width: 75%;
+}
+
+.text-link {
+    cursor: pointer;
+    color: #404245;
+    transition: color ease-in 0.25s;
+}
+
+.text-link:focus-within,
+.text-link:hover{
+    color: #7D8BAD; 
 }
 
 /*------------ Navbar ----------*/
@@ -271,6 +265,15 @@ div[aria-labelledby="account-dropdownMenuLink"]>.dropdown-item{
 
 .card-body:not(.card-body-title){
     padding: .75rem 1.25rem;
+}
+
+.card a>i {
+    color: #7D8BAD;
+    transition: color ease-in 0.25s;
+}
+
+.card a>i:hover {
+    color: #A7B4BC;
 }
 
 /*---------------Event Booking ------------*/
@@ -424,6 +427,7 @@ fieldset {
     #event-search>div:nth-child(2)>li:last-child>div {
         left: -60px;
     }
+
 }
 
 @media (max-width: 991px){

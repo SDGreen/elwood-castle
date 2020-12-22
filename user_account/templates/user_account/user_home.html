@@ -10,17 +10,35 @@
             </div>
         </div>
         <div class="row mt-1 mb-3">
-            <div class="col-12 col-md-6">
-                <h2 class="heading-text color-title text-m mb-0">Your Details:</h2>
-                <hr class="mb-1">
-
-            </div>
-            <div class="col-12 col-md-6">
+            <div class="col-12">
                 <h2 class="heading-text color-title text-m mb-0">Your Bookings:</h2>
                 <hr class="mb-1">
-
+            </div>
+            <div class="col-12">
+                <h2 class="heading-text color-title text-m mb-0">Upcoming Events</h2>
+            </div>
+            <div class="col-12">
+                {% for booking in upcoming_bookings %}
+                {{booking.event.image.url}}
+                {% endfor %}
             </div>
         </div>
+        <div class="col-12">
+            <h2 class="heading-text color-title text-m mb-0">Your Details: <span class="text-link float-right"><i
+                        class="fas fa-pencil-alt"></i> Edit</span></h2>
+            <hr class="mb-1">
+        </div>
+        <div class="col-12 body-text">
+            <p>First Name: {% if useraccount.first_name %}{{ useraccount.first_name }}{% else %}Default first
+                name not saved.{% endif %}</p>
+            <p>Last Name: {% if useraccount.last_name %}{{ useraccount.last_name }}{% else %}Default last name
+                not saved.{% endif %}</p>
+            <p>Email: {% if useraccount.email %}{{ useraccount.email }}{% else %}Default email not
+                saved.{% endif %}</p>
+            <p>Phone Number: {% if useraccount.phone_number %}{{ useraccount.phone_number }}{% else %}Default
+                phone number not saved.{% endif %}</p>
+        </div>
     </div>
+</div>
 </div>
 {% endblock %}

@@ -53,5 +53,6 @@
 {% endblock %}
 {% block postload_js %}
 {{ block.super }}
+{{ sold_out_dates|json_script:"soldOutDates" }}
 <script src="{% static 'events/js/booking.js' %}"></script>
 {% endblock %}

@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
-from django.db.models import Q
+from django.db.models import Q, Count, Sum
 from django.views.decorators.http import require_POST
 
 from .models import Category, Event
+from checkout.models import EventBooking
 
+import datetime
 
 # Create your views here.
 def all_events(request):
@@ -68,6 +70,7 @@ def event_info(request, event_id):
     except Event.DoesNotExist:
         messages.error(request, "Sorry, we couldn't find that event")
         return redirect(reverse('events'))
+    
 
     template = 'events/event_details.html'
     context = {
@@ -75,6 +78,7 @@ def event_info(request, event_id):
     }
 
     return render(request, template, context)
+
 
 def book_event(request, event_id):
 
@@ -85,8 +89,18 @@ def book_event(request, event_id):
                                     {e}""")
         return redirect(reverse('events'))
 
+    bookings = EventBooking.objects.values(
+        'date').annotate(Sum('ticket_quantity'))
+
+    sold_out_dates = []
+    for booking in bookings:
+        if booking['ticket_quantity__sum'] >= event.day_ticket_limit:
+            date = booking['date'].strftime("%d/%m/%Y")
+            sold_out_dates.append(date)
+
     template = 'events/book_event.html'
     context = {
-        'event': event
+        'event': event,
+        'sold_out_dates': sold_out_dates
         }
     return render(request, template, context)

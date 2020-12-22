@@ -30,10 +30,22 @@
                         <p class="body-text">Starts: {{event.start_time|time:"H:i"}}</p>
                     </div>
                     <div class="col-12 col-lg-6">
-                        <p class="body-text">Age: Anyone age can attend</p>
+                        <p class="body-text">
+                            {% if event.age_restricted %}
+                                Only adults over 16 can attend this event
+                            {% else %}
+                                People any age can attend this event
+                            {% endif %}                        
+                        </p>
                     </div>
                     <div class="col-12 col-lg-6">
-                        <p class="body-text">Children under 12 require adult supervision</p>
+                        <p class="body-text">
+                            {% if event.age_restricted %}
+                                Attendees will be asked to see their ID
+                            {% else %}
+                                Children under 12 {% if not event.supervision %}don't{% endif %} require adult supervision
+                            {% endif %}
+                        </p>
                     </div>
                 </div>
             </div>
@@ -45,7 +57,15 @@
                     <div class="col-12">
                         <p class="body-text">
                             {% if event.category.name == "tours" %}
-                                It's reccomended to arrive 15 minutes before our tour begins at the main entrance, late comers can still take part but may miss some information.
+                                It's reccomended to arrive at the main entrace 15 minutes before the tour begins. Late comers can still take part but may miss some information.
+                            {% elif event.category.name == "outdoor" %}
+                                Seating is included with the ticket to outdoors events, with larger shows like the Battle for Elwood, not all seating will be covered so please bring an umbrella.
+                            {% elif event.category.name == "indoor" %}
+                                All indoor classes provide time for a break if the class is under one hour. Tea and coffee is provided and additional food can be purchased at the canteen. 
+                            {% elif event.category.name == "food_drink" %}
+                                Be aware that events providing alcohol will ask to see customers ID's if they look under 25. For age restricted events this will result in non-refundable eviction if suitable ID can't be provided. 
+                            {% else %}
+                                For kid's events which don't require adult supervision, parents can stay and supervise if they'd like. Otherwise please be on time to pick the attendee(s) up once the event finishes.
                             {% endif %}
                         </p>
                     </div>
@@ -54,7 +74,7 @@
                             or get in touch <a href="#" class="text-link">here</a></p>
                     </div>
                     <div class="col-12">
-                        <a href="{% url 'events' %}" class="text-link">Back to events</a>
+                        <a href="{% url 'events' %}" class="text-link"><i class="fas fa-arrow-left"></i> Back to events</a>
                     </div>
                 </div>
             </div>
