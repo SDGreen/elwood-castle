@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'flat_pages/css/flat_pages.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="color-overlay">
+    <div class="container-fluid guttered p-3">
+        <div class="row pt-1 mb-2">
+            <div class="col-12 mb-2">
+                <h2 class="heading-text color-title text-l">Visiting Elwood Castle</h2>
+                <hr class="mb-1">
+            </div>
+        </div>
+        <div class="row mt-1 mb-3">
+            <div class="col-12 col-sm-6">
+                <p class="body-text">Elwood Castle is a national heritage site and open to the public. Entry is free to
+                    the castle and grounds, <a class="text-link" href="{% url 'events' %}">Events</a> such as guided
+                    tours, meals and shows can also be booked ahead of your visit.</p>
+                <p class="body-text">The castle opens at 10:00am everyday, last entry (unless for a pre-booked events)
+                    is at 16:00. For detailed information about our opening times please see out <a class="text-link"
+                        href="{% url 'faq' %}">FAQ</a></p>
+            </div>
+            <div class="col-12 col-sm-6">
+                <img src="{% static 'flat_pages/images/vista.jpg' %}" class="img-fluid below-shadow"
+                    alt="Responsive image">
+            </div>
+        </div>
+        <div class="row pt-1 mb-2">
+            <div class="col-12 mb-2">
+                <h2 class="heading-text color-title text-l">Finding Elwood Castle</h2>
+                <hr class="mb-1">
+            </div>
+        </div>
+        <div class="row mt-1 mb-3">
+            <div class="col-12 col-md-6 order-2 order-md-1">
+                <div id="map" class="mx-auto rounded"></div>
+            </div>
+            <div class="col-12 col-md-6 order-1 order-md-2 text-center">
+                <div class="row">
+                <div class="col-6 col-md-12">
+                <p class="heading-text text-l underlined mb-2">Address</p>
+                <ul class="text-m body-text list-unstyled">
+                    <li>Upper Mill Lane</li>
+                    <li>Cheltenham</li>
+                    <li>Gloucestershire</li>
+                    <li>GL52 3NF</li>
+                </ul>
+                </div>
+                <div class="col-6 col-md-12">
+                <p class="heading-text text-l underlined mb-2">Contact</p>
+                <ul class="text-m body-text list-unstyled">
+                    <li><i class="fas fa-phone"></i> (+44) 20 7946 0559</li>
+                    <li><i class="fas fa-envelope"></i> Email us <a href="" class="text-link">Here.</a></li>
+                </ul>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block postload_js %}
+{{ block.super }}
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVIHa9ajYDcB0VysLysMlslc57H40iH2M&callback=initMap"
+    type="text/javascript"></script>
+<script src="{% static 'flat_pages/js/google_map.js' %}"></script>
+{% endblock %}

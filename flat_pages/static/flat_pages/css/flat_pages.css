@@ -7,6 +7,13 @@
     animation: castle-image 15s 5s infinite;
 }
 
+/*-------------Vist Page--------------*/
+
+#map {
+    height: 20em;
+    width: auto;
+}
+
 @keyframes castle-image {
     33% {
     background-image: url('/static/flat_pages/images/background-grounds.jpg');

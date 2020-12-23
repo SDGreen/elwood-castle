@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div id="small-page">
 <div class="container-fluid color-overlay">
     {% include 'events/includes/event_search.html' %}
     <div class="row mx-auto guttered mb-4">
@@ -69,5 +70,6 @@
         {% endif %}
         {% endfor %}
     </div>
+</div>
 </div>
 {% endblock %}
