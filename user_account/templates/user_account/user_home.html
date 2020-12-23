@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<div id="small-page">
 <div class="color-overlay">
     <div class="container-fluid guttered p-3">
         <div class="row pt-1 mb-2">
@@ -9,34 +10,123 @@
                 <hr class="mb-1">
             </div>
         </div>
-        <div class="row mt-1 mb-3">
+        <div class="row mt-1 mb-4">
             <div class="col-12">
-                <h2 class="heading-text color-title text-m mb-0">Your Bookings:</h2>
+                <h2 class="heading-text color-title text-l mb-0">Your Bookings:</h2>
+                <hr>
+            </div>
+            {% if no_bookings %}
+            <div class="col-12">
+                <div class="empty-box below-shadow mx-auto text-center">
+                <h5 class="heading-text text-m mb-2">You have no bookings...</h5>
+                <a class="btn button heading-text text-m" href="{% url 'events' %}">See Events</a>
+                </div>
+            </div>
+            {% else %}
+            <div class="col-12">
+                {% if upcoming_bookings %}
+                <h2 class="heading-text color-title text-m mb-2">Upcoming Events:</h2>
+
+                <div class="booking-container below-shadow p-4">
+                    <table class="table mb-1 table-responsive-sm">
+                        <thead class="heading-text text-m">
+                            <tr>
+                                <th scope="col">Event:</th>
+                                <th scope="col"></th>
+                                <th scope="col">Date:</th>
+                                <th scope="col">Tickets:</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody class="body-text text-m">
+                            {% for booking in upcoming_bookings %}
+                            <tr>
+                                <td colspan="2">
+                                    {{ booking.event }}
+                                </td>
+                                <td>
+                                    {{ booking.date|date:"d/m/y"}}
+                                </td>
+                                <td>{{ booking.ticket_quantity }}
+                                </td>
+                                <td class="d-none d-md-inline-block">
+                                    <img class="img-fluid" src="{{ booking.event.image.url }}" alt="{{ booking.event.name }}">
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                <hr class="mt-0 mb-3">
+                </div>
+                {% endif %}
+
+                {% if past_bookings %}
+                <h2 class="heading-text color-title text-m mt-4 mb-2">Past Events:</h2>
+
+                <div class="booking-container below-shadow p-4">
+                    <table class="table mb-1 table-responsive-sm">
+                        <thead class="heading-text text-m">
+                            <tr>
+                                <th scope="col">Event:</th>
+                                <th scope="col"></th>
+                                <th scope="col">Date:</th>
+                                <th scope="col">Tickets:</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody class="body-text text-m">
+                            {% for booking in past_bookings %}
+                            <tr>
+                                <td colspan="2">
+                                    {{ booking.event }}
+                                </td>
+                                <td>
+                                    {{ booking.date|date:"d/m/y"}}
+                                </td>
+                                <td>{{ booking.ticket_quantity }}
+                                </td>
+                                <td class="d-none d-md-inline-block">
+                                    <img class="img-fluid" src="{{ booking.event.image.url }}" alt="{{ booking.event.name }}">
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                <hr class="mt-0 mb-3">
+                </div>
+                {% endif %}
+            </div>
+            {% endif %}
+        </div>
+        <div class="row mt-1 mb-3">
+            <div class="col-12 col-sm-6 p-0 pl-sm-0">
+            <div class="col-12">
+                <h2 class="heading-text color-title text-m mb-0">Your Details: <span class="text-link float-right"><i
+                            class="fas fa-pencil-alt"></i> Edit</span></h2>
                 <hr class="mb-1">
             </div>
-            <div class="col-12">
-                <h2 class="heading-text color-title text-m mb-0">Upcoming Events</h2>
+            <div class="col-12 body-text">
+                <p>First Name: {% if useraccount.first_name %}{{ useraccount.first_name }}{% else %}Default first
+                    name not saved.{% endif %}</p>
+                <p>Last Name: {% if useraccount.last_name %}{{ useraccount.last_name }}{% else %}Default last name
+                    not saved.{% endif %}</p>
+                <p>Email: {% if useraccount.email %}{{ useraccount.email }}{% else %}Default email not
+                    saved.{% endif %}</p>
+                <p>Phone Number: {% if useraccount.phone_number %}{{ useraccount.phone_number }}{% else %}Default
+                    phone number not saved.{% endif %}</p>
             </div>
-            <div class="col-12">
-                {% for booking in upcoming_bookings %}
-                {{booking.event.image.url}}
-                {% endfor %}
             </div>
-        </div>
-        <div class="col-12">
-            <h2 class="heading-text color-title text-m mb-0">Your Details: <span class="text-link float-right"><i
-                        class="fas fa-pencil-alt"></i> Edit</span></h2>
-            <hr class="mb-1">
-        </div>
-        <div class="col-12 body-text">
-            <p>First Name: {% if useraccount.first_name %}{{ useraccount.first_name }}{% else %}Default first
-                name not saved.{% endif %}</p>
-            <p>Last Name: {% if useraccount.last_name %}{{ useraccount.last_name }}{% else %}Default last name
-                not saved.{% endif %}</p>
-            <p>Email: {% if useraccount.email %}{{ useraccount.email }}{% else %}Default email not
-                saved.{% endif %}</p>
-            <p>Phone Number: {% if useraccount.phone_number %}{{ useraccount.phone_number }}{% else %}Default
-                phone number not saved.{% endif %}</p>
+            <div class="col-12 col-sm-6 p-0 pr-sm-0">
+            <div class="col-12">
+                <h2 class="heading-text color-title text-m mb-0">Order History</h2>
+                <hr class="mb-1">
+            </div>
+            <div class="col-12 body-text">
+                <div>
+                    <p>You have no orders</p>
+                </div>
+            </div>
+            </div>
         </div>
     </div>
 </div>

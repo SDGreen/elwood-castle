@@ -23,15 +23,20 @@ def user_home(request):
                                    information, please get in contact so we
                                    can fix this for you""")
         return redirect(reverse('events'))
+    
+    no_bookings = False
+    if not bookings:
+        no_bookings = True 
 
     today = datetime.datetime.today()
-    upcoming_bookings = bookings.filter(date__gte=today)
+    upcoming_bookings = bookings.filter(date__gte=today).order_by("date")
     past_bookings = bookings.filter(date__lt=today)
 
     context = {
         'useraccount': useraccount,
         'upcoming_bookings': upcoming_bookings,
         'past_bookings': past_bookings,
+        'no_bookings': no_bookings
     }
 
     return render(request, 'user_account/user_home.html', context)

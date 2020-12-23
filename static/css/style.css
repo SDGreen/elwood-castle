@@ -71,6 +71,8 @@ button:focus{
 header {
     background-color: #7D8BAD;
 }
+
+#small-page,
 .color-overlay,
 #block-content {
     background-color: #eaedef;
@@ -198,6 +200,10 @@ footer {
     background-color: #404245;
 }
 
+footer>.row {
+    margin: 0;
+}
+
 /*----------Toasts ----------------------*/
 
 #message-box{
@@ -245,9 +251,11 @@ footer {
 }
 
 /*----------Base template----------------*/
-
 #block-content{
     height: calc(100vh - 84px);
+}
+#small-page{
+    min-height: calc(100vh - 84px);
 }
 
 .wrapper{
@@ -384,11 +392,11 @@ fieldset {
 
 /*--------------Checkout Success---------*/
 
-#checkout-container .img-fluid{
+.booking-container .img-fluid{
     max-width: 140px;
 }
 
-#checkout-container{
+.booking-container{
     height: fit-content;
     max-height: 50vh;
     overflow: hidden;
@@ -412,6 +420,14 @@ fieldset {
 
 .form-control.is-invalid, .was-validated .form-control:invalid{
     border-color: #ff6961;
+}
+
+/*--------------user home----------*/
+
+.empty-box{
+    width: fit-content;
+    padding: 1em;
+    border: 1px solid #777;
 }
 
 
@@ -456,7 +472,7 @@ fieldset {
         padding-top: 84.4px;
     }
 
-    #checkout-container .img-fluid{
+    .booking-container .img-fluid{
     max-width: 140px;
     }
 }
