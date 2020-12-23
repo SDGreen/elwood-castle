@@ -315,6 +315,10 @@ body .datepicker table tr td.active.active {
     border-top: 0;
 }
 
+#basket-container .basket-input{
+    min-width: 2em;
+}
+
 #empty-basket{
     height: 30vh;
     padding-top: 10px;

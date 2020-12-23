@@ -67,6 +67,9 @@
                     </a>
                     <div class="dropdown-menu rounded-0 dropdown-menu-left" aria-labelledby="account-dropdownMenuLink">
                         {% if user.is_authenticated %}
+                        {% if request.user.is_superuser %}
+                        <a href="{% url 'admin:index' %}" class="dropdown-item">Site Admin</a>
+                        {% endif %}
                         <a class="dropdown-item" href="{% url 'user_home' %}">My Account</a>
                         <a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a>
                         {% else %}
