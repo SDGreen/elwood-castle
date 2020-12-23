@@ -192,6 +192,12 @@ div[aria-labelledby="account-dropdownMenuLink"]>.dropdown-item{
     padding-left: .5em;
 }
 
+/*----------Footer ---------------*/
+footer {
+    color: white;
+    background-color: #404245;
+}
+
 /*----------Toasts ----------------------*/
 
 #message-box{
