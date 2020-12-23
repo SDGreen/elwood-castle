@@ -1,4 +1,4 @@
-    $('#date_input').keypress(function(event) {
+    $('#data_input').keypress(function(event) {
        event.preventDefault();
        return false;
     });
@@ -27,4 +27,6 @@
         endDate: endDate,
         autoclose: true,
         datesDisabled: datesDisabled,
+    }).on("input change", function (e) {
+         dateCheck(e.target.value);
     });

@@ -37,6 +37,7 @@
                                     <label class="font-weight-bold" for="ticket_input">Number of Tickets:</label>
                                     <input type="number" min="1" max="{{ event.day_ticket_limit }}" class="form-control rounded-0" id="ticket_input"
                                         name="ticket_quantity" placeholder="Add tickets..." required>
+                                    <div id="ticket-info" class="heading-text text-s text-center"></div>
                                 </div>
                                 <div class="form-group">
                                     <button class="button d-block mx-auto" type="submit">
@@ -54,5 +55,7 @@
 {% block postload_js %}
 {{ block.super }}
 {{ sold_out_dates|json_script:"soldOutDates" }}
+<script src="{% static 'events/js/date_checker.js' %}"></script>
 <script src="{% static 'events/js/booking.js' %}"></script>
+
 {% endblock %}

@@ -93,6 +93,7 @@ button.navbar-toggler,
   color: #1C1E12;
 }
 
+.error-message,
 .text-link.remove_event:hover,
 body .datepicker table tr td.disabled:hover,
 #card-errors,
@@ -290,6 +291,10 @@ body .datepicker table tr td.active.active {
     background-color: #1C1E12;
     background-image: none;
     border-radius: 0;
+}
+
+#ticket-info{
+    height: 18px;
 }
 
 /*--------------Basket----------*/

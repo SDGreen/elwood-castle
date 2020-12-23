@@ -1,14 +1,18 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.shortcuts import (
+    render, redirect, reverse, get_object_or_404, HttpResponse)
 from django.contrib import messages
-from django.db.models import Q, Count, Sum
+from django.db.models import Q, Sum
 from django.views.decorators.http import require_POST
 
 from .models import Category, Event
 from checkout.models import EventBooking
+from basket.contexts import basket_items
 
 import datetime
 
 # Create your views here.
+
+
 def all_events(request):
     """
     View for returning all or filtered events to the user
@@ -70,7 +74,6 @@ def event_info(request, event_id):
     except Event.DoesNotExist:
         messages.error(request, "Sorry, we couldn't find that event")
         return redirect(reverse('events'))
-    
 
     template = 'events/event_details.html'
     context = {
@@ -102,5 +105,45 @@ def book_event(request, event_id):
     context = {
         'event': event,
         'sold_out_dates': sold_out_dates
-        }
+    }
     return render(request, template, context)
+
+
+@require_POST
+def date_checker(request):
+    try:
+        event = Event.objects.get(pk=request.POST.get('event_id'))
+        string_date = request.POST.get('date')
+        datetime_date = datetime.datetime.strptime(
+            request.POST.get('date'), "%d/%m/%Y")
+        basket = basket_items(request)
+        basket_events = basket["basket_items"]
+        tickets = EventBooking.objects.filter(
+            date=datetime_date, event=event).aggregate(Sum('ticket_quantity'))
+
+        booked_tickets = tickets['ticket_quantity__sum']
+        if not booked_tickets:
+            booked_tickets = 0
+
+        basket_tickets = 0
+        if not basket_events:
+            pass
+        else:
+            for basket_event in basket_events:
+                if basket_event["date"] == string_date:
+                    basket_tickets += basket_event["ticket_quantity"]
+
+        avaliable_tickets = event.day_ticket_limit - \
+            (booked_tickets + basket_tickets)
+        print(avaliable_tickets)
+        return HttpResponse(
+            status=200,
+            content=avaliable_tickets
+        )
+
+    except Exception as e:
+        print(e)
+        messages.error(
+            request, f"""Something went wrong whilst checking the tickets for
+                         this date {e}""")
+        return HttpResponse(status=500)
