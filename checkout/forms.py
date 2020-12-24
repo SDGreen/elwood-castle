@@ -31,7 +31,3 @@ class OrderForm(forms.ModelForm):
                 self.fields[field].label = f"{labels[field]}"
             self.fields[field].widget.attrs['class'] = 'checkout-form-input body-text text-m'
             self.fields[field].widget.attrs['placeholder'] = f'{placeholder[field]}'
-
-            
-        
-

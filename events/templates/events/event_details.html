@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+<div id="small-page">
 <div class="color-overlay">
     <div class="container-fluid guttered p-3">
         <div class="row pt-2 mb-2">
@@ -70,8 +71,8 @@
                         </p>
                     </div>
                     <div class="col-12">
-                        <p class="body-text">If you have any other questions please read our <a href="#" class="text-link">FAQ</a>
-                            or get in touch <a href="#" class="text-link">here</a></p>
+                        <p class="body-text">If you have any other questions please read our <a href="{% url 'faq' %}" class="text-link">FAQ</a>
+                            or get in touch <a href="{% url 'contact' %}" class="text-link">here</a></p>
                     </div>
                     <div class="col-12">
                         <a href="{% url 'events' %}" class="text-link"><i class="fas fa-arrow-left"></i> Back to events</a>
@@ -81,4 +82,6 @@
         </div>
     </div>
 </div>
+</div>
+
 {% endblock %}

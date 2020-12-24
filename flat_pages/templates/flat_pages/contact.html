@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'flat_pages/css/flat_pages.css' %}">
+{% endblock %}
+
+{% block content %}
+<div id="small-page">
+    <div class="container-fluid guttered p-3">
+        <div class="row pt-1 mb-2">
+            <div class="col-12 mb-2">
+                <h2 class="heading-text color-title text-l">Contact Us</h2>
+                <hr class="mb-1">
+            </div>
+        </div>
+        <div class="row mt-1 mb-3 justify-content-center">
+            <div id="contact-form" class="col-12 text-center">
+                <form method="POST" action="{% url 'contact' %}">
+                {% csrf_token %}
+                {{ contact_form|crispy }}
+                <input type="submit" class="button" value="Send Message">
+                </form>
+            </div>
+        </div>
+        <hr>
+        <div class="row mt-1 mb-3">
+            <div class="col-12 text-center">
+                <h2 class="heading-text text-m">Or phone (+44) 20 7946 0559</h2>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
