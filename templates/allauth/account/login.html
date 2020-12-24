@@ -8,7 +8,7 @@
 
 {% block allauth_content %}
 
-<h1 class="heading-text text-l">{% trans "Sign In" %}</h1>
+<h1 class="heading-text color-title text-l">{% trans "Sign In" %}</h1>
 
 {% get_providers as socialaccount_providers %}
 
@@ -31,7 +31,7 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
 
 {% else %}
 <p class="body-text text-m">{% blocktrans %}If you have not created an account yet, then please
-<a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
+<a class="text-link" href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
 {% endif %}
 
 <form class="login" method="POST" action="{% url 'account_login' %}">
@@ -41,7 +41,7 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
   <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
   {% endif %}
   <button class="btn button primaryAction" type="submit">{% trans "Sign In" %}</button>
-  <a class="d-block secondaryAction mt-2" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+  <a class="d-block secondaryAction mt-2 text-link body-text" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
 </form>
 
 {% endblock %}

@@ -1,20 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=IM+Fell+French+Canon+SC&family=Lora:wght@400;600&family=Raleway:wght@400;600&display=swap');
 
-/* palette
 
-#E7D7C3 #A7B4BC #7D8BAD #1C1E12 #404245 */
-
-.somthing {
-    color: #e7d7c3;
-    color: #eaedef;
-    color: #A7B4BC;
-    color: #7D8BAD;
-    color: #1C1E12;
-    color: #404245;
-
-}
 /*----------Default Overrides--------------*/
-
 h5{
     margin: 0;
 }
@@ -28,7 +15,6 @@ button:focus{
 }
 
 /*--------Text Presets--------*/
-
 .logo-text{
     font-family: 'IM Fell French Canon SC', serif;
 }
@@ -64,9 +50,10 @@ button:focus{
 .col {
     padding: 0;
 }
+
 /*------------ Colors ------------*/
 
-
+#main-navbar .dropdown-item:hover,
 .navbar .dropdown-menu,
 header {
     background-color: #7D8BAD;
@@ -78,17 +65,13 @@ header {
     background-color: #eaedef;
 }
 
-
-#main-navbar i,
-button.navbar-toggler,
-#main-navbar a{
-    color: white;
-}
-
-
 .card-body-title{
     color: white;
     background-color: #1C1E12;
+}
+
+a.navbar-brand{
+    color: white;
 }
 
 .color-title {
@@ -101,14 +84,6 @@ body .datepicker table tr td.disabled:hover,
 #card-errors,
 body .datepicker table tr td.disabled{
    color: #ff6961;
-}
-
-.above-shadow{
-    box-shadow: 0px -5px 5px -5px #777;;
-}
-
-.below-shadow{
-    box-shadow: 0px 7px 5px -5px #777;;
 }
 
 /*-------key element styling----------*/
@@ -167,6 +142,15 @@ body .datepicker table tr td.disabled{
     color: #7D8BAD; 
 }
 
+.above-shadow{
+    box-shadow: 0px -5px 5px -5px #777;;
+}
+
+.below-shadow{
+    box-shadow: 0px 7px 5px -5px #777;;
+}
+
+
 /*------------ Navbar ----------*/
 
 #main-navbar {
@@ -177,6 +161,10 @@ button.navbar-toggler,
 #main-navbar ul>li>a {
     padding-right: .5rem;
     padding-left: .5rem;
+}
+
+#main-navbar button.navbar-toggler{
+    margin-right: 3em;
 }
 
 .navbar-brand {
@@ -192,6 +180,19 @@ button.navbar-toggler,
 
 div[aria-labelledby="account-dropdownMenuLink"]>.dropdown-item{
     padding-left: .5em;
+}
+
+#main-navbar .dropdown-item,
+button.navbar-toggler,
+.navbar a.nav-link{
+    color: white;
+    transition: color ease-out 0.25s;
+}
+
+#main-navbar .dropdown-item:hover,
+button.navbar-toggler:hover,
+.navbar a.nav-link:hover{
+    color: #404245;
 }
 
 /*----------Footer ---------------*/
@@ -271,6 +272,10 @@ footer>.row {
 
 /*--------events------------*/
 
+#navbar-logo{
+    height: 70px;
+}
+
 .card-body-title>h5{
     white-space: nowrap;
     overflow: hidden;
@@ -289,6 +294,18 @@ footer>.row {
 
 .card a>i:hover {
     color: #A7B4BC;
+}
+
+#event-search .dropdown-menu{
+    background-color: white;
+}
+
+#event-search .dropdown-item{
+    color: #7D8BAD;
+}
+
+.dropdown-item.active, .dropdown-item:active{
+    background-color: white;
 }
 
 /*---------------Event Booking ------------*/
@@ -433,13 +450,6 @@ fieldset {
 
 /*----media breakpoints----*/
 
-@media (max-width: 575px){
-   .guttered{
-        width: 90%
-    }
-
-}
-
 @media (min-width: 580px){
     #booking-form {
         width: 50%;
@@ -465,6 +475,21 @@ fieldset {
     #banner{
         padding-top: 80px;
     }
+}
+
+@media (max-width: 575px){
+   .guttered{
+        width: 90%
+    }
+
+    #banner{
+        padding-top: 50px;
+    }
+
+    #navbar-logo{
+    height: 40px;
+    }
+
 }
 
 @media (min-width: 992px){

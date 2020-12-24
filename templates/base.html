@@ -51,9 +51,8 @@
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fas fa-bars fa-lg"></i>
             </button>
-
             <a class="navbar-brand" href="{% url 'index' %}">
-                <img height="70px" src="{% static 'logos/navbar_logo.png' %}" alt="Elwood Logo">
+                <img id="navbar-logo" src="{% static 'logos/navbar_logo.png' %}" alt="Elwood Logo">
                 <span class="ml-3 logo-text text-xxl d-none d-lg-inline">Elwood Castle</span>
             </a>
 
@@ -140,12 +139,13 @@
     <footer class="d-block">
         <div class="row heading-text text-s pt-2">
             <div class="col-4 text-center">
-                <p>Site Map:</p>
+                <p>Inquiries:</p>
+                <p>(+44) 20 7946 0559</p>
             </div>
             <div class="col-4 text-center">
                 <p>Follow us:</p>
                 <i class="fab fa-facebook-f"></i>
-                <i class="fab fa-instagram"></i>
+                <i class="fab fa-instagram mx-2"></i>
                 <i class="fab fa-twitter"></i>
             </div>
             <div class="col-4 text-center">
