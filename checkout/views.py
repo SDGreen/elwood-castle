@@ -9,6 +9,7 @@ from .forms import OrderForm
 
 from basket.contexts import basket_items
 from events.models import Event
+from user_account.models import UserAccount
 
 import stripe
 import datetime
@@ -80,8 +81,14 @@ def checkout(request):
         if not basket:
             messages.error(request, 'Your basket is empty')
             return redirect(reverse('view_basket'))
-
-        order_form = OrderForm()
+        if request.user.is_authenticated:
+            try:
+                useraccount = UserAccount.objects.get(user=request.user)
+                order_form = OrderForm(instance=useraccount)
+            except Exception:
+                order_form = OrderForm()
+        else:
+            order_form = OrderForm()
 
         context = {
             'order_form': order_form,
