@@ -46,7 +46,6 @@ def all_events(request):
 
         if "q" in request.GET:
             query = request.GET['q']
-            print(query)
             filters = (Q(name__icontains=query) |
                        Q(description__icontains=query) |
                        Q(category__friendly_name__icontains=query))
@@ -92,7 +91,7 @@ def book_event(request, event_id):
                                     {e}""")
         return redirect(reverse('events'))
 
-    bookings = EventBooking.objects.values(
+    bookings = EventBooking.objects.filter(event=event).values(
         'date').annotate(Sum('ticket_quantity'))
 
     sold_out_dates = []
@@ -112,7 +111,9 @@ def book_event(request, event_id):
 @require_POST
 def date_checker(request):
     try:
+
         event = Event.objects.get(pk=request.POST.get('event_id'))
+
         string_date = request.POST.get('date')
         datetime_date = datetime.datetime.strptime(
             request.POST.get('date'), "%d/%m/%Y")
@@ -126,23 +127,26 @@ def date_checker(request):
             booked_tickets = 0
 
         basket_tickets = 0
+        print(basket_events)
         if not basket_events:
             pass
         else:
             for basket_event in basket_events:
-                if basket_event["date"] == string_date:
-                    basket_tickets += basket_event["ticket_quantity"]
+                if basket_event["event"] == event:
+                    if basket_event["date"] == string_date:
+                        basket_tickets += basket_event["ticket_quantity"]
+
+        print(basket_tickets)
 
         avaliable_tickets = event.day_ticket_limit - \
             (booked_tickets + basket_tickets)
-        print(avaliable_tickets)
         return HttpResponse(
             status=200,
             content=avaliable_tickets
         )
 
     except Exception as e:
-        print(e)
+
         messages.error(
             request, f"""Something went wrong whilst checking the tickets for
                          this date {e}""")

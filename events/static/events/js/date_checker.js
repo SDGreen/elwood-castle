@@ -22,7 +22,7 @@ $(document).ready(function () {
                 $("#ticket_input").attr("disabled", true)
                 var infoMessage = `<strong>Please pick another date</strong>`
                 $(infoBox).html(infoMessage)
-            } else if(data <= 10) {
+            } else if(data <= 5) {
                 var infoMessage = `<strong>Warning, only ${data} tickets remaining.`
                 $(infoBox).html(infoMessage)
             } else {
