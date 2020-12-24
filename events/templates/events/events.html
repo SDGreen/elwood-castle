@@ -4,6 +4,16 @@
 Elwood Events
 {% endblock %}
 
+{% block header %}
+<div class="px-0 alert fade show m-0 text-center" role="alert">
+    <i class="fas fa-exclamation-triangle text-s error-message"></i>
+    <p class="m-0 d-inline-block body-text text-s"> 
+        To see how covid-19 effects out events, read our <a class="text-link" href="{% url 'faq' %}">FAQ</a>
+    </p>
+    <i class="fas fa-times-circle float-right close" data-dismiss="alert" aria-label="Close"></i>
+</div>
+{% endblock %}
+
 {% block content %}
 <div id="small-page">
 <div class="container-fluid color-overlay">
