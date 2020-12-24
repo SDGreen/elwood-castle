@@ -38,10 +38,20 @@
     width: auto;
 }
 
-/*---------Contact Page---------*/
-
+/*---------FAQ Page---------*/
+#accordion .card-header{
+    background-color: #7D8BAD;
+    color: white;
+    border-radius: 0;
+}
+@media (min-width: 800px){
+    #accordian-container{
+        max-width: 75%;
+    }
+}
 
 @media (min-width: 1040px){
+    #accordian-container,
     #contact-form{
         max-width: 75%;
     }
