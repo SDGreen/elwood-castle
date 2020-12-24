@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load crispy_forms_tags %}
+
 {% block title %}
 User Home
 {% endblock %}
@@ -30,7 +32,6 @@ User Home
                 <div class="col-12">
                     {% if upcoming_bookings %}
                     <h2 class="heading-text color-title text-m mb-2">Upcoming Events:</h2>
-
                     <div class="booking-container below-shadow p-4">
                         <table class="table mb-1 table-responsive-sm">
                             <thead class="heading-text text-m">
@@ -64,10 +65,8 @@ User Home
                         <hr class="mt-0 mb-3">
                     </div>
                     {% endif %}
-
                     {% if past_bookings %}
                     <h2 class="heading-text color-title text-m mt-4 mb-2">Past Events:</h2>
-
                     <div class="booking-container below-shadow p-4">
                         <table class="table mb-1 table-responsive-sm">
                             <thead class="heading-text text-m">
@@ -107,23 +106,20 @@ User Home
             <div class="row mt-1 mb-3">
                 <div class="col-12 col-sm-6 p-0 pl-sm-0">
                     <div class="col-12">
-                        <h2 class="heading-text color-title text-m mb-0">Your Details: <span
-                                class="text-link float-right"><i class="fas fa-pencil-alt"></i> Edit</span></h2>
+                        <h2 class="heading-text color-title text-m mb-0">Your Details:</h2>
                         <hr class="mb-2">
                     </div>
                     <div class="col-12 body-text">
-                        <p>First Name: {% if useraccount.first_name %}{{ useraccount.first_name }}{% else %}Default
-                            first
-                            name not saved.{% endif %}</p>
-                        <p>Last Name: {% if useraccount.last_name %}{{ useraccount.last_name }}{% else %}Default last
-                            name
-                            not saved.{% endif %}</p>
-                        <p>Email: {% if useraccount.email %}{{ useraccount.email }}{% else %}Default email not
-                            saved.{% endif %}</p>
-                        <p>Phone Number:
-                            {% if useraccount.phone_number %}{{ useraccount.phone_number }}{% else %}Default
-                            phone number not saved.{% endif %}</p>
-                            <hr class="d-sm-none">
+                            <form action="{% url 'update_details' %}" method="POST">
+                                {% csrf_token %}
+                                {{ user_form.first_name | as_crispy_field }}
+                                {{ user_form.last_name | as_crispy_field }}
+                                {{ user_form.phone_number | as_crispy_field }}
+                                {{ user_form.email | as_crispy_field }}
+                                <p class="body-text text-s text-center">This email is used for sending booking and order confirmations, changing it <strong>will not</strong> change your login email</p>
+                                <input class="d-block btn button mx-auto" type="submit" value="Update">
+                            </form>
+                        <hr class="d-sm-none">
                     </div>
                 </div>
                 <div class="col-12 col-sm-6 p-0 pr-sm-0">
@@ -131,9 +127,9 @@ User Home
                         <h2 class="heading-text color-title text-m mb-0">Order History</h2>
                         <hr class="mb-2">
                     </div>
-                    <div class="col-12 body-text">
-                        {% if orders %}
-                            <table class="table mb-1">
+                    {% if orders %}
+                    <div id="order-history" class="col-12 body-text">
+                        <table class="table mb-1">
                             <thead class="heading-text text-m">
                                 <tr>
                                     <th class="pt-0" scope="col">Order:</th>
@@ -145,7 +141,8 @@ User Home
                                 {% for order in orders %}
                                 <tr>
                                     <td>
-                                        <a href="{% url 'order_summary' order.order_number %}" class="text-link">{{ order.order_number|truncatechars:8 }}</a>
+                                        <a href="{% url 'order_summary' order.order_number %}"
+                                            class="text-link">{{ order.order_number|truncatechars:8 }}</a>
                                     </td>
                                     <td>
                                         {{ order.date|date:"d/m/y"}}
@@ -160,10 +157,12 @@ User Home
                                 {% endfor %}
                             </tbody>
                         </table>
-                        {% else %}
-                            <p>You have no orders</p>
-                        {% endif %}
                     </div>
+                    {% else %}
+                    <div class="col-12 body-text">
+                        <p>You have no orders</p>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
             <div class="row mt-1 mb-3">

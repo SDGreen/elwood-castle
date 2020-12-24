@@ -447,6 +447,11 @@ fieldset {
     border: 1px solid #777;
 }
 
+#order-history{
+    max-height: 12em;
+    overflow-y: scroll;
+}
+
 
 /*----media breakpoints----*/
 

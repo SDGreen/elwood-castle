@@ -127,7 +127,7 @@ def date_checker(request):
             booked_tickets = 0
 
         basket_tickets = 0
-        print(basket_events)
+
         if not basket_events:
             pass
         else:
@@ -135,8 +135,6 @@ def date_checker(request):
                 if basket_event["event"] == event:
                     if basket_event["date"] == string_date:
                         basket_tickets += basket_event["ticket_quantity"]
-
-        print(basket_tickets)
 
         avaliable_tickets = event.day_ticket_limit - \
             (booked_tickets + basket_tickets)
