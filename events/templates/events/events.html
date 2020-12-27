@@ -8,9 +8,9 @@ Elwood Events
 <div class="px-0 alert fade show m-0 text-center" role="alert">
     <i class="fas fa-exclamation-triangle text-s error-message"></i>
     <p class="m-0 d-inline-block body-text text-s"> 
-        To see how covid-19 effects out events, read our <a class="text-link" href="{% url 'faq' %}">FAQ</a>
+        To see our covid-19 policy please read our <a class="text-link" href="{% url 'faq' %}">FAQ</a>
     </p>
-    <i class="fas fa-times-circle float-right close" data-dismiss="alert" aria-label="Close"></i>
+    <i class="fas fa-times-circle float-right close mr-2" data-dismiss="alert" aria-label="Close"></i>
 </div>
 {% endblock %}
 
@@ -79,6 +79,11 @@ Elwood Events
         {% endif %}
         {% if forloop.counter|divisibleby:4 %}
         <div class="col-12 d-none d-xl-block mb-2">
+            <hr class="short-hr">
+        </div>
+        {% endif %}
+        {% if forloop.revcounter == 1 %}
+        <div class="col-12 d-none d-sm-block mb-2">
             <hr class="short-hr">
         </div>
         {% endif %}

@@ -151,6 +151,7 @@ body .datepicker table tr td.disabled{
 }
 
 #banner .alert{
+    font-size: 1em;
     background-color: rgba(126, 191, 238, 0.664);
     color: white;
     border-radius: 0;
