@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, reverse
 from django.core.mail import send_mail
 from django.contrib import messages
+from django.conf import settings
 
 from .forms import ContactForm
 
@@ -27,7 +28,8 @@ def contact(request):
             subject = contact_form.cleaned_data['subject']
             message = contact_form.cleaned_data['message']
             try:
-                send_mail(subject, message, user_email, ['admin@example.com'])
+                send_mail(subject, message, user_email,
+                          [settings.EMAIL_HOST_USER])
                 messages.success(request, """Thanks for contacting Elwood
                                              Castle. A member of the team will
                                              be in touch within 48 hours.""")
