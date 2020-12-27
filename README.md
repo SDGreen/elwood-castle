@@ -7,7 +7,7 @@ Deployed site: []()
 4. [Technologies Used](#technologies-used)
 5. [Testing](#testing)
 6. [Deployment](#deployment)
-7. [Credits](#credits)
+7. [Credits](#credits) 
 
 ---
 
