@@ -65,10 +65,6 @@ ACCOUNT_USERNAME_MIN_LENGTH = 5
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-EMAIL_BACKEND = ('django.core.mail.backends.console.EmailBackend')
-
-DEFAULT_FROM_EMAIL = 'services@elwoodcastle.com'
-
 LOGIN_URL = ('/account/login')
 LOGIN_REDIRECT_URL = ('/')
 
@@ -123,17 +119,17 @@ WSGI_APPLICATION = 'elwood_castle.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-#if 'DATABASE_URL' in os.environ: os.environ.get('DATABASE_URL')
-DATABASES = {
-    'default': dj_database_url.parse("postgres://rerrvvsskgavbj:0bcf2b3ce71656fe5747a0fba021ed18edffc079e68914fcda02ea92c09f99a5@ec2-54-247-107-109.eu-west-1.compute.amazonaws.com:5432/d45u0onurr9ol")
-}
-#else:
-#    DATABASES = {
-#            'default': {
-#                'ENGINE': 'django.db.backends.sqlite3',
-#                'NAME': BASE_DIR / 'db.sqlite3',
-#            }
-#        }
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+    }
+else:
+    DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.sqlite3',
+                'NAME': BASE_DIR / 'db.sqlite3',
+            }
+        }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -171,20 +167,19 @@ USE_TZ = True
 DATE_INPUT_FORMATS = ('%d-%m-%Y', '%Y-%m-%d')
 
 # Media files
-
 MEDIA_URL = "/media/"
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
-
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 
+# Setup for AWS static and media files
 if 'USE_AWS' in os.environ:
     # Cache control
     AWS_S3_OBJECT_PARAMETERS = {
@@ -205,15 +200,27 @@ if 'USE_AWS' in os.environ:
 
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}'
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}'
-# Stripe
 
+# Stripe
 STRIPE_CURRENCY = "GBP"
 STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY')
 STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
 
 # Stripe Webhook
-
 if DEBUG:
     STRIPE_WH_SECRET = os.getenv('ELWOOD_STRIPE_WH_SECRET')
 else:
     STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET')
+
+# Email Setup
+if DEBUG:
+    EMAIL_BACKEND = ('django.core.mail.backends.console.EmailBackend')
+    DEFAULT_FROM_EMAIL = 'services@elwoodcastle.com'
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_USE_TLS = True
+    EMAIL_PORT = 587
+    EMAIL_HOST = 'smtp.gmail.com'
+    EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS')
+    DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
