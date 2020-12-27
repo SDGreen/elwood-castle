@@ -7,7 +7,7 @@ from django.dispatch import receiver
 # Create your models here.
 class UserAccount(models.Model):
 
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='useracccount')
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='useraccount')
     first_name = models.CharField(max_length=100, null=True, blank=True)
     last_name = models.CharField(max_length=200, null=True, blank=True)
     email = models.EmailField(max_length=200, null=True, blank=True)
