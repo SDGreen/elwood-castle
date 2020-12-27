@@ -16,13 +16,13 @@ Your Basket
                 <hr class="mb-1">
             </div>
         </div>
-        <div class="row mt-1 mb-3 {% if basket_items|length == 0 %}guttered {% endif %}">
+        <div class="row mt-1 mb-3 mx-auto{% if basket_items|length == 0 %}guttered {% endif %}">
             <div class="col-12">
             <div id="{% if basket_items|length == 0%}empty-basket{% else %}basket-container{% endif %}" class="px-2 below-shadow">
                 {% if basket_items|length == 0 %}
                     <div class="align">
                         <h5 class="heading-text text-m">Your basket is empty</h5>
-                        <a class="body-text text-m d-block text-center" href="{% url 'events' %}">See events</a>
+                        <a class="body-text text-m d-block text-center text-link" href="{% url 'events' %}">See events</a>
                     </div>
                 {% endif %}
 

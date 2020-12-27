@@ -123,9 +123,9 @@ WSGI_APPLICATION = 'elwood_castle.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-#if 'DATABASE_URL' in os.environ:
+#if 'DATABASE_URL' in os.environ: os.environ.get('DATABASE_URL')
 DATABASES = {
-    'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+    'default': dj_database_url.parse("postgres://rerrvvsskgavbj:0bcf2b3ce71656fe5747a0fba021ed18edffc079e68914fcda02ea92c09f99a5@ec2-54-247-107-109.eu-west-1.compute.amazonaws.com:5432/d45u0onurr9ol")
 }
 #else:
 #    DATABASES = {
