@@ -1,0 +1,1 @@
+web: gunicorn elwood_castle.wsgi:application

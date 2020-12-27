@@ -1,0 +1,402 @@
+[
+{
+ "model": "events.event",
+ "pk": 1,
+ "fields": {
+  "category": 1,
+  "name": "Full Elwood Tour",
+  "description": "Our lordy 3-hour tour where you'll see every cranny of Elwood Castle. Your dedicated guide will take you on a stroll through the interior and exterior of the castle, walking you through its rich history. Be prepared to really get stuck in and wander through (almost) every hall of the Castle, with a tale hiding behind every tapestry. Budding historians will get to know our story from the first foundations being laid in 1247 all the way through to the present day!",
+  "price": "20.00",
+  "start_time": "12:00:00",
+  "rating": "4.9",
+  "day_ticket_limit": 30,
+  "supervision": true,
+  "age_restricted": false,
+  "image": "library.jpg"
+ }
+},
+{
+ "model": "events.event",
+ "pk": 2,
+ "fields": {
+  "category": 1,
+  "name": "Servant's Life Tour",
+  "description": "Peek behind the curtain at Elwood with our Sevant's Life Tour. This 1 and a half hour tour focuses on the daily lives of those who kept the lords of Elwood living in luxury. You'll wander through the kitchens, ice house and other crannies where the staff lived and worked. This highly informative tour will illustrate just how busy and hard a servant at Elwoods life is.",
+  "price": "10.00",
+  "start_time": "13:00:00",
+  "rating": "4.8",
+  "day_ticket_limit": 25,
+  "supervision": true,
+  "age_restricted": false,
+  "image": "kitchen.jpg"
+ }
+},
+{
+ "model": "events.event",
+ "pk": 3,
+ "fields": {
+  "category": 1,
+  "name": "Armoury & Stables Tour",
+  "description": "Do you prefer pikes to ponds? Our Armory and Stables tour is for you. During the 2 hour tour, you'll become familiar with all the tools Elwood would use to protect itself during England's tumultuous history. You'll walk through the well-stocked armoury and stables of Elwood, learning all about medieval chivalry and battle. Our tour guides keep well informed on the use and history of every weapon, questions are encouraged!",
+  "price": "10.00",
+  "start_time": "13:00:00",
+  "rating": "4.8",
+  "day_ticket_limit": 25,
+  "supervision": true,
+  "age_restricted": false,
+  "image": "swords.jpg"
+ }
+},
+{
+ "model": "events.event",
+ "pk": 4,
+ "fields": {
+  "category": 1,
+  "name": "Ghosts of Elwood Tour",
+  "description": "With over 700 years of history, there's bound to be ghosts walking the halls of Elwood. Our Ghosts of Elwood tour takes place in the evening and lasts 2 hours. Beginning in the dungeons and ending in the old bell tower, you'll slowly hear the sordid past of Elwoods inhabitants. If you're lucky you won't bump into the famous White Lady who's said to still wander the upper floors...",
+  "price": "15.00",
+  "start_time": "18:00:00",
+  "rating": "3.9",
+  "day_ticket_limit": 30,
+  "supervision": true,
+  "age_restricted": true,
+  "image": "spooky.jpg"
+ }
+},
+{
+ "model": "events.event",
+ "pk": 5,
+ "fields": {
+  "category": 1,
+  "name": "Speedy Tour",
+  "description": "In a bit of a rush? Our Speedy Tour is fast but very informative! Starting at 12:00pm and lasting only an hour, you'll still have plenty of time to wander the grounds or catch another event. Our tour guides still encourage questions, even this quicker tour is brimming with historical facts.",
+  "price": "5.00",
+  "start_time": "12:00:00",
+  "rating": "4.3",
+  "day_ticket_limit": 30,
+  "supervision": true,
+  "age_restricted": false,
+  "image": "halls.jpg"
+ }
+},
+{
+ "model": "events.event",
+ "pk": 6,
+ "fields": {
+  "category": 2,
+  "name": "Knight's Joust",
+  "description": "Take a step into history and watch our knights at a jousting contest. This exciting show lasts 45 minutes, each minute packed with duelling knights,  real jousting and horses from Elwoods own stable. Ticket holders will receive a seat right in the action, perfect for a family day out",
+  "price": "5.00",
+  "start_time": "14:00:00",
+  "rating": "4.9",
+  "day_ticket_limit": 100,
+  "supervision": true,
+  "age_restricted": false,
+  "image": "joust.jpg"
+ }
+},
+{
+ "model": "events.event",
+ "pk": 7,
+ "fields": {
+  "category": 2,
+  "name": "Falconry Show",
+  "description": "Our beastmaster has prepared a wonderful show using Elwood's own trained Harris's hawks. During the 45 minute presentation, you'll get to see how birds were historically used in hunts. Our hawks aren't shy and viewers are encouraged to ask questions during the interactive show. (note the birds cannot be petted).",
+  "price": "5.00",
+  "start_time": "11:00:00",
+  "rating": "3.5",
+  "day_ticket_limit": 30,
+  "supervision": true,
+  "age_restricted": false,
+  "image": "falcon.jpg"
+ }
+},
+{
+ "model": "events.event",
+ "pk": 8,
+ "fields": {
+  "category": 2,
+  "name": "Battle for Elwood",
+  "description": "Our largest outdoor show, The Battle for Elwood! During this action-packed hour you'll see a full-scale recreation of the most famous battle to occur at the castle's doors. Will the Lord of Elwood fend off the attackers or will the castle fall? Book now to find out!",
+  "price": "10.00",
+  "start_time": "15:00:00",
+  "rating": "4.9",
+  "day_ticket_limit": 100,
+  "supervision": true,
+  "age_restricted": false,
+  "image": "knight.jpg"
+ }
+},
+{
+ "model": "events.event",
+ "pk": 9,
+ "fields": {
+  "category": 2,
+  "name": "Firework Show",
+  "description": "A wonderful way to cap off a visit at Elwood, this 30-minute show treats ticket-holders to a full pyrotechnic spectacle. Don't forget to ask for your complimentary set of sparklers at the castle entrance!",
+  "price": "15.00",
+  "start_time": "19:00:00",
+  "rating": "4.8",
+  "day_ticket_limit": 200,
+  "supervision": true,
+  "age_restricted": false,
+  "image": "sparkler.jpg"
+ }
+},
+{
+ "model": "events.event",
+ "pk": 10,
+ "fields": {
+  "category": 2,
+  "name": "Archery Contest",
+  "description": "Treat yourself to a seat at Elwood's full archery contest! This 30-minute show will pit our trained archers against each other to see who's our own Robin Hood. The contest takes place on the castle grounds and features real archery and includes a trick shot portion at the end. (Note, attendants cannot join the contest)",
+  "price": "2.50",
+  "start_time": "12:00:00",
+  "rating": "4.7",
+  "day_ticket_limit": 150,
+  "supervision": true,
+  "age_restricted": false,
+  "image": "archer.jpg"
+ }
+},
+{
+ "model": "events.event",
+ "pk": 11,
+ "fields": {
+  "category": 3,
+  "name": "Dagger Smithing",
+  "description": "A master class in smithing, during this 4-hour class you'll create a real, steel dagger. This is the perfect class for people interested in historical techniques, our blacksmith will teach you traditional smithing which is still accessible to beginners. The ticket price includes the dagger and materials, an hour lunch break takes place at the 2-hour mark.",
+  "price": "50.00",
+  "start_time": "10:30:00",
+  "rating": "4.7",
+  "day_ticket_limit": 10,
+  "supervision": true,
+  "age_restricted": true,
+  "image": "blacksmith.jpg"
+ }
+},
+{
+ "model": "events.event",
+ "pk": 12,
+ "fields": {
+  "category": 3,
+  "name": "Perfume Making",
+  "description": "Ready to enter the wonderful world of Perfumery? This 2-hour class will walk you through medieval techniques to perfume creation. At the end, you'll take home a custom vial of fragrance you created. All the ingredients and methods are traditional and you'll leave knowing how to create more at home! ( Note, this class is suitable for men and women.)",
+  "price": "20.00",
+  "start_time": "11:00:00",
+  "rating": "4.9",
+  "day_ticket_limit": 10,
+  "supervision": true,
+  "age_restricted": false,
+  "image": "perfume.jpg"
+ }
+},
+{
+ "model": "events.event",
+ "pk": 13,
+ "fields": {
+  "category": 3,
+  "name": "Coat of Arms Basics",
+  "description": "Get ready to dive into the deep history of crests and coats of arms. Our 1-hour long class includes a portion where you'll create your own personal coat of arms with true historical meaning. You'll learn the hidden truth behind everyday symbols you see every day with plenty of time to explore the castle after.",
+  "price": "5.00",
+  "start_time": "15:30:00",
+  "rating": "4.9",
+  "day_ticket_limit": 30,
+  "supervision": true,
+  "age_restricted": false,
+  "image": "crest.jpg"
+ }
+},
+{
+ "model": "events.event",
+ "pk": 14,
+ "fields": {
+  "category": 3,
+  "name": "Cookery Class",
+  "description": "",
+  "price": "5.00",
+  "start_time": "13:30:00",
+  "rating": "3.8",
+  "day_ticket_limit": 25,
+  "supervision": true,
+  "age_restricted": false,
+  "image": "baking.jpg"
+ }
+},
+{
+ "model": "events.event",
+ "pk": 15,
+ "fields": {
+  "category": 3,
+  "name": "Tapestry Weaving",
+  "description": "",
+  "price": "15.00",
+  "start_time": "14:00:00",
+  "rating": "4.5",
+  "day_ticket_limit": 15,
+  "supervision": true,
+  "age_restricted": false,
+  "image": "tapestry.jpg"
+ }
+},
+{
+ "model": "events.event",
+ "pk": 16,
+ "fields": {
+  "category": 4,
+  "name": "Candlelit Dinner",
+  "description": "",
+  "price": "30.00",
+  "start_time": "19:30:00",
+  "rating": "4.0",
+  "day_ticket_limit": 40,
+  "supervision": true,
+  "age_restricted": true,
+  "image": "romantic.jpg"
+ }
+},
+{
+ "model": "events.event",
+ "pk": 17,
+ "fields": {
+  "category": 4,
+  "name": "Old Spice Market",
+  "description": "",
+  "price": "1.00",
+  "start_time": "10:15:00",
+  "rating": "4.9",
+  "day_ticket_limit": 100,
+  "supervision": true,
+  "age_restricted": false,
+  "image": "spices.jpg"
+ }
+},
+{
+ "model": "events.event",
+ "pk": 18,
+ "fields": {
+  "category": 4,
+  "name": "Traditional Banquet",
+  "description": "",
+  "price": "50.00",
+  "start_time": "18:30:00",
+  "rating": "4.9",
+  "day_ticket_limit": 50,
+  "supervision": true,
+  "age_restricted": false,
+  "image": "banquet.jpg"
+ }
+},
+{
+ "model": "events.event",
+ "pk": 19,
+ "fields": {
+  "category": 4,
+  "name": "Afternoon Tea",
+  "description": "",
+  "price": "15.00",
+  "start_time": "14:00:00",
+  "rating": "3.7",
+  "day_ticket_limit": 60,
+  "supervision": true,
+  "age_restricted": false,
+  "image": "tea.jpg"
+ }
+},
+{
+ "model": "events.event",
+ "pk": 20,
+ "fields": {
+  "category": 4,
+  "name": "Mead Tasting",
+  "description": "",
+  "price": "15.00",
+  "start_time": "16:30:00",
+  "rating": "4.6",
+  "day_ticket_limit": 30,
+  "supervision": true,
+  "age_restricted": true,
+  "image": "bottles.jpg"
+ }
+},
+{
+ "model": "events.event",
+ "pk": 21,
+ "fields": {
+  "category": 5,
+  "name": "Kid's Castle",
+  "description": "",
+  "price": "2.50",
+  "start_time": "12:00:00",
+  "rating": "4.9",
+  "day_ticket_limit": 50,
+  "supervision": false,
+  "age_restricted": false,
+  "image": "small-castle.jpg"
+ }
+},
+{
+ "model": "events.event",
+ "pk": 22,
+ "fields": {
+  "category": 5,
+  "name": "Puppet Theatre",
+  "description": "",
+  "price": "2.50",
+  "start_time": "13:00:00",
+  "rating": "3.3",
+  "day_ticket_limit": 60,
+  "supervision": false,
+  "age_restricted": false,
+  "image": "puppet.jpg"
+ }
+},
+{
+ "model": "events.event",
+ "pk": 23,
+ "fields": {
+  "category": 5,
+  "name": "Traditional Dress Up",
+  "description": "",
+  "price": "1.00",
+  "start_time": "13:30:00",
+  "rating": "4.7",
+  "day_ticket_limit": 20,
+  "supervision": false,
+  "age_restricted": false,
+  "image": "helmet.jpg"
+ }
+},
+{
+ "model": "events.event",
+ "pk": 24,
+ "fields": {
+  "category": 5,
+  "name": "Kid's Fairground",
+  "description": "",
+  "price": "5.00",
+  "start_time": "11:00:00",
+  "rating": "4.9",
+  "day_ticket_limit": 100,
+  "supervision": true,
+  "age_restricted": false,
+  "image": "carousel.jpg"
+ }
+},
+{
+ "model": "events.event",
+ "pk": 25,
+ "fields": {
+  "category": 5,
+  "name": "Elwood Crèche",
+  "description": "",
+  "price": "5.00",
+  "start_time": "10:30:00",
+  "rating": "4.3",
+  "day_ticket_limit": 25,
+  "supervision": false,
+  "age_restricted": false,
+  "image": "crayons.jpg"
+ }
+}
+]
