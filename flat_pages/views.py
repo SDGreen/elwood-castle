@@ -38,7 +38,7 @@ def contact(request):
                                             message. If your message is urgent
                                             please call (+44) 20 7946 0559""")
                 return redirect(reverse('contact'))
-            return redirect(reverse('events'))
+            return redirect(reverse('contact'))
     else:
         contact_form = ContactForm()
 

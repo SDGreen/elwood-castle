@@ -213,7 +213,7 @@ else:
     STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET')
 
 # Email Setup
-if DEBUG:
+if "EMAIL_HOST_USER" not in os.environ:
     EMAIL_BACKEND = ('django.core.mail.backends.console.EmailBackend')
     DEFAULT_FROM_EMAIL = 'services@elwoodcastle.com'
 else:
