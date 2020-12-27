@@ -1,7 +1,6 @@
-{% load i18n %}{% autoescape off %}{% blocktrans with site_name=current_site.name %}Hello from {{ site_name }}!{% endblocktrans %}
+{% load i18n %}{% autoescape off %}{% blocktrans %}Hello from the team at Elwood Castle{% endblocktrans %}
 
 {% block content %}{% endblock %}
 
-{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}We look forawd to your visit to {{ site_name }}!
-{{ site_domain }}{% endblocktrans %}
+{% blocktrans %}We look forward to your visit to Elwood Castle{% endblocktrans %}
 {% endautoescape %}
