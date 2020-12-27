@@ -168,7 +168,7 @@ USE_L10N = False
 USE_TZ = True
 
 # used by checkout.modols.EventBooking to get correct format
-DATE_INPUT_FORMATS = ('%d-%m-%Y','%Y-%m-%d')
+DATE_INPUT_FORMATS = ('%d-%m-%Y', '%Y-%m-%d')
 
 # Media files
 
@@ -192,7 +192,7 @@ if 'USE_AWS' in os.environ:
     AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
     AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
 
-    STATICFILES_STORAGE =  'custom_storages.StaticStorage'
+    STATICFILES_STORAGE = 'custom_storages.StaticStorage'
     STATICFILES_LOCATION = 'static'
     DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
     MEDIAFILES_LOCATION = 'media'
