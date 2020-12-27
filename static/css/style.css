@@ -221,6 +221,14 @@ footer>.row {
     margin: 0;
 }
 
+.footer-link {
+    color: white;
+    transition: color ease-out 0.25s;
+}
+
+.footer-link:hover{
+    color: #7D8BAD;
+}
 /*----------Toasts ----------------------*/
 
 #message-box{

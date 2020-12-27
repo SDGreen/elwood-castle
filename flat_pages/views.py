@@ -44,3 +44,11 @@ def contact(request):
         "contact_form": contact_form
     }
     return render(request, 'flat_pages/contact.html', context)
+
+
+def under_contruction(request):
+
+    messages.error(request, """The social account you tried to access is currently
+                               unavaliable""")
+
+    return redirect(reverse('index'))
