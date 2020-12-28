@@ -17,7 +17,7 @@ Your Basket
             </div>
         </div>
         <div class="row mt-1 mb-3 mx-auto {% if basket_items|length == 0 %}guttered{% endif %}">
-            <div class="col-12">
+            <div class="col-12 px-0">
             <div id="{% if basket_items|length == 0%}empty-basket{% else %}basket-container{% endif %}" class="px-2 below-shadow">
                 {% if basket_items|length == 0 %}
                     <div class="align">

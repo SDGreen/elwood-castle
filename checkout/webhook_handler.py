@@ -92,7 +92,6 @@ class Stripe_WH_Handler:
         if order_exists:
             self._send_order_and_booking_emails(order)
             return HttpResponse(
-
                 content=f"""webhook recieved: {event['type']}, Order created in
                             database by views.checkout""",
                 status=200

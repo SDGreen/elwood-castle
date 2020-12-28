@@ -83,7 +83,13 @@ $(document).ready(function () {
                     }
                 }).then(function (paymentResult) {
                     if (paymentResult.error) {
-                        location.reload()
+                        var errorBox = document.getElementById('card-errors');
+                        var errorMessage = `
+                                <span class="heading-text text-s"><strong>${paymentResult.error.message}</strong></span>
+                                 `;
+                        $(errorBox).html(errorMessage);
+                        card.update({ 'disabled': false })
+                        $("#checkout-form .button").attr('disabled', false)
                     } else {
                         if (paymentResult.paymentIntent.status == 'succeeded') {
                             form.submit()
@@ -91,7 +97,7 @@ $(document).ready(function () {
                     }
                 });
             }).fail(function () {
-              location.reload()
+                location.reload()
             });
         }).fail(function () {
             location.reload()
