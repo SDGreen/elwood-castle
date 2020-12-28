@@ -53,7 +53,6 @@ class Stripe_WH_Handler:
                 [customer_email]
             )
 
-
     def handle_payment_succeeded(self, event):
         intent = event.data.object
         pid = intent.id
@@ -109,7 +108,7 @@ class Stripe_WH_Handler:
                 )
                 for event_booking in basket['basket_items']:
                     event = Event.objects.get(pk=event_booking['event_id'])
-                    date = datetime.datetime.strptime(event_booking['date'],'%d/%m/%Y').strftime('%Y-%m-%d')
+                    date = datetime.datetime.strptime(event_booking['date'], '%d/%m/%Y').strftime('%Y-%m-%d')
                     booking = EventBooking(
                         order=order,
                         event=event,

@@ -1,4 +1,4 @@
-{% load i18n %}{% autoescape off %}{% blocktrans %}Hello from the team at Elwood Castle{% endblocktrans %}
+{% load i18n %}{% autoescape off %}{% blocktrans %}Hello from the team at Elwood Castle.{% endblocktrans %}
 
 {% block content %}{% endblock %}
 
