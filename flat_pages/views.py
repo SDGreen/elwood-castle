@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.conf import settings
 
 from .forms import ContactForm
+from user_account.models import UserAccount
 
 
 # Create your views here.
@@ -40,8 +41,15 @@ def contact(request):
                 return redirect(reverse('contact'))
             return redirect(reverse('contact'))
     else:
-        contact_form = ContactForm()
-
+        if request.user.is_authenticated:
+            try:
+                useraccount = UserAccount.objects.get(username=request.user)
+                user_email = useraccount.email
+                contact_form = ContactForm(user_email=user_email)
+            except Exception:
+                contact_form = ContactForm()
+        else:
+            contact_form = ContactForm()
     context = {
         "contact_form": contact_form
     }
