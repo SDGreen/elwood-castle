@@ -7,6 +7,7 @@ from .webhook_handler import Stripe_WH_Handler
 
 import stripe
 
+
 @csrf_exempt
 @require_POST
 def webhook(request):
@@ -26,19 +27,19 @@ def webhook(request):
     except ValueError as e:
         # invalid payload
         return HttpResponse(
-            content=e,
+            content=e + " 1",
             status=400
             )
     except stripe.error.SignatureVerificationError as e:
         # invalid signature
         return HttpResponse(
-            content=e,
+            content=e + " 2",
             status=400
             )
     except Exception as e:
         # other error
         return HttpResponse(
-            content=e,
+            content=e + " 3",
             status=400
             )
 
