@@ -5,12 +5,11 @@ Your order confirmation number is:
 {{ order.order_number }}
 
 You'll recieve separate emails for each event you booked with us, please remember to keep these safe.
-Your booking emails will allow you to pick up the tickets on the day when you arrive at Elwood Castle.
+Your booking emails will allow you to pick up the tickets on the day from the reception, which is located just inside the main entrance, when you arrive at Elwood Castle.
 
-Our reception is located just inside the main entrance, from there you can pick up your tickets.
-It's reccomended to arrive 15 minutes before each event starts (other than the Crèche & Old Spice Market, which are open from their start times)
+It's reccomended to arrive 15 minutes before each event starts (other than the Crèche & Old Spice Market, which are open from their start times).
 
-If you have any other questions, please as at reception of contact us either by:
+If you have any other questions, please ask at reception or contact us either by:
 Email - {{ elwood_email }}
 Phone - (+44) 20 7946 0559
 

@@ -6,11 +6,11 @@ Your tickets are for {{ booking.date|date:"d/m/Y" }}, if this is incorrect pleas
 The confirmation number for this booking is: {{ booking.confirmation_number }}
 
 Please keep this email safe as you'll need it to pick up your tickets on the day.
-Tickets kept at the reception, just inside the main entrance.
+Tickets are kept at the reception, just inside the main entrance.
 
 It's reccomended to arrive 15 minutes before each event starts, other than the Crèche & Old Spice Market, which are open from their start times and can be accessed at any time after that.
 
-If you have any other questions, please as at reception of contact us either by:
+If you have any other questions, please ask at reception or contact us either by:
 
 Email - {{ elwood_email }}
 Phone - (+44) 20 7946 0559
