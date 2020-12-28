@@ -22,12 +22,14 @@
 7. [Credits](#credits) 
 ---
 ## Aim
-The aim of this django app is to create an interactive interface where users can find out information about Elwood Castle and book tickets to events held there.  
-This app is to be a one stop shop where users can create accounts, learn more about events and visiting the castle, contact the castle if required and purchase tickets to upcoming events.
+The aim of this django app is to create an interactive interface where users can find out
+information about Elwood Castle and book tickets to events held there.  
+This app is to be a one stop shop where users can create accounts,
+learn more about events and visiting the castle, contact the castle if required and
+purchase tickets to upcoming events.
 
 ---
 ## User Experience (UX)
-
 ### User Stories
 #### Users:
 | As a... | I would like... | So I can ... |
@@ -35,44 +37,128 @@ This app is to be a one stop shop where users can create accounts, learn more ab
 | User    | Simple navigation to the whole site | Find exactly what I want without searching through links |
 | User    | To easily see my basket | Checkout quickly |
 | User    | Consistant styling across the site | Navigate across the site without having to think too hard about what elements do |
-| User    | A profile page |	Quickly see my orders and details |
-| User    | To be able to save my default settings |	Easily use them to book events |
-| User    | To be able to create an account | Save my details and view my orders |
-| User    | To be able to reset my password | Update my password if I forget it |
+| User    | A profile page |	Quickly see my orders and checkout details |
+| Returning User | To be able to save my default settings | Easily use them to book new events |
+| New User | To be able to create an account | Save my details and view my orders |
+| Returning User | To be able to reset my password | Update my password if I forget it |
 | User    | A contact page where I can find email and phone details of the castle | Get in contact if I have a question about an event |
-| User    | Details on the location of the Castle | Find it to attend events |
+| User    | Details on the location of the Castle | Find the castle and attend events |
 | User    | Booking events to be simple | Avoid filling out too many inputs |
 | User    | Confirmation of my bookings | Know that my purchase has worked |
-| User    | A date picker for event bookings | Easily visulise what date I'm picking and not fill in an input |
-| User    | A list of my upcoming and past events | Know what events I have booked |
+| User    | A date picker for event bookings | Easily visulise what date I'm picking and avoid filling in an input |
+| User with a profile | A list of my upcoming and past events | Know what events I have booked |
 
 #### Owners:
 | As a... | I would like... | So I can ... |
-| :------ | :-------------- | :----------- |
+| :------ | :---------------| :----------- |
 | Owner	| Simple navigation to the event pages | Encourage users to buy tickets to events |
-| Owner	| Lot's of links back to event pages | To get users to buy more tickets |
-| Owner	| Links between viewing and event and booking an event | Make it easy to users to book events and reduce time spent thinking about this decision |
+| Owner	| Lots of links back to event pages | To get users to buy more tickets |
+| Owner	| Links between an event's details page and booking page | Make it easy for users to book events and reduce time spent thinking about this decision |
 | Owner	| Professional and clean styling | Keep the site attractive to users without diminishing the castle brand |
 | Owner	| Login validation | To prevent users from creating multiple accounts with the same email |
 | Owner	| Email verification on accounts | To prevent malicious users from easily creating multiple accounts |
 | Owner	| A FAQ page | Prevent too many incoming calls and emails |
 | Owner	| Details on visitings the castle | Make sure users know how to get to the castle |	
 | Owner	| Bookings to be kept in a basket  | Make sure users only have to pay once, encouraging them to purchase more |
-| Owner	| Confirmation to not fail is a user navigates away from the page | Know users haven't purchased tickets without the models updating |
+| Owner	| Order Confirmation work even if a user navigates away from the checkout page | Know users haven't purchased tickets without the models updating |
 | Owner	| Dates where events are booked up to be unpickable | Know that users haven't purchased tickets to events which won't be able to cater for them |
-| Owner	| Validation on the date picking input | Make sure users don't create booking using dates which aren't correct |
+| Owner	| Validation on the date picking input | Make sure users don't create bookings using dates which aren't correct |
 | Owner	| Validation on the ticket input | Stop users booking too many tickets for events which are nearly full |
-| Owner/User | Responsive design | Use the site across multiple devices |
+| Owner/User | Responsive design | Easily use the site across multiple devices |
 | Owner/User | Message stlying to be intuitive (red for alerts, green for success) | Quickly understand want the message is trying to convey |	
 
-
 ### Information Architecture
+#### Overview
+For Elwood Castle a relational database using SQL was the best choice to store the information.
+The reasoning behind this choice is because users can't directly add items to the database which
+would have wildly unknown values. All orders would follow a similar structure which is where the
+users have most control over what is inputted. Unlinke a movie database where each field may store
+very different values, here all entries would have a very similar structure with values which don't vary
+in data type (i.e. strings or integers) so a relational database made sense. The models built in the Django
+framework provide great validation ot prevent incorrect values being added so its extremely unlikely
+that Elwood Castle would need a databse structure like MongoDB where unknown values are expected to
+be inputted frequently.
+
+The information in each model would also be related to another model in almost all cases. All *orders* have
+*bookings* which have *events* etc, having such interlinked models required a relational database to easily
+handle the data and prevent creating a large database with lot's of repeated values.
+#### Models 
+##### User
+This inbuilt model is used by Django. Here there was no changes made as it would suit the rest of the models nicely
+##### UserAccount
+This model builds on the user model provided by Django so that a user could save which orders and
+bookings they have made. In the future, if a Subcription service was created it would also tack on
+nicely to this model.
+| Field | Field Type | Validation |
+| :---- | :--------- | :--------- |
+| user | OneToOneField | (related field) User, on_delete=models.CASCADE, related_name='useraccount' |
+| first_name | CharField | max_length=100, null=True, blank=True |
+| last_name | CharField | max_length=200, null=True, blank=True |
+| email | EmailField | max_length=200, null=True, blank=True |
+| phone_number | CharField | max_length=20, null=True, blank=True |
+##### Event 
+This model stores the key information used by our date picker to validate
+ticket numbers and dates which are full when a user tries to book and event.
+Other than having these key details this model also stores information the user may
+want to know about an event before they book it.
+In future if events start taking place on selective days of the week, this would
+slot in nicely to this model.
+| Field | Field Type | Validation |
+| :---- | :--------- | :--------- |
+| category | ForeignKey | (related field) Category, null=True, blank=True, on_delete=models.SET_NULL |
+| name | CharField | max_length=254 |
+| description | TextField |  |
+| price | DecimalField | max_digits=8, decimal_places=2, blank=False |
+| start_time | TimeField |  |
+| rating | DecimalField | max_digits=2, decimal_places=1, null=True, blank=True |
+| day_ticket_limit | PositiveIntegerField | blank=False, validators=[MaxValueValidator(200)] |
+| supervision | BooleanField | default=True, null=True, blank=True |
+| age_restricted | BooleanField | default=True, null=True, blank=False |
+| image | ImageField | null=True, blank=True |
+##### Category
+This model is a simple one used to store the different type of categories each event can fall into.
+New categories can be easily added in the castle decides to start hosting new types of events, along
+with allowing current event to easily change their category.
+| Field | Field Type | Validation |
+| :---- | :--------- | :--------- |
+| name | CharField | max_length=50, null=False, blank=False |
+| friendly_name | CharField | max_length=100, null=True, blank=True |
+##### Order
+This is a simple model used to store orders which contain EventBookings.  
+It's relation to EventBookings and UserAccounts allows users to see their upcoming
+and past bookings on their profile page. It also has a stripe_id so site owners
+can check to see for multiple bookings and validation preventing orders from being created
+twice by mistake.
+| Field | Field Type | Validation |
+| :---- | :--------- | :--------- |
+| user_account | ForeignKey | UserAccount, null=True, blank=True, on_delete=models.SET_NULL, related_name='orders' |
+| order_number | CharField | max_length=32, null=False, editable=False |
+| first_name | CharField | max_length=100, null=False, blank=False |
+| last_name | CharField | max_length=200, null=False, blank=False |
+| email | EmailField | max_length=200, null=False, blank=False |
+| phone_number | CharField | max_length=20, null=True, blank=True |
+| date | DateTimeField | auto_now_add=True |
+| stripe_id | CharField | max_length=27, null=False, blank=False |
+| total | DecimalField | max_digits=7, decimal_places=2, null=True, blank=False, default=0 |
+##### EventBooking
+This model is used to store each event booked by a user, along with the date and amount of tickets.  
+The EventBookings relation to order is used to show upcoming and past events on the users
+profile page. The ticket and date fields are also used by the ticket and date validators
+when a user tries to book a new event.
+| Field | Field Type | Validation |
+| :---- | :--------- | :--------- |
+| confirmation_number | CharField | max_length=32, null=False, editable=False |
+| order | ForeignKey | (related model) Order, null=False, blank=False, on_delete=models.CASCADE, related_name='bookings' |
+| event | ForeignKey | (related model) Event, null=False, blank=False, on_delete=models.CASCADE, |
+| date | DateField | auto_now=False, auto_now_add=False, null=False, blank=False |
+| ticket_quantity | IntegerField |  |
+| booking_total | DecimalField | max_digits=7, decimal_places=2, null=False, blank=False, editable=False, default=0 |
 
 ### Wireframes
 
-### Target Demographic
-
 ### Design Choices
+
+### Target Demographic
 
 ## Features
 ### Existing Features
