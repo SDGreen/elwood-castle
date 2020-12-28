@@ -1,5 +1,17 @@
-# Spooky Spool
-Deployed site: []()
+# Elwood Castle
+![Elwood Castle](https://github.com/SDGreen/elwood-castle/blob/master/flat_pages/static/flat_pages/images/background.jpg?raw=true)
+### Deployed site: [https://elwood-castle.herokuapp.com/](https://elwood-castle.herokuapp.com/)
+
+#### For testing the following credentials be used:
+* User Credentials:  
+  - Username: TestUser  
+  - Password: testingelwood  
+  - Email: test@test.com 
+
+* Card payments:
+  - card number: 4242 4242 4242 4242
+  - Zip & CCV must be filled out with any integers
+---
 ## Table of Contents
 1. [Aim](#aim)
 2. [UX](#ux)
@@ -12,12 +24,9 @@ Deployed site: []()
 ---
 
 ## Aim
-The aim of this app is to create an interactive interface where users can find out information about Elwood Castle and book tickets to events held there.
-
+The aim of this django app is to create an interactive interface where users can find out information about Elwood Castle and book tickets to events held there.  
+This app is to be a one stop shop where users can create accounts, learn more about events and visiting the castle, contact the castle if required and purchase tickets to upcoming events.
 ## UX
-
-
-
 
 ### User Stories
 

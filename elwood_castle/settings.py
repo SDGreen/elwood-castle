@@ -164,7 +164,7 @@ USE_L10N = False
 
 USE_TZ = True
 
-# used by checkout.modols.EventBooking to get correct format
+# Used by checkout.models.EventBooking to get correct format
 DATE_INPUT_FORMATS = ('%d-%m-%Y', '%Y-%m-%d')
 
 # Media files
