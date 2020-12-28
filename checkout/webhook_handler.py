@@ -19,7 +19,11 @@ class Stripe_WH_Handler:
         self.request = request
 
     def _send_order_and_booking_emails(self, order):
-        print("order_emails activated")
+        """
+        This sends an email for the order confirmation and
+        separate emails for each booking confirmation
+        """
+
         order = Order.objects.get(order_number=order.order_number)
         customer_email = order.email
         order_email_subject = render_to_string(
@@ -37,18 +41,18 @@ class Stripe_WH_Handler:
             [customer_email]
         )
         for booking in order.bookings.all():
-            order_email_subject = render_to_string(
+            booking_email_subject = render_to_string(
                 'checkout/emails/booking_confirmation_head.txt',
                 {'booking': booking}
             )
-            order_email_body = render_to_string(
+            booking_email_body = render_to_string(
                 'checkout/emails/booking_confirmation_body.txt',
                 {'booking': booking,
                  'elwood_email': settings.DEFAULT_FROM_EMAIL}
             )
             send_mail(
-                order_email_subject,
-                order_email_body,
+                booking_email_subject,
+                booking_email_body,
                 settings.DEFAULT_FROM_EMAIL,
                 [customer_email]
             )
@@ -68,7 +72,7 @@ class Stripe_WH_Handler:
             try:
                 form_data['user_account'] = UserAccount.objects.get(
                     user__username=form_data['user_account']
-                    )
+                )
             except Exception as e:
                 print(e)
                 form_data['user_account'] = None
@@ -108,7 +112,8 @@ class Stripe_WH_Handler:
                 )
                 for event_booking in basket['basket_items']:
                     event = Event.objects.get(pk=event_booking['event_id'])
-                    date = datetime.datetime.strptime(event_booking['date'], '%d/%m/%Y').strftime('%Y-%m-%d')
+                    date = datetime.datetime.strptime(
+                        event_booking['date'], '%d/%m/%Y').strftime('%Y-%m-%d')
                     booking = EventBooking(
                         order=order,
                         event=event,

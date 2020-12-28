@@ -6,74 +6,73 @@ Checkout Success
 {% endblock %}
 
 {% block content %}
-<div class="color-overlay">
-    <div class="container-fluid guttered p-3">
-        <div class="row pt-1 mb-2">
-            <div class="col-12 mb-2">
-                <h2 class="heading-text color-title text-l d-block">Thank You! Your order is confirmed</h2>
-                <h2 class="heading-text color-title text-s d-block">Order No. {{order.order_number}}</h2>
-
-                <hr class="mb-1">
-            </div>
-        </div>
-        <div class="row mt-1">
-            <div class="col-12 col-lg-8 mb-lg-0 mb-4">
-                <h5 class="heading-text text-m mb-2">The following events have been booked:</h5>
-                <div class="booking-container below-shadow p-4">
-                    <table class="table mb-1 table-responsive-sm">
-                        <thead class="heading-text text-m">
-                            <tr>
-                                <th scope="col">Event:</th>
-                                <th scope="col"></th>
-                                <th scope="col">Date:</th>
-                                <th scope="col">Tickets:</th>
-                            </tr>
-                        </thead>
-                        <tbody class="body-text text-m">
-                            {% for booking in order.bookings.all %}
-                            <tr>
-                                <td colspan="2">
-                                    {{ booking.event }}
-                                </td>
-                                <td>
-                                    {{ booking.date|date:"d/m/y"}}
-                                </td>
-                                <td>{{ booking.ticket_quantity }}
-                                </td>
-                                <td class="d-none d-md-inline-block">
-                                    <img class="img-fluid" src="{{ booking.event.image.url }}"
-                                        alt="{{ booking.event.name }}">
-                                </td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                    <hr class="mt-0 mb-3">
+<div id="small-page">
+    <div class="color-overlay">
+        <div class="container-fluid guttered p-3">
+            <div class="row pt-1 mb-2">
+                <div class="col-12 mb-2">
+                    <h2 class="heading-text color-title text-l d-block">Thank You! Your order is confirmed</h2>
+                    <h2 class="heading-text color-title text-s d-block">Order No. {{order.order_number}}</h2>
+                    <hr class="mb-1">
                 </div>
-
             </div>
-            <div class="col-12 col-lg-4">
-                <h5 class="heading-text text-m mb-2">On the day:</h5>
-                <ul class="body-text text-m list-unstyled">
-                    <li class="pb-2">Please bring your <strong>Booking confirmation email</strong> to the reception to
-                        pick up your tickets.</li>
-                    <li class="pb-2">It's reccomended to arrive at events 15 minutes before they start, if you're unsure
-                        where to go please check at reception when you pick up your tickets</li>
-                    <li class="pb-2">Please read our <a class="text-link">FAQ</a> or <a class="text-link">contact</a> us
-                        if you have any furthur questions</li>
-                </ul>
+            <div class="row mt-1">
+                <div class="col-12 col-lg-8 mb-lg-0 mb-4">
+                    <h5 class="heading-text text-m mb-2">The following events have been booked:</h5>
+                    <div class="booking-container below-shadow p-4">
+                        <table class="table mb-1 table-responsive-sm">
+                            <thead class="heading-text text-m">
+                                <tr>
+                                    <th scope="col">Event:</th>
+                                    <th scope="col"></th>
+                                    <th scope="col">Date:</th>
+                                    <th scope="col">Tickets:</th>
+                                </tr>
+                            </thead>
+                            <tbody class="body-text text-m">
+                                {% for booking in order.bookings.all %}
+                                <tr>
+                                    <td colspan="2">
+                                        {{ booking.event }}
+                                    </td>
+                                    <td>
+                                        {{ booking.date|date:"d/m/y"}}
+                                    </td>
+                                    <td>{{ booking.ticket_quantity }}
+                                    </td>
+                                    <td class="d-none d-md-inline-block">
+                                        <img class="img-fluid" src="{{ booking.event.image.url }}"
+                                            alt="{{ booking.event.name }}">
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        <hr class="mt-0 mb-3">
+                    </div>
+                </div>
+                <div class="col-12 col-lg-4">
+                    <h5 class="heading-text text-m mb-2">On the day:</h5>
+                    <ul class="body-text text-m list-unstyled">
+                        <li class="pb-2">Please bring your <strong>Booking confirmation email</strong> to the reception
+                            to
+                            pick up your tickets.</li>
+                        <li class="pb-2">It's reccomended to arrive at events 15 minutes before they start, if you're
+                            unsure
+                            where to go please check at reception when you pick up your tickets</li>
+                        <li class="pb-2">Please read our <a class="text-link">FAQ</a> or <a
+                                class="text-link">contact</a> us
+                            if you have any furthur questions</li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <hr>
-        <div class="row mt-1 mb-3">
-            <div class="col-12 text-center">
-                <a class="btn button" href="{% url 'events' %}">Back to Events</a>
+            <hr>
+            <div class="row mt-1 mb-3">
+                <div class="col-12 text-center">
+                    <a class="btn button" href="{% url 'events' %}">Back to Events</a>
+                </div>
             </div>
         </div>
     </div>
 </div>
-{% endblock %}
-
-{% block postload_js %}
-{{ block.super }}
 {% endblock %}
