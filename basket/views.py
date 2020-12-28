@@ -90,8 +90,6 @@ def update_basket(request, event_id):
 
         basket[str(event_id)]['event_dates'][date] = ticket_quantity
 
-        print(basket[str(event_id)]['event_dates'][date])
-
         messages.success(request, f'''Ticket quanty for {event.name} on the
                                       {date} updated to {ticket_quantity}''')
 

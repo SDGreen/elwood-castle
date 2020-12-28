@@ -43,10 +43,10 @@ def contact(request):
     else:
         if request.user.is_authenticated:
             try:
-                useraccount = UserAccount.objects.get(username=request.user)
+                useraccount = UserAccount.objects.get(user=request.user)
                 user_email = useraccount.email
-                contact_form = ContactForm(user_email=user_email)
-            except Exception:
+                contact_form = ContactForm({'user_email': user_email})
+            except Exception as e:
                 contact_form = ContactForm()
         else:
             contact_form = ContactForm()

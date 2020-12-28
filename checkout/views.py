@@ -3,6 +3,7 @@ from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
 from django.contrib.auth.models import User
+from django.db.models import Sum
 
 from .models import EventBooking, Order
 from .forms import OrderForm
@@ -10,6 +11,7 @@ from .forms import OrderForm
 from basket.contexts import basket_items
 from events.models import Event
 from user_account.models import UserAccount
+from checkout.models import EventBooking
 
 import stripe
 import datetime
@@ -53,7 +55,6 @@ def checkout(request):
                 date = datetime.datetime.strptime(event["date"],
                                                   '%d/%m/%Y').strftime(
                                                       '%Y-%m-%d')
-                print(date)
                 booking = EventBooking(
                     order=order,
                     event=event["event"],
@@ -113,14 +114,42 @@ def checkout_validator(request):
         order = OrderForm(form_data)
         if order.is_valid():
             for item in basket['basket_items']:
-                print(item["event_id"])
                 try:
+
                     event = Event.objects.get(pk=item['event_id'])
+                    datetime_date = datetime.datetime.strptime(
+                        item['date'], "%d/%m/%Y")
+                    tickets = EventBooking.objects.filter(
+                        date=datetime_date, event=item['event_id']).aggregate(Sum('ticket_quantity'))
+                    booked_tickets = tickets['ticket_quantity__sum']
+                    if not booked_tickets:
+                        booked_tickets = 0
+                    if (booked_tickets + item['ticket_quantity']) > event.day_ticket_limit:
+                        session_basket = request.session.get('basket', {})
+                        if item['date'] in session_basket[str(item['event_id'])]['event_dates']:
+                            print(session_basket)
+                            del session_basket[str(
+                                item['event_id'])]['event_dates'][item['date']]
+                            if len(session_basket[str(item['event_id'])]['event_dates']) == 0:
+                                del session_basket[str(item['event_id'])]
+                        request.session['basket'] = session_basket
+                        messages.error(
+                            request, f"""The maximum tickets for {event.name}
+                                         on {item['date']} have now been
+                                         booked""")
+                        return HttpResponse(status=400)
                 except event.DoesNotExist:
                     messages.error(request, """One of the events does not
                                                 exist in out database.\
                                                 Please contact us, your card
                                                 has not been charged""")
+                    return HttpResponse(status=400)
+                except Exception as e:
+                    print(e)
+                    messages.error(
+                        request, """Something went wrong whilst checking
+                                    your basket, your card has not been
+                                    charged.""")
                     return HttpResponse(status=500)
             return HttpResponse(status=200)
         else:
@@ -162,7 +191,7 @@ def save_checkout_data(request):
             'email': form_data['email'],
             'phone_number': form_data['phone_number'],
             'basket': basket
-            })
+        })
 
         return HttpResponse(status=200)
 
@@ -171,7 +200,6 @@ def save_checkout_data(request):
                                     your order.\
                                     Please contact us so we can fix
                                     this for you. {e}""")
-        print(e)
         return HttpResponse(status=500)
 
 
