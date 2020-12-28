@@ -66,7 +66,8 @@ ACCOUNT_USERNAME_MIN_LENGTH = 5
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_URL = ('/account/login')
-LOGIN_REDIRECT_URL = ('/')
+LOGIN_REDIRECT_URL = ('/events/')
+LOGOUT_REDIRECT_URL = ('/account/login/')
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
