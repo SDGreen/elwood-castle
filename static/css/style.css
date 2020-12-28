@@ -267,14 +267,9 @@ footer>.row {
 }
 /*----------Toasts ----------------------*/
 
-#message-box{
-    position: relative;
-    width: 100%;
-}
-
 .toast {
     position: fixed;
-    margin-top: 1px;
+    bottom: 1px;
     right: 1px;
     z-index: 9999;
     border-radius: 0;
