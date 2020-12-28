@@ -1,5 +1,5 @@
 let map;
-const elwoodCastle = { lat: 51.915530, lng: -2.019524 }
+const elwoodCastle = { lat: 51.915530, lng: -2.019524 };
 function initMap() {
 
     map = new google.maps.Map(document.getElementById("map"), {
@@ -11,7 +11,4 @@ function initMap() {
         position: elwoodCastle,
         map: map,
     });
-
 }
-
-

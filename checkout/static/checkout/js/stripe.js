@@ -43,12 +43,12 @@ $(document).ready(function () {
     // Form action after submit
     var form = document.getElementById("checkout-form");
     form.addEventListener('submit', function (event) {
-        event.preventDefault()
-        card.update({ 'disabled': true })
-        $("#checkout-form .button").attr('disabled', true)
+        event.preventDefault();
+        card.update({ 'disabled': true });
+        $("#checkout-form .button").attr('disabled', true);
 
         // This section validates the form data and basket before taking payment
-        var postUrl = '/checkout/checkout_validator/'
+        var postUrl = '/checkout/checkout_validator/';
         var formData = {
             "first_name": $("input[name='first_name']").val(),
             "last_name": $("input[name='last_name']").val(),
@@ -59,11 +59,11 @@ $(document).ready(function () {
         postData = {
             'csrfmiddlewaretoken': csrfToken,
             'formData': formData,
-        }
+        };
 
         $.post(postUrl, postData).done(function () {
             //This section validates the form data and basket before taking payment
-            var postUrl = '/checkout/save_checkout_data/'
+            var postUrl = '/checkout/save_checkout_data/';
             var formData = {
                 "first_name": $("input[name='first_name']").val(),
                 "last_name": $("input[name='last_name']").val(),
@@ -75,7 +75,7 @@ $(document).ready(function () {
             postData = {
                 'csrfmiddlewaretoken': csrfToken,
                 'formData': formData,
-            }
+            };
             $.post(postUrl, postData).done(function () {
                 stripe.confirmCardPayment(client_secret, {
                     payment_method: {
@@ -88,19 +88,19 @@ $(document).ready(function () {
                                 <span class="heading-text text-s"><strong>${paymentResult.error.message}</strong></span>
                                  `;
                         $(errorBox).html(errorMessage);
-                        card.update({ 'disabled': false })
-                        $("#checkout-form .button").attr('disabled', false)
+                        card.update({ 'disabled': false });
+                        $("#checkout-form .button").attr('disabled', false);
                     } else {
                         if (paymentResult.paymentIntent.status == 'succeeded') {
-                            form.submit()
+                            form.submit();
                         }
                     }
                 });
             }).fail(function () {
-                location.reload()
+                location.reload();
             });
         }).fail(function () {
-            location.reload()
+            location.reload();
         });
-    })
-})
+    });
+});
