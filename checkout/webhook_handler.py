@@ -79,7 +79,7 @@ class Stripe_WH_Handler:
 
         order_exists = False
         attempt = 1
-        while attempt <= 5:
+        while attempt <= 10:
             try:
                 order = Order.objects.get(
                     stripe_id=pid
@@ -88,7 +88,7 @@ class Stripe_WH_Handler:
                 break
             except Order.DoesNotExist:
                 attempt += 1
-                time.sleep(5)
+                time.sleep(1)
         if order_exists:
             self._send_order_and_booking_emails(order)
             return HttpResponse(
