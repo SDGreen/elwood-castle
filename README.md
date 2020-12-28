@@ -12,6 +12,7 @@ Deployed site: []()
 ---
 
 ## Aim
+The aim of this app is to create an interactive interface where users can find out information about Elwood Castle and book tickets to events held there.
 
 ## UX
 
