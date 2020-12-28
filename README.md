@@ -14,7 +14,7 @@
 ---
 ## Table of Contents
 1. [Aim](#aim)
-2. [UX](#ux)
+2. [User Experience (UX)](#user-experience-(ux))
 3. [Features](#features)
 4. [Technologies Used](#technologies-used)
 5. [Testing](#testing)
@@ -26,9 +26,44 @@ The aim of this django app is to create an interactive interface where users can
 This app is to be a one stop shop where users can create accounts, learn more about events and visiting the castle, contact the castle if required and purchase tickets to upcoming events.
 
 ---
-## UX
+## User Experience (UX)
 
 ### User Stories
+#### Users:
+| As a... | I would like... | So I can ... |
+| :------ | :-------------- | :----------- |
+| User    | Simple navigation to the whole site | Find exactly what I want without searching through links |
+| User    | To easily see my basket | Checkout quickly |
+| User    | Consistant styling across the site | Navigate across the site without having to think too hard about what elements do |
+| User    | A profile page |	Quickly see my orders and details |
+| User    | To be able to save my default settings |	Easily use them to book events |
+| User    | To be able to create an account | Save my details and view my orders |
+| User    | To be able to reset my password | Update my password if I forget it |
+| User    | A contact page where I can find email and phone details of the castle | Get in contact if I have a question about an event |
+| User    | Details on the location of the Castle | Find it to attend events |
+| User    | Booking events to be simple | Avoid filling out too many inputs |
+| User    | Confirmation of my bookings | Know that my purchase has worked |
+| User    | A date picker for event bookings | Easily visulise what date I'm picking and not fill in an input |
+| User    | A list of my upcoming and past events | Know what events I have booked |
+
+#### Owners:
+| As a... | I would like... | So I can ... |
+| :------ | :-------------- | :----------- |
+| Owner	| Simple navigation to the event pages | Encourage users to buy tickets to events |
+| Owner	| Lot's of links back to event pages | To get users to buy more tickets |
+| Owner	| Links between viewing and event and booking an event | Make it easy to users to book events and reduce time spent thinking about this decision |
+| Owner	| Professional and clean styling | Keep the site attractive to users without diminishing the castle brand |
+| Owner	| Login validation | To prevent users from creating multiple accounts with the same email |
+| Owner	| Email verification on accounts | To prevent malicious users from easily creating multiple accounts |
+| Owner	| A FAQ page | Prevent too many incoming calls and emails |
+| Owner	| Details on visitings the castle | Make sure users know how to get to the castle |	
+| Owner	| Bookings to be kept in a basket  | Make sure users only have to pay once, encouraging them to purchase more |
+| Owner	| Confirmation to not fail is a user navigates away from the page | Know users haven't purchased tickets without the models updating |
+| Owner	| Dates where events are booked up to be unpickable | Know that users haven't purchased tickets to events which won't be able to cater for them |
+| Owner	| Validation on the date picking input | Make sure users don't create booking using dates which aren't correct |
+| Owner	| Validation on the ticket input | Stop users booking too many tickets for events which are nearly full |
+| Owner/User | Responsive design | Use the site across multiple devices |
+| Owner/User | Message stlying to be intuitive (red for alerts, green for success) | Quickly understand want the message is trying to convey |	
 
 
 ### Information Architecture
