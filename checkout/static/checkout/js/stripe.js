@@ -92,7 +92,7 @@ $(document).ready(function () {
                         $("#checkout-form .button").attr('disabled', false)
                     } else {
                         if (paymentResult.paymentIntent.status == 'succeeded') {
-                            form.submit()
+                            //form.submit()
                         }
                     }
                 });

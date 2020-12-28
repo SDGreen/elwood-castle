@@ -20,12 +20,12 @@
 5. [Testing](#testing)
 6. [Deployment](#deployment)
 7. [Credits](#credits) 
-
 ---
-
 ## Aim
 The aim of this django app is to create an interactive interface where users can find out information about Elwood Castle and book tickets to events held there.  
 This app is to be a one stop shop where users can create accounts, learn more about events and visiting the castle, contact the castle if required and purchase tickets to upcoming events.
+
+---
 ## UX
 
 ### User Stories
@@ -45,28 +45,32 @@ This app is to be a one stop shop where users can create accounts, learn more ab
 
 ### Features Left to Implement
 * #### :
+---
 ## Technologies Used
-* [HTML5](https://html.spec.whatwg.org/multipage/) - To create the structure of the page.
+### Languages
+* [HTML5](https://html.spec.whatwg.org/multipage/) - Used to create the structure of the website.
 * [CSS3](https://www.w3.org/Style/CSS/Overview.en.html) - Used to style the website.
-* [Materialize v0.100.2/](http://archives.materializecss.com/0.100.2/) - This framework was used to create a responsive mobile-first design, along with some components (listed in [credits](#credits)).
-* [JavaScript](https://www.javascript.com/) - Included with Materialize for their framework to function.
-* [jQuery](https://jquery.com/) - Included with Materialize, also used to code form_fields.js, password_validator.js and searchbar_fields.js (along with some javaScript)
-* [Python (v3.8)](https://www.python.org/) - Used to code the base app.py which runs the website using the Flask framework. Also used to facilitate MongoDB operations.
-* [Flask (v1.1.2)](https://flask.palletsprojects.com/en/1.1.x/) - Framework used to create the app which runs the website.
-* [Jinja](https://jinja.palletsprojects.com/en/2.11.x/) - Templating language used for the website pages.
-* [MongoDB](https://docs.mongodb.com/) - Used to host the database along with retrieve data, save edits, deletions and inserts.
-* [Git](https://git-scm.com/) - Used for version control and tracking changes to the code whilst in development.
-* [Google Fonts](https://fonts.google.com/) - Used for website fonts [Didact Gothic](https://fonts.google.com/specimen/Didact+Gothic) for headings, [Raleway](https://fonts.google.com/specimen/Raleway) for content text and [Special Elite](https://fonts.google.com/specimen/Special+Elite) for logo text.
+* [JavaScript](https://www.javascript.com/) - Used for stripe functionality, as well as Bootstrap & google maps api functionality and the date-picker element.
+* [Python (v3.8.6)](https://www.python.org/) - Used to handle backend programming within the Django framework.
+### Libraries
+* [Google Fonts](https://fonts.google.com/) - Used for website fonts [Lora](https://fonts.google.com/specimen/Lora) for headings, [Raleway](https://fonts.google.com/specimen/Raleway) for content text and [IM Fell French Canon SC](https://fonts.google.com/specimen/IM+Fell+French+Canon+SC) for logo text.
 * [Font Awesome](https://fontawesome.com/) - This library provided the Icons used across the site.
+* [jQuery](https://jquery.com/) - Included with Bootstrap, also used to code various elements such as the date-picker, stripe functionality and google maps api.
+* [Stripe API Library](https://stripe.com/gb) - Used to handle the payments send from the Elwood Website.
+### Frameworks
+* [Django v3.1.4](https://docs.djangoproject.com/en/3.1/) - Framework used to create the app along with inbuilt templating language.
+* [Bootstrap v4.5](https://getbootstrap.com/docs/4.5/getting-started/introduction/) - Framework to add structure & styling to the site, along with resposive breakpoints and pre-built elements.
+### Tools 
+* [Git](https://git-scm.com/) - Used for version control and tracking changes to the code whilst in development.
 * [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools) - Key for finding bugs and testing responsive design.
 * [Autoprefixer](https://autoprefixer.github.io/) - Used to prefix the css, allowing it to work across different browsers.
+* [AWS S3](https://aws.amazon.com/s3/) - Used for storing static and media files used across the site.
+* [Heroku]() - Used to deploy and host the finished site.
+* [Heroku Postgres](https://www.heroku.com/postgres) - Used to serve the database Elwood Castle manages event and user data with.
 
+---
 ## Testing
-
-
 ### Database CRUD Operations:
-
-
 * #### 
 
 * #### Update Operations:
@@ -147,7 +151,7 @@ Spooky Spool was physically tested on the following browsers:
     
 ## Deployment
 
-### How to run Spooky Spool's website code locally:
+### How to run Elwood Castle's website code locally:
 #### Setting up the code:
 
 #### Creating a database:
@@ -158,11 +162,10 @@ Spooky Spool was physically tested on the following browsers:
 #### Running the app
 
 
-
+---
 ## Credits
+
 ### Media
-
-
 Copyright free images taken from [Pxhere](https://pxhere.com/)
 * [Archer](https://pxhere.com/en/photo/1410420) (file name: archer.jpg)
 * [Armour Set](https://pxhere.com/en/photo/615382) (file name: helmet.jpg)
@@ -193,15 +196,19 @@ Copyright free images taken from [Pxhere](https://pxhere.com/)
 * [Teacup](https://pxhere.com/en/photo/649039) (file name: tea.jpg)
 * [Wine Glasses](https://pxhere.com/en/photo/733330) (file name: romantic.jpg)
 
-
-
-
-
-
-Logos created using [FreeLogoDesign](https://www.freelogodesign.org/):
+Logos created using [Canva](https://www.canva.com/):
+* [Color Logo](https://github.com/SDGreen/elwood-castle/blob/master/static/logos/logo_color.jpg) (file name: logo_color.jpg)
+* [Dark Logo](https://github.com/SDGreen/elwood-castle/blob/master/static/logos/logo_dark.png) (file name: logo_dark.png)
+* [Large Dark Logo](https://github.com/SDGreen/elwood-castle/blob/master/static/logos/logo_dark_large.png) (file name: logo_dark_large.png)
+* [Light Logo](https://github.com/SDGreen/elwood-castle/blob/master/static/logos/logo_light.png) (file name: logo_light.png)
+* [Navbar Logo](https://github.com/SDGreen/elwood-castle/blob/master/static/logos/navbar_logo.png) (file name: navbar_logo.png)
 
 
 Favicon created using [Favicon.io](https://favicon.io/favicon-converter/) from edited logo:
-* [Favicon](https://github.com/SDGreen/SpookySpool/tree/master/static/images/favicon.png) (file name: favicon.png)
+* [Favicon](https://github.com/SDGreen/elwood-castle/blob/master/static/logos/favicon.png) (file name: favicon.png)
 
-## Code
+### Code
+* Google map created using [Google Maps JS API](https://developers.google.com/maps/documentation/javascript/tutorial)
+* Date picker created using [bootstrap-datepicker](https://bootstrap-datepicker.readthedocs.io/en/latest/)
+* CSS prefixer used: [https://autoprefixer.github.io/](https://autoprefixer.github.io/)
+---
