@@ -6,41 +6,49 @@ Book: {{ event.name }}
 {% endblock %}
 
 {% block extra_css %}
-    <!--Date Picker CSS-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw==" crossorigin="anonymous" />
+<!--Date Picker CSS (Bootstap-Datepicker, see readme code credits)-->
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
+    integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw=="
+    crossorigin="anonymous" />
 {% endblock %}
 {% block extra_js %}
-    <!--Date Picker JS-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ==" crossorigin="anonymous"></script>
+<!--Date Picker JS-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"
+    integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ=="
+    crossorigin="anonymous"></script>
 {% endblock %}
 {% block content %}
 <div id="small-page">
-<div class="color-overlay">
-    <div class="container-fluid guttered p-3">
-        <div class="row pt-2 mb-2">
-            <div class="col-12 ">
-                <h2 class="heading-text color-title text-l underlined mb-2">Booking: {{event.name}}</h2>
-                <hr>
+    <div class="color-overlay">
+        <div class="container-fluid guttered p-3">
+            <div class="row pt-2 mb-2">
+                <div class="col-12 ">
+                    <h2 class="heading-text color-title text-l underlined mb-2">Booking: {{event.name}}</h2>
+                    <hr>
+                </div>
             </div>
-        </div>
-        <div class="row mt-2 mb-3">
-            <div class="col-12">
-                <div id="booking-form" class="mx-auto rounded" style="background: url({{ event.image.url }}) center;">
-                    <div class="form-wrapper rounded">
-                        <form method="POST" action="{% url 'add_to_basket' event.id %}" class="py-4 px-3 heading-text below-shadow">
-                            {% csrf_token %}
-                            <div class="form-group">
-                                
-                                <label class="font-weight-bold" for="date_input">Date of visit:</label>
-                                
-                                    <input type="text" class="form-control rounded-0" id="data_input"
-                                    name="date" placeholder="Pick a date..." required>
-            
+            <div class="row mt-2 mb-3">
+                <div class="col-12">
+                    <div id="booking-form" class="mx-auto rounded"
+                        style="background: url({{ event.image.url }}) center;">
+                        <div class="form-wrapper rounded">
+                            <form method="POST" action="{% url 'add_to_basket' event.id %}"
+                                class="py-4 px-3 heading-text below-shadow">
+                                {% csrf_token %}
+                                <div class="form-group">
+
+                                    <label class="font-weight-bold" for="date_input">Date of visit:</label>
+
+                                    <input type="text" class="form-control rounded-0" id="data_input" name="date"
+                                        placeholder="Pick a date..." required>
+
                                 </div>
                                 <div class="form-group">
                                     <label class="font-weight-bold" for="ticket_input">Number of Tickets:</label>
-                                    <input type="number" min="1" max="{{ event.day_ticket_limit }}" class="form-control rounded-0" id="ticket_input"
-                                        name="ticket_quantity" placeholder="Add tickets..." required>
+                                    <input type="number" min="1" max="{{ event.day_ticket_limit }}"
+                                        class="form-control rounded-0" id="ticket_input" name="ticket_quantity"
+                                        placeholder="Add tickets..." required>
                                     <div id="ticket-info" class="heading-text text-s text-center"></div>
                                 </div>
                                 <div class="form-group">
@@ -48,20 +56,18 @@ Book: {{ event.name }}
                                         Add to basket
                                     </button>
                                 </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-</div>
-
 {% endblock %}
 {% block postload_js %}
 {{ block.super }}
 {{ sold_out_dates|json_script:"soldOutDates" }}
 <script src="{% static 'events/js/date_checker.js' %}"></script>
 <script src="{% static 'events/js/booking.js' %}"></script>
-
 {% endblock %}

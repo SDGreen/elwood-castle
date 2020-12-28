@@ -18,7 +18,7 @@
     var datesDisabled = [`24/12/${yy -1}`, `25/12/${yy -1}`, `26/12/${yy -1}`, `31/12/${yy -1}`, `01/01/${yy}`]
     datesDisabled = datesDisabled.concat(soldOutDates)
 
-
+    // Datapicker made using bootstrap-datepicker (see readme code credits)
     $('#data_input').datepicker({
         format: "dd/mm/yyyy",
         orientation: 'bottom',

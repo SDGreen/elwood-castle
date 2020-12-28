@@ -1,5 +1,5 @@
 $(document).ready(function () {
-
+    // Logic used to check with the databse how many tickets are left for date picked
     var postUrl = '/events/checker/'
     var csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
     var eventId = $('#booking-form form').attr('action').split("/")[3]
