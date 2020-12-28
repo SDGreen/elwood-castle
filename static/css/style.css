@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
+
 @import url('https://fonts.googleapis.com/css2?family=IM+Fell+French+Canon+SC&family=Lora:wght@400;600&family=Raleway:wght@400;600&display=swap');
 
 
@@ -93,6 +100,8 @@ body .datepicker table tr td.disabled{
     border: 1px solid #1C1E12;
     background-color: #1C1E12;
     color: white;
+    -webkit-transition: all 0.25s ease-out;
+    -o-transition: all 0.25s ease-out;
     transition: all 0.25s ease-out;
 }
 
@@ -116,7 +125,24 @@ body .datepicker table tr td.disabled{
 }
 
 .btn:focus{
-    box-shadow: 0 0 0 0.2rem rgba(176,180,186,.25);
+    -webkit-box-shadow: 0 0 0 0.2rem rgba(176,180,186,.25);
+            box-shadow: 0 0 0 0.2rem rgba(176,180,186,.25);
+}
+
+::-webkit-input-placeholder {
+    color: #7D8BAD;
+}
+
+::-moz-placeholder {
+    color: #7D8BAD;
+}
+
+:-ms-input-placeholder {
+    color: #7D8BAD;
+}
+
+::-ms-input-placeholder {
+    color: #7D8BAD;
 }
 
 ::placeholder {
@@ -134,6 +160,8 @@ body .datepicker table tr td.disabled{
 .text-link {
     cursor: pointer;
     color: #404245;
+    -webkit-transition: color ease-in 0.25s;
+    -o-transition: color ease-in 0.25s;
     transition: color ease-in 0.25s;
 }
 
@@ -143,11 +171,13 @@ body .datepicker table tr td.disabled{
 }
 
 .above-shadow{
-    box-shadow: 0px -5px 5px -5px #777;;
+    -webkit-box-shadow: 0px -5px 5px -5px #777;
+            box-shadow: 0px -5px 5px -5px #777;;
 }
 
 .below-shadow{
-    box-shadow: 0px 7px 5px -5px #777;;
+    -webkit-box-shadow: 0px 7px 5px -5px #777;
+            box-shadow: 0px 7px 5px -5px #777;;
 }
 
 #banner .alert{
@@ -159,6 +189,8 @@ body .datepicker table tr td.disabled{
 
 #banner .alert a{
     color: white;
+    -webkit-transition: font-weight ease-out 0.25s;
+    -o-transition: font-weight ease-out 0.25s;
     transition: font-weight ease-out 0.25s;
 }
 
@@ -202,6 +234,8 @@ div[aria-labelledby="account-dropdownMenuLink"]>.dropdown-item{
 button.navbar-toggler,
 .navbar a.nav-link{
     color: white;
+    -webkit-transition: color ease-out 0.25s;
+    -o-transition: color ease-out 0.25s;
     transition: color ease-out 0.25s;
 }
 
@@ -223,6 +257,8 @@ footer>.row {
 
 .footer-link {
     color: white;
+    -webkit-transition: color ease-out 0.25s;
+    -o-transition: color ease-out 0.25s;
     transition: color ease-out 0.25s;
 }
 
@@ -243,15 +279,19 @@ footer>.row {
     z-index: 9999;
     border-radius: 0;
     background-color: white;
-    box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+            box-sizing: content-box;
     border: 1px solid rgba(0,0,0,.1);
-    box-shadow: 0 0.25rem 0.75rem rgba(0,0,0,.1);
+    -webkit-box-shadow: 0 0.25rem 0.75rem rgba(0,0,0,.1);
+            box-shadow: 0 0.25rem 0.75rem rgba(0,0,0,.1);
     opacity: 1;
 }
 
 .close{
     color: white;
     text-shadow: none;
+    -webkit-transition: color 0.25s ease-out;
+    -o-transition: color 0.25s ease-out;
     transition: color 0.25s ease-out;
 }
 
@@ -303,7 +343,8 @@ footer>.row {
 .card-body-title>h5{
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+       text-overflow: ellipsis;
     padding-bottom: 0.2em;
 }
 
@@ -313,6 +354,8 @@ footer>.row {
 
 .card a>i {
     color: #7D8BAD;
+    -webkit-transition: color ease-in 0.25s;
+    -o-transition: color ease-in 0.25s;
     transition: color ease-in 0.25s;
 }
 
@@ -325,7 +368,16 @@ footer>.row {
 }
 
 #event-search .dropdown-item{
+    color: #1C1E12;
+    -webkit-transition: color ease-out 0.25s;
+    -o-transition: color ease-out 0.25s;
+    transition: color ease-out 0.25s;
+}
+
+#event-search .dropdown-item:focus,
+#event-search .dropdown-item:hover{
     color: #7D8BAD;
+    background-color: white;
 }
 
 .dropdown-item.active, .dropdown-item:active{
@@ -382,11 +434,15 @@ body .datepicker table tr td.active.active {
 }
 
 #empty-basket>div{
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
     width: fit-content;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
 }
 
 /*-----------Checkout--------------*/
@@ -422,7 +478,8 @@ fieldset {
     background-color: #fff;
     border-color: initial;
     outline: 0;
-    box-shadow: inset 0 0 0 0.2rem rgba(125,139,173,.25);
+    -webkit-box-shadow: inset 0 0 0 0.2rem rgba(125,139,173,.25);
+            box-shadow: inset 0 0 0 0.2rem rgba(125,139,173,.25);
 }
 
 #checkout-form>div,
@@ -438,6 +495,8 @@ fieldset {
 }
 
 .booking-container{
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
     height: fit-content;
     max-height: 50vh;
     overflow: hidden;
@@ -466,6 +525,8 @@ fieldset {
 /*--------------user home----------*/
 
 .empty-box{
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
     width: fit-content;
     padding: 1em;
     border: 1px solid #777;
