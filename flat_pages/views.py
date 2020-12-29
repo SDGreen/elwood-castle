@@ -30,7 +30,7 @@ def contact(request):
             message = contact_form.cleaned_data['message']
             try:
                 send_mail(subject,
-                          message,
+                          message + f" sent by {user_email}",
                           user_email,
                           [settings.DEFAULT_FROM_EMAIL])
                 messages.success(request, """Thanks for contacting Elwood
@@ -48,7 +48,7 @@ def contact(request):
                 useraccount = UserAccount.objects.get(user=request.user)
                 user_email = useraccount.email
                 contact_form = ContactForm({'user_email': user_email})
-            except Exception as e:
+            except Exception:
                 contact_form = ContactForm()
         else:
             contact_form = ContactForm()

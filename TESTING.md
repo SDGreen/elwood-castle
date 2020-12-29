@@ -46,21 +46,46 @@ when the email have been sent and a success toast appears once they have complet
 
 > As a User, I would like a contact page where I can find email and phone details of the castle, so I can get in contact if I have a question about an event.
 
-* Under the info dropdown you can access the contact page.
+* Under the info dropdown you can access the contact page. The first option is a form to send an email to the castle. 
+Underneath this form the phone number can be found.
 
 > As a User, I would like details on the location of the Castle, so I can find the castle and attend events.
 
+* On the FAQ page a google map is loaded with the location of the castle along with full address into.
+
 > As a User, I would like booking events to be simple, so I can avoid filling out too many inputs.
+
+* Booking an event on the site is incredibly easy. There are just two inputs, once a date has been picked 
+the avaliable tickets for that date appears under the ticket quantity input so users can quickly know if that
+date is suitable for them.
 
 > As a User, I would like confirmation of my bookings, so I can know that my purchase has worked.
 
+* Once a order has been saved to the database and this has been verified by the webhook handler then a email confirming 
+the order is sent out. Additional emails are also sent per booking. Checkouts which experience no issues redirect the user 
+to a checkout success page which verifies an order is completed (along with the emails).
+Logged in users can also check an order by looking at their order history.
+
 > As a User, I would like a date picker for event bookings, so I can easily visulise what date I'm picking and avoid filling in an input.
+
+* When users try to book an event and click on the date input, a date picker is displayed on the page.
 
 > As a User with a profile, I would like a list of my upcoming and past events, so I can know what events I have booked.
 
+* A user's account home page displayed upcoming and past bookings in date order so they can see all the events they have booked.
+
 > As a Owner, I would like simple navigation to the event pages, so I can encourage users to buy tickets to events.
 
+* The event page is one of the first links seen on the landing page, along with being the second link after home in the navbar.
+On the mobile navbar it is the second link after home.
+
 > As a Owner, I would like lots of links back to event pages, so I can get users to buy more tickets.
+
+* There are multiple links back to the events pages. There is one on the landing page, links appear in empty baskets 
+and user profiles who have no bookings. After successful checkouts, users are linked back to events & baskets have 
+an option to go back to events or checkout. After a user successfully adds a booking to their basket or logs in they 
+are redirected to the events page and not the basket page. These all provide users ample chance to get back to events
+and add more bookings.
 
 > As a Owner, I would like links between an event's details page and booking page, so I can make it easy for users to book events and reduce time spent thinking about this decision.
 
