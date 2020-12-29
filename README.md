@@ -538,19 +538,19 @@ Favicon created using [Favicon.io](https://favicon.io/favicon-converter/) from e
 * [Favicon](https://github.com/SDGreen/elwood-castle/blob/master/static/logos/favicon.png) (file name: favicon.png)
 
 ### Code
-* Card, Navbar, Accordian and Form setups adjusted from [Bootstrap 4 examples](https://getbootstrap.com/docs/4.5/getting-started/introduction/)
-* Google map created using [Google Maps JS API](https://developers.google.com/maps/documentation/javascript/tutorial)
-* Date picker created using [bootstrap-datepicker](https://bootstrap-datepicker.readthedocs.io/en/latest/)
-* CSS prefixer used: [https://autoprefixer.github.io/](https://autoprefixer.github.io/)
+* Card, Navbar, Accordian and Form elements adjusted from [Bootstrap 4 examples](https://getbootstrap.com/docs/4.5/getting-started/introduction/).
+* Google map created using [Google Maps JS API](https://developers.google.com/maps/documentation/javascript/tutorial).
+* Date picker created using [bootstrap-datepicker](https://bootstrap-datepicker.readthedocs.io/en/latest/).
+* CSS prefixer used: [https://autoprefixer.github.io/](https://autoprefixer.github.io/).
 * Every effort has been taken to avoid this apps code from becoming too similar to the
 [Boutique Ado](https://github.com/ckz8780/boutique_ado_v1/tree/250e2c2b8e43cccb56b4721cd8a8bd4de6686546) 
 Code Institute mini project but it was a very helpful tool in setting up the site.
-* READme stucture borrows heavily from the [Code institute readme example](https://github.com/Code-Institute-Solutions/SampleREADME#)
+* README stucture borrows heavily from the [Code institute readme example](https://github.com/Code-Institute-Solutions/SampleREADME#)
 
 ### Acknowledgements
 A massive thank you to my mentor Antonio Rodriguez for his continuous and helpful feedback (even in the face of tropical storms).   
-Thanks also to the kind people at tutor support who went above and beyond to help me fix issues.  
-Finally a thank you to Sharon Luff for helping me start my journey into coding and providing great moral support along the way.  
+Thanks also to the kind people at Tutor Support who went above and beyond to help me fix issues.  
+Finally, a big thank you to Sharon Luff for helping me start my journey into coding and providing great moral support along the way.  
 
 
 
