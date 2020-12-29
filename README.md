@@ -408,18 +408,91 @@ See the [testing write up](https://github.com/SDGreen/elwood-castle/blob/master/
 ## Deployment
 
 ### How to run Elwood Castle's website code locally:
+The Elwood Castle app was coded using the GitPod IDE. The git repository is stored loacally before being pushed online 
+to the remote repository online at GitHub.
+
+To run Elwood Caslte's app locally you will need the following:
+    * Python installed on your enviroment
+    * An AWS account
+    * A stripe account
+    * A googles maps API key
+
 #### Setting up the code:
 
-#### Creating a database:
+1. Go to: [https://github.com/SDGreen/elwood-castle](https://github.com/SDGreen/elwood-castle)
+2. Click the "Code" button next to the "Gitpod" button which will have a dropdown including "Clone with HTTPS",
+"Open with GitHub Desktop" & "Download ZIP"
+3. To clone the repository using HTTPS, under "Clone with HTTPS", click the copy to clipboard icon. To clone the
+repository using an SSH key, including a certificate issued by your organization's SSH certificate authority, click Use SSH, then click the copy to clipboard icon.
+4. Open Git Bash.
+5. Change the current working directory to the location where you want the cloned directory to appear.
+7. Type git `clone`, and then paste the URL you copied in Step 3 (https://github.com/SDGreen/elwood-castle.git).
+8. Install the requirements by typing `pip3 install -r requirements.txt` in your CLI
+9. Finally create a superuser using `python3 manage.py create superuser`
 
+#### Creating a database:
+1. To use the local version of the database first type `python3 manage.py makemigrations`
+2. Then migrate (`python3 manage.py migrate`) the migrations so that your local db.sqlite3
+database included with Django is setup.
+3. To use the same data at Elwood Castle, type `python3 manage.py loaddata`
+4. You now have a local version of the database.
 
 #### Adding enviroment varibales:
+In either your `env.py` file or your enviroment settings (like gitpod offers) you'll need to
+add the following  enviroment variables:
+
+    * SECRET_KEY = <Your secret key>
+    * STRIPE_PUBLIC_KEY = <Stripe public key>
+    * STRIPE_SECRET_KEY = <Stripe secret key>
+    * STRIPE_WH_SECRET  = <Wehhook key>
+    * AWS_ACCESS_KEY_ID = <Your AWS access key id>
+    * AWS_S3_REGION_NAME  = <Your AWS region name>
+    * AWS_SECRET_ACCESS_KEY = <Your AWS secret key>
+    * AWS_STORAGE_BUCKET_NAME = <Your AWS bucket name>
+
+While technically not an enviroment varible, you'll also need to add your google API key to this file:  
+flat_pages/templates/flat_pages/visit  
+At this point =  
+`<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key<YOUR_KEY_HERE>&callback=initMap"
+    type="text/javascript"></script>`  
+Make sure you restrict your googleAPI to just your local enviroment (and deployed site if created)
 
 #### Running the app
+1. If you are using your AWS bucket to serve the static and media files, fo to the bucket and create 
+a file named `media/`
+2. Export all the files in your enviroment in the directory `media` to your `media/` file in your bucket.
+3. You are ready to run the code locally!
 
+### Deploying to Heroku
+1. If you have added any new packages which the code requires to run, type `pip3 freeze > requirements.txt`
+to creat a requirements file.
+2. If you have deleted the Procfile, create a new one containing: `web: gunicorn elwood_castle.wsgi:application` in your root directory
+3. Create a new app in Heroku, if you want to use Heroku Postgres to serve you database you can do so 
+by going to the dashboard *resources*>*add-ons* and attaching the Heroku Postgres database.
+    * Please note, you will need to make your migrations and load the data to the new Postgres database as detailed above in 
+  the **Creating a database** steps. Ensure the DATABASE_URL variable must match that in your Heroku App's 
+  **Config Vars**
+4. Add your enviroment variables as detailed in the steps for **Adding enviroment varibales**
+to your apps **Config Vars** including one new one:  
+USE_AWS = True
+5. Download the Heroku CLI if you haven't already (found under *Deploy* tab on the dashboard)
+6. Login to Heroku using `heroku login`
+7. Set up a remote repository connected to you Heroku app: `git remote add heroku <your heroku git URL>`
+    * If you're unsure of your heroku git URL it can be found under *settings* on the dashboard
+8. Finally push your code to the heroku remote repo after making a change.
+`git add .`   
+`git commit -m "some change"`  
+`git push heroku master`
+
+The site is now deployed remotely.
 
 ---
 ## Credits
+
+### Content
+* All copy was written by myself.
+* Fake phone number provided by [Fake Number](https://fakenumber.org/uk/london).
 
 ### Media
 Copyright free images taken from [Pxhere](https://pxhere.com/)
@@ -466,7 +539,21 @@ Favicon created using [Favicon.io](https://favicon.io/favicon-converter/) from e
 * [Favicon](https://github.com/SDGreen/elwood-castle/blob/master/static/logos/favicon.png) (file name: favicon.png)
 
 ### Code
+* Card, Navbar, Accordian and Form setups adjusted from [Bootstrap 4 examples](https://getbootstrap.com/docs/4.5/getting-started/introduction/)
 * Google map created using [Google Maps JS API](https://developers.google.com/maps/documentation/javascript/tutorial)
 * Date picker created using [bootstrap-datepicker](https://bootstrap-datepicker.readthedocs.io/en/latest/)
 * CSS prefixer used: [https://autoprefixer.github.io/](https://autoprefixer.github.io/)
+* Every effort has been taken to avoid this apps code from becoming too similar to the
+[Boutique Ado](https://github.com/ckz8780/boutique_ado_v1/tree/250e2c2b8e43cccb56b4721cd8a8bd4de6686546) 
+Code Institute mini project but it was a very helpful tool in setting up the site.
+* READme stucture borrows heavily from the [Code institute readme example](https://github.com/Code-Institute-Solutions/SampleREADME#)
+
+### Acknowledgements
+A massive thank you to my mentor Antonio Rodriguez for his continuous and helpful feedback (even in the face of tropical storms).   
+Thanks also to the kind people at tutor support who went above and beyond to help me fix issues.  
+Finally a thank you to Sharon Luff for helping me start my journey into coding and providing great moral support along the way.  
+
+
+
+
 ---
