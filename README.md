@@ -226,10 +226,24 @@ Overall I feel these fonts maintain the castles brand whilst aiding the bussines
 of attracting visiters and bookings as they keep the website easy to read and use.
 
 ##### Colour Palette
-![Elwood Colour Palette](https://github.com/SDGreen/elwood-castle/blob/master/images_for_readme/elwood-castle-colour-palette.png?raw=true)
+![Elwood Colour Palette](https://github.com/SDGreen/elwood-castle/blob/master/images_for_readme/elwood-castle-colour-palette.jpg?raw=true)
+The colour palette used for the Elwood Caslte site is actually just colours
+picked from the the main image of [Elwood Caslte](https://github.com/SDGreen/elwood-castle/blob/master/flat_pages/static/flat_pages/images/background.jpg?raw=true).  
+The choice to use colours picked from Elwood's main brand image is to maintain
+brand consistancy and to keep the palette looking natural.  
+This sites used for researching castles (mentioned above) all either relied on 
+red or dark tones which I feel diminishes UX. Darker colours force the user 
+to search for content due to the lack of contrast and deep reds are 
+often used as warning colours which doesn't lend to a positive UX.
+By keeping the colours natural and light the site helps distingush itself 
+from competitors and provides a positive UX.
 
-
-#### Target Demographic
+For messages three very standard colours were used. Red for errors, green 
+for success and blue for infomation. By keeping these colours consistant with 
+user expectations the site can quickly and clearly communicate what type of 
+message the user is recieving without them even having to read it. On slight 
+difference is the red green and blue used are all pastels to prevent a jarring
+contrast with the sites main palette.
 
 ---
 ## Features
