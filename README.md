@@ -184,6 +184,50 @@ For induvidual files, please click the relevant name:
   may be moved or changed based on feedback or styling issues discovered during development.
 
 ### Design Choices
+#### Overview
+For the Elwood Castle website, the design is informed by other castle websites in structure. Looking
+at [Leeds Castle](https://www.leeds-castle.com/), [Hever Castle](https://www.hevercastle.co.uk/), [Alnwick Castle](https://www.alnwickcastle.com/),
+[Sandringham Castle](https://sandringhamestate.co.uk/) & the [English Heritage](https://www.english-heritage.org.uk/)
+identified aspects we'd link to include (heritage fonts, large vista images) but also helped inform what Elwood Caslte's
+site would like to do differently.
+
+##### Layout
+Of the sites mentioned above, one issue they all suffered from was cluttered and blockly
+layout (particularly the navbars). For this site, to keep UX high, the site will 
+have a much cleaner layout with a slim navbar. As a site with a large target demographic 
+with varying levels of computor literacy, it's important to keep the avaliable space 
+easy to read and thus use.
+
+##### Images
+One thing borrowed from other castle sites was the use of large vista images on the landing page.
+This accomplishes two goals, firslt the images protect the castles brand as the your opening impression
+of Elwood Caslte are it's grand views and imprerssive grounds. Secondly
+it acts as an advertisement to visit the castle which furthurs the bussiness goal
+of attracting visitors.  
+For event images I've taken the stylistic choice to use tight focused images of
+rather than large wide images. The idea behind this choice is to keep the page
+feeling uncluttered when mutliple images are shown. Using these more intimate shots
+preserves a feeling of outside space where lot's of large wide images would be
+confusing when placed together. The smaller shots will also look better when shrunk
+onto cards where large shots would be hard to see when reduced in size (without cropping).
+
+##### Fonts
+To keep brand consistancy, [IM Fell French Canon SC](https://fonts.google.com/specimen/IM+Fell+French+Canon+SC)
+is used as the Logo font. The font projects a heritage feel whislt remaining readable.  
+For headings and buttons [Lora](https://fonts.google.com/specimen/Lora) has been used. This is because
+the font still retains a feel for the Logo font (it's contains serifs) whilst being very
+readable. Other sites mentioned above used their logo font (typically all capitals like Elwood Castle's)
+which gave their sites an erractic, angry feel. To maintain a good UX whilst keeping this feeling of
+tradition Lora is similar to our Logo text but lacks the readablity and impression
+issues an all caps font would have. 
+Lastly [Raleway](https://fonts.google.com/specimen/Raleway) has been used for body text. This is to maintain
+readablity as it's often used in blocks of text where serif fonts can start to feel cluttered.  
+Overall I feel these fonts maintain the castles brand whilst aiding the bussiness goal 
+of attracting visiters and bookings as they keep the website easy to read and use.
+
+##### Colour Palette
+
+
 #### Target Demographic
 
 ---
