@@ -82,9 +82,11 @@ be inputted frequently.
 The information in each model would also be related to another model in almost all cases. All *orders* have
 *bookings* which have *events* etc, having such interlinked models required a relational database to easily
 handle the data and prevent creating a large database with lot's of repeated values.
+
 #### Models 
 ##### User
 This inbuilt model is used by Django. Here there was no changes made as it would suit the rest of the models nicely
+
 ##### UserAccount
 This model builds on the user model provided by Django so that a user could save which orders and
 bookings they have made. In the future, if a Subcription service was created it would also tack on
@@ -96,6 +98,7 @@ nicely to this model.
 | last_name | CharField | max_length=200, null=True, blank=True |
 | email | EmailField | max_length=200, null=True, blank=True |
 | phone_number | CharField | max_length=20, null=True, blank=True |
+
 ##### Event 
 This model stores the key information used by our date picker to validate
 ticket numbers and dates which are full when a user tries to book and event.
@@ -115,6 +118,7 @@ slot in nicely to this model.
 | supervision | BooleanField | default=True, null=True, blank=True |
 | age_restricted | BooleanField | default=True, null=True, blank=False |
 | image | ImageField | null=True, blank=True |
+
 ##### Category
 This model is a simple one used to store the different type of categories each event can fall into.
 New categories can be easily added in the castle decides to start hosting new types of events, along
@@ -123,6 +127,7 @@ with allowing current event to easily change their category.
 | :---- | :--------- | :--------- |
 | name | CharField | max_length=50, null=False, blank=False |
 | friendly_name | CharField | max_length=100, null=True, blank=True |
+
 ##### Order
 This is a simple model used to store orders which contain EventBookings.  
 It's relation to EventBookings and UserAccounts allows users to see their upcoming
@@ -140,6 +145,7 @@ twice by mistake.
 | date | DateTimeField | auto_now_add=True |
 | stripe_id | CharField | max_length=27, null=False, blank=False |
 | total | DecimalField | max_digits=7, decimal_places=2, null=True, blank=False, default=0 |
+
 ##### EventBooking
 This model is used to store each event booked by a user, along with the date and amount of tickets.  
 The EventBookings relation to order is used to show upcoming and past events on the users
@@ -157,8 +163,7 @@ when a user tries to book a new event.
 ### Wireframes
 
 ### Design Choices
-
-### Target Demographic
+#### Target Demographic
 
 ## Features
 ### Existing Features
@@ -188,88 +193,11 @@ when a user tries to book a new event.
 * [AWS S3](https://aws.amazon.com/s3/) - Used for storing static and media files used across the site.
 * [Heroku]() - Used to deploy and host the finished site.
 * [Heroku Postgres](https://www.heroku.com/postgres) - Used to serve the database Elwood Castle manages event and user data with.
-
 ---
 ## Testing
-### Database CRUD Operations:
-* #### 
+See the [testing write up]() for full details on testing.
 
-* #### Update Operations:
-    * When a user tries to update one of their films, a form is generated with all the existing data already filled in.
-    * Once updated, the new data now is in the database instead.
-    * If a user adds a movie to their watchlist or favourites, that movie's ID appears in the users relevant list.
-
-* #### Delete Operations:
-    * When a user deletes their movie, it is removed from the database and their submitted movies list.
-
-### User Validation:
-
-* #### Login Validation:
-    * Users can't login with an incorrect password. The respective error message appears.
-    * Users can't login with the incorrect username. The appropriate error message appears.
-
-* #### Sign Up Validation:
-    * Users can't create an account with a username currently in the database. The appropriate error message appears.
-    * Users can't create an account with an email currently in the database. The correct error message appears.
-    * If the password and retype password fields don't match, the login button is disabled.
-    * Users can't create passwords under 5 or over 20 characters long.
-    * Users can't create usernames under 3 or over 10 characters long.
-
-* #### User is Logged On Validation:
-    * If a user is logged in, the navbar "Login" button turns into an account dropdown menu.
-    * If the user is logged in, links to the login page on the homepage and footer redirect to the user's homepage.
-    * If the user is logged in, the movie cards display "add to watchlist" and "add to favourites" options.
-    * If the user is logged in, the movie pages display "add to watchlist" and "add to favourites" options at the bottom of the page.
-    * If the user is logged in and on a movie page they created, the update and delete buttons appear.
-    * If a user isn't logged in, calls to login appear on the browse, search and movie pages.
-    * Movie cards and movie pages will display remove from watchlist/favourites option if that movie is already in the list in question.
-
-### DOM Manipulation:
-
-* If the options arrow is clicked on the search bar, a larger form will appear below with more search fields. If clicked again this form is collapsed.
-* If a user clicks on the plus icon on the update/insert movie forms, a new input field will appear.
-* If the minus icon is click on the update/insert movie forms, new inputs will be deleted but the original cannot be.
-
-#### Responsive Design Testing
-The responsive design was tested using multiple physical devices:
-* Galaxy S8 (Chrome)
-* iPhone 6 plus (Safari)
-* iPad Air 2 (Safari)
-* Leveno IdeaPad S340 (Chrome)
-* MacBook (Chrome & Safari)
-* iPhone X (Safari)
-
-Chrome DevTools was also used to test the design on the following devices:
-* Moto G4
-* Galaxy S5
-* Pixel 2
-* Pixel 2 XL
-* iPhone 5/SE
-* iPhone 6/7/8
-* iPhone 6/7/8 Plus
-* iPhone X
-* iPad 
-* iPad Pro
-
-### Browser testing
-
-Spooky Spool was physically tested on the following browsers:
-* Microsoft Edge version 86.0.622.63
-* Chrome version 86.0.4240.111 
-* Firefox version 81.0
-* Safari version 14.0.5 (15610.1.28.1.9)
-
-### Code Validation
-* HTML5 code validated using [https://validator.w3.org/](https://validator.w3.org/)
-* CSS3 code validated using [https://jigsaw.w3.org/css-validator/](https://jigsaw.w3.org/css-validator/)
-* JS code validated using [https://jshint.com/](https://jshint.com/)
-* Python code validated using [Extend Class Python Validator](https://extendsclass.com/python-tester.html)
-### User Stories tested
-#### As a user, I want to know what I can actually do with this website, so I'll know if I want to create an account.
-
-### Bugs
-
-    
+---
 ## Deployment
 
 ### How to run Elwood Castle's website code locally:
