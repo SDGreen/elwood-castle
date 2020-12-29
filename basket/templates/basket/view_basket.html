@@ -63,7 +63,7 @@ Your Basket
             </div>
         </div>
         <div class="row mt-1 mb-3 {% if basket_items|length == 0 %}guttered mx-auto{% endif %}">
-            <div class="d-none col-12 d-sm-flex justify-content-between">
+            <div class="d-none col-12 d-sm-flex px-0 justify-content-between">
                 <a href="{% url 'events' %}" class="btn button"><i class="fas fa-arrow-left"></i> Continue Shopping</a>
                 <a href="{% url 'checkout' %}" class="btn button {% if basket_items|length == 0 %}disabled{% endif %}">Checkout <i class="fas fa-arrow-right"></i></a>
             </div>

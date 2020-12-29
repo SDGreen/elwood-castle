@@ -265,6 +265,48 @@ contrast with the sites main palette.
 * #### Dynamic Landing Page 
     * Has a scrolling background of Elwood Castles grand vista images.
     * Elwood's logo appears above the key links highlighted on the page.
+    * On very small devices the less used contact link is removed to maintain 
+    the balance of the page.
+* #### Dynamic Event Search Bar 
+    * Events can be searched by description, name and category using the search 
+    bar.
+    * Dropdown menus allow the user to search by category, price & rating (highest to lowest and vice vera).
+    * The search bar dropdowns for price and rating change to icons on smaller screens, the category 
+    dropdown turns to an icon on only the smallest screens as it's meaning is hard to 
+    translate into an icon.
+    * Number of results for searchs and categories is dynamically displayed on the page underneath 
+    the search bar (search terms are not shown to prevent profanities being displayed on the page).
+* #### Dismissable Alert Banner
+    * On the events page a banner appears linking users to the FAQ page if the want 
+    information about Elwood Castles Covid-19 policy.
+    * Banner is dismissable but reappears each time a user goes on the events page 
+    where it's message is most important.
+* #### Dynamic Event Cards
+    * Each event card features an image of the event or the stock missing image photo
+    if no image has ben uploaded for the event.
+    * On larger screens the price and rating are displayed on each card, on smaller
+    pages these are hidden to keep the page looking tidy.
+    * Each card has links to the events details page and a link directly to the booking page.
+    * the number of cards per row changes dynamically depeninding on screen size, 
+    this keeps the page looking uncluttered and prevents the images from becoming too 
+    small to understand or comically large.
+* #### Dynamic Event Details Page 
+    * Each event has an event details page which renders the information stored in the database. 
+    * The layout shifts depending on screen size to keep the information easy to read.
+    * The information within the "Key Details" and "Notes" sections changes depending on 
+    wether the event requires adult supervision, is age restricted and on the events 
+    category.
+* Smart Date Picker
+    * The date picker automatically disables fully booked dates (days where the amount of 
+    tickets booked matches the event's 'day_ticket_limit' value), along with dates over a year in 
+    the future, one day in the future, past days of the current month, Christmas dates and New Years day when the 
+    castle is closed. 
+    * The date picker searches the user's basket to prevent them from booking too many tickets 
+    even if the values aren't present in the database.
+    * The ticket input alets users to avaliable tickets for their chosen date and warns them 
+    if this value is 5 or less. If the avaliable ticker value is 0 but the date isn't disabled 
+    due to the user having these tickets in their basket (which isn't checked when disabled 
+    dates are generated) then the input is disabled and the user is asked to pick a new date.
 
 
 ### Features Left to Implement
