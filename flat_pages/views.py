@@ -21,6 +21,10 @@ def faq(request):
 
 
 def contact(request):
+    """
+    Handles contact request from users and sends an email to
+    Gmail/console if form is valid
+    """
 
     if request.method == 'POST':
         contact_form = ContactForm(request.POST)

@@ -20,6 +20,9 @@ import json
 
 # Create your views here.
 def checkout(request):
+    """
+    Handles checkout data submitted by users
+    """
 
     basket_check = request.session.get('basket', {})
     if not basket_check:
@@ -136,7 +139,7 @@ def checkout_validator(request):
                         messages.error(
                             request, f"""The maximum tickets for {event.name}
                                          on {item['date']} have now been
-                                         booked""")
+                                         booked, please pick another date""")
                         return HttpResponse(status=400)
                 except event.DoesNotExist:
                     messages.error(request, """One of the events does not
@@ -155,7 +158,7 @@ def checkout_validator(request):
         else:
             messages.error(request, """Please check your form, your card has not
                                        been charged""")
-            return HttpResponse(status=500)
+            return HttpResponse(status=400)
     except Exception as e:
         messages.error(request, f"""Something has gone wrong whilst checking
                                     your form.\
@@ -208,7 +211,7 @@ def checkout_success(request, order_number):
     try:
         order = Order.objects.get(order_number=order_number)
     except Exception:
-        messages.error(request, """Sorry, look like something went wrong!\
+        messages.error(request, """Sorry, it looks like something went wrong!
                                    If you've made an order please wait for
                                    your confirmation email and get in contact
                                    with us""")

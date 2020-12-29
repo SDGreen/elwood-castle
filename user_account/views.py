@@ -15,6 +15,9 @@ import datetime
 
 @login_required
 def user_home(request):
+    """
+    Renders the user's homepage with their booking and order data
+    """
     useraccount = None
     bookings = None
     try:
@@ -53,6 +56,9 @@ def user_home(request):
 
 @require_POST
 def update_user_details(request):
+    """
+    Updates a users account details
+    """
     try:
         useraccount = UserAccount.objects.get(user__username=request.user)
         user_form = UserForm(request.POST, instance=useraccount)
@@ -73,6 +79,10 @@ def update_user_details(request):
 
 
 def order_summary(request, order_number):
+    """
+    Grabs past orders form users and displays that
+    information for them to review
+    """
     try:
         order = Order.objects.get(order_number=order_number)
     except Exception:

@@ -7,11 +7,17 @@ from events.models import Event
 
 # Create your views here.
 def view_basket(request):
+    """
+    Returns the basket to the user so they can view it
+    """
     return render(request, 'basket/view_basket.html')
 
 
 @require_POST
 def add_to_basket(request, event_id):
+    """
+    Adds items to the session basket
+    """
 
     event = Event.objects.get(pk=event_id)
     date = request.POST.get('date')
@@ -23,7 +29,7 @@ def add_to_basket(request, event_id):
     if event_id in basket.keys():
         if date in basket[event_id]['event_dates'].keys():
             basket[event_id]['event_dates'][date] += ticket_quantity
-            messages.success(request, f'''Ticket quanty for {event.name} on the
+            messages.success(request, f'''Ticket quantity for {event.name} on the
                             {date} updated to
                             {basket[event_id]['event_dates'][date]}''')
         else:
@@ -42,6 +48,9 @@ def add_to_basket(request, event_id):
 
 @require_POST
 def remove_from_basket(request, event_id):
+    """
+    Removes items from the session basket
+    """
 
     try:
         event = Event.objects.get(pk=event_id)
@@ -70,6 +79,10 @@ def remove_from_basket(request, event_id):
 
 @require_POST
 def update_basket(request, event_id):
+    """
+    Updates ticket values in the session basket form
+    from the view_basket page
+    """
     try:
 
         basket = request.session.get('basket', {})
@@ -89,7 +102,7 @@ def update_basket(request, event_id):
 
         basket[str(event_id)]['event_dates'][date] = ticket_quantity
 
-        messages.success(request, f'''Ticket quanty for {event.name} on the
+        messages.success(request, f'''Ticket quantity for {event.name} on the
                                       {date} updated to {ticket_quantity}''')
 
         return redirect(reverse('view_basket'))

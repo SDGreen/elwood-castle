@@ -3,6 +3,10 @@ from django.dispatch import receiver
 
 from .models import EventBooking
 
+"""
+Signals used to ensure the Order Model instances update their
+total after a booking is saved
+"""
 
 @receiver(post_save, sender=EventBooking)
 def update_to_total(sender, instance, created, **kwargs):

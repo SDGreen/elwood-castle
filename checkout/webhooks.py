@@ -11,6 +11,10 @@ import stripe
 @csrf_exempt
 @require_POST
 def webhook(request):
+    """
+    Listens for webhooks from stripe and makes sure the appropriate
+    method is activated
+    """
 
     # required webhook settings
     wh_secret = settings.STRIPE_WH_SECRET

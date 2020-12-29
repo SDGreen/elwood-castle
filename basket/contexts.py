@@ -3,7 +3,10 @@ from events.models import Event
 
 
 def basket_items(request):
-
+    """
+    Creates an array of basket items from the users session basket
+    which is avaliable to all the templates
+    """
     basket_items = []
     total = 0
 
