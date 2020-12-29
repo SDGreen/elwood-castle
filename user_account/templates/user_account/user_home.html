@@ -55,8 +55,13 @@ User Home
                                     <td>{{ booking.ticket_quantity }}
                                     </td>
                                     <td class="d-none d-md-inline-block">
+                                        {% if booking.event.image %}
                                         <img class="img-fluid" src="{{ booking.event.image.url }}"
                                             alt="{{ booking.event.name }}">
+                                        {% else %}
+                                        <img class="img-fluid" src="{{ MEDIA_URL }}no-image.jpg"
+                                            alt="{{ booking.event.name }}">
+                                        {% endif %}
                                     </td>
                                 </tr>
                                 {% endfor %}

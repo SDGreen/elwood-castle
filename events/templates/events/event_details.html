@@ -17,7 +17,11 @@
         </div>
         <div class="row mb-3">
             <div class="col-12 col-lg-6 mb-2 mt-1">
-                <img class="img-fluid below-shadow" src="{{ event.image.url }}" alt="{{event.name}} image">
+                {% if event.image %}
+                    <img class="img-fluid below-shadow" src="{{ event.image.url }}" alt="{{event.name}} image">
+                {% else %}
+                    <img class="img-fluid below-shadow" src="{{ MEDIA_URL }}no-image.jpg" alt="missing image">
+                {% endif %}
             </div>
             <div class="col-12 col-lg-6">
                 <h3 class="heading-text text-l">Description:</h3>

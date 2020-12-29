@@ -57,8 +57,11 @@ Checkout
                         <div id="basket-container" class="col-12 below-shadow mb-2">
                             {% for event in basket_items %}
                             <div class="media">
-                                <img class="mr-3" height="50px" src="{{ event.event.image.url }}"
-                                    alt="{{ event.event.name }}">
+                                {% if event.event.image %}
+                                    <img class="mr-3" height="50px" src="{{ event.event.image.url }}" alt="{{ event.event.name }}">
+                                {% else %}
+                                    <img class="mr-3" height="50px" src="{{ MEDIA_URL }}no-image.jpg" alt="{{ event.event.name }}">
+                                {% endif %}
                                 <div class="media-body">
                                     <h5 class="mt-0 heading-text text-l">{{ event.event.name}}</h5>
                                 </div>

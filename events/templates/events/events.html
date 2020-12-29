@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}
 Elwood Events
@@ -41,7 +42,11 @@ Elwood Events
         <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-2">
             <div class="card rounded-0 below-shadow">
                 <a href="{% url 'event_info' event.id %}">
-                    <img class="card-img-top rounded-0" src="{{ event.image.url }}" alt="{{event.name}} card image">
+                    {% if event.image %}
+                        <img class="card-img-top rounded-0" src="{{ event.image.url }}" alt="{{event.name}} card image">
+                    {% else %}
+                        <img class="card-img-top rounded-0" src="{{ MEDIA_URL }}no-image.jpg" alt="missing image">
+                    {% endif %}
                     <div class="card-body card-body-title body-text">
                         <h5 class="heading-text">{{ event.name }}</h5>
                     </div>

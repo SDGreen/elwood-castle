@@ -31,7 +31,12 @@ Book: {{ event.name }}
             <div class="row mt-2 mb-3">
                 <div class="col-12">
                     <div id="booking-form" class="mx-auto rounded"
-                        style="background: url({{ event.image.url }}) center;">
+                        {% if event.image %}
+                            style="background: url({{ event.image.url }}) center;"
+                        {% else %}
+                            style="background: url({{ MEDIA_URL }}no-image.jpg) center;"
+                        {% endif %}
+                        >
                         <div class="form-wrapper rounded">
                             <form method="POST" action="{% url 'add_to_basket' event.id %}"
                                 class="py-4 px-3 heading-text below-shadow">

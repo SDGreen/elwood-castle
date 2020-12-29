@@ -161,8 +161,10 @@ when a user tries to book a new event.
 | booking_total | DecimalField | max_digits=7, decimal_places=2, null=False, blank=False, editable=False, default=0 |
 
 ### Wireframes
-All wireframes can be found in [Here](https://github.com/SDGreen/elwood-castle/tree/master/wireframes)
-For induvidual files, click the relevant name:
+All wireframes can be found in [Here](https://github.com/SDGreen/elwood-castle/tree/master/wireframes)  
+I reccomend viewing the [Navbar](https://github.com/SDGreen/elwood-castle/blob/master/wireframes/navbars.pdf)
+and [Footer](https://github.com/SDGreen/elwood-castle/blob/master/wireframes/footers.pdf) files first to give context to the rest of the wireframes.  
+For induvidual files, please click the relevant name:
   * [Navbar](https://github.com/SDGreen/elwood-castle/blob/master/wireframes/navbars.pdf)
   * [Footer](https://github.com/SDGreen/elwood-castle/blob/master/wireframes/footers.pdf)
   * [Index page](https://github.com/SDGreen/elwood-castle/blob/master/wireframes/index.pdf)
@@ -178,9 +180,13 @@ For induvidual files, click the relevant name:
   * [FAQ page](https://github.com/SDGreen/elwood-castle/blob/master/wireframes/faq.pdf)
   * [Contact page](https://github.com/SDGreen/elwood-castle/blob/master/wireframes/contact.pdf)
 
+  Please note that these wireframes may not match the finished product. Some elements
+  may be moved or changed based on feedback or styling issues discovered during development.
+
 ### Design Choices
 #### Target Demographic
 
+---
 ## Features
 ### Existing Features
 * #### : 
