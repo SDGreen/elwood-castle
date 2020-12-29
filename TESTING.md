@@ -1,4 +1,92 @@
 ## Testing
+### User Stories tested
+
+> As a User, I would like simple navigation to the whole site, so I can find exactly what I want without searching through links.
+
+* Users are never more two clicks away from parts of the site that they are expected to access quickly. 
+On some smaller devices contact, FAQ and visit pages are 3 clicks away but they are always easily accessible 
+from the fixed Navabar.  
+Seeing old order summaries does take more clicks to access but this is not expected to be a key
+feature users need to view in a rush and user will also have their order emails.
+
+> As a User, I would like to easily see my basket, so I can checkout quickly.
+
+* Users can always click on their basket which is in the top right of the screen. As it is a key feature, at smaller 
+breakpoints this basket icon remains in place rather then entering the mobile dropdown menu.
+
+> As a User, I would like consistant styling across the site, so I can navigate across the site without having to think too hard about what elements do.
+
+* All buttons and text-links have consistant styling. Disabled buttons (such as checkout and book under certain condition) 
+actually colour & no longer react to being hovered over so users can tell something has changed
+and the action that would usually occur will not.
+
+> As a User, I would like a profile page, so I can quickly see my orders and checkout details.
+
+* Logged in users can easily access their user home page under the account dropdown in the navbar. 
+This single page relays upcoming bookings, past bookings, their default details used at checkout 
+and their orders. Orders numbers can be clicked to get a full summary.
+
+> As a Returning User, I would like to be able to save my default settings, so I can easily use them to book new events.
+
+* On the user home page, users can update their details which will be used next time they checkout. If a user 
+updates their details, a confirmation toast appears letting them know the action has 
+occured. The page is reloaded showing the new details. If there is an error then the page still reloads 
+but an error message appears informing them there was an issue updating the details.
+
+> As a New User, I would like to be able to create an account, so I can save my details and view my orders.
+
+* New users can quickly create an account from the account dropdown by clicking 'Register'. Once their details
+have been filled out and validated they are sent a confirmation email asking them to verify their account.
+
+> As a Returning User, I would like To be able to reset my password, so I can update my password if I forget it.
+
+* Under the login option on the Login page their is a 'forgot password' option which allows users to update their 
+password. A link is sent to their email which they can use to update the users password. Info toasts are sent 
+when the email have been sent and a success toast appears once they have completed updating their password.
+
+> As a User, I would like a contact page where I can find email and phone details of the castle, so I can get in contact if I have a question about an event.
+
+* Under the info dropdown you can access the contact page.
+
+> As a User, I would like details on the location of the Castle, so I can find the castle and attend events.
+
+> As a User, I would like booking events to be simple, so I can avoid filling out too many inputs.
+
+> As a User, I would like confirmation of my bookings, so I can know that my purchase has worked.
+
+> As a User, I would like a date picker for event bookings, so I can easily visulise what date I'm picking and avoid filling in an input.
+
+> As a User with a profile, I would like a list of my upcoming and past events, so I can know what events I have booked.
+
+> As a Owner, I would like simple navigation to the event pages, so I can encourage users to buy tickets to events.
+
+> As a Owner, I would like lots of links back to event pages, so I can get users to buy more tickets.
+
+> As a Owner, I would like links between an event's details page and booking page, so I can make it easy for users to book events and reduce time spent thinking about this decision.
+
+> As a Owner, I would like professional and clean styling, so I can keep the site attractive to users without diminishing the castle brand.
+
+> As a Owner, I would like login validation, so I can prevent users from creating multiple accounts with the same email.
+
+> As a Owner, I would like email verification on accounts, so I can prevent malicious users from easily creating multiple accounts.
+
+> As a Owner, I would like a FAQ page, so I can prevent too many incoming calls and emails.
+
+> As a Owner, I would like details on visitings the castle, so I can make sure users know how to get to the castle.
+
+> As a Owner, I would like bookings to be kept in a basket, so I can make sure users only have to pay once, encouraging them to purchase more.
+
+> As a Owner, I would like order confirmation work even if a user navigates away from the checkout page, so I can Know users haven't purchased tickets without the models updating.
+
+> As a Owner, I would like dates where events are booked up to be unpickable, so I can know that users haven't purchased tickets to events which won't be able to cater for them.
+
+> As a Owner, I would like validation on the date picking input, so I can make sure users don't create bookings using dates which aren't correct.
+
+> As a Owner, I would like validation on the ticket input, so I can stop users booking too many tickets for events which are nearly full.
+
+> As a Owner/User, I would like responsive design, so I can easily use the site across multiple devices.
+
+> As a Owner/User, I would like message stlying to be intuitive (red for alerts, green for success), so I can quickly understand want the message is trying to convey.
 ### Database CRUD Operations:
 * #### 
 
@@ -63,7 +151,7 @@ Chrome DevTools was also used to test the design on the following devices:
 
 The app was physically tested on the following browsers:
 * Microsoft Edge version 86.0.622.63
-* Chrome version 86.0.4240.111 
+* Chrome version 87.0.4280.88 
 * Firefox version 81.0
 * Safari version 14.0.5 (15610.1.28.1.9)
 
@@ -73,63 +161,6 @@ The app was physically tested on the following browsers:
 * JS code validated using [https://jshint.com/](https://jshint.com/)
 * Python code validated using [Extend Class Python Validator](https://extendsclass.com/python-tester.html)
 
-### User Stories tested
-
-> As a User, I would like simple navigation to the whole site, so I can find exactly what I want without searching through links.
-
-> As a User, I would like to easily see my basket, so I can checkout quickly.
-
-> As a User, I would like consistant styling across the site, so I can navigate across the site without having to think too hard about what elements do.
-
-> As a User, I would like a profile page, so I can quickly see my orders and checkout details.
-
-> As a Returning User, I would like to be able to save my default settings, so I can easily use them to book new events.
-
-> As a New User, I would like to be able to create an account, so I can save my details and view my orders.
-
-> As a Returning User, I would like To be able to reset my password, so I can update my password if I forget it.
-
-> As a User, I would like a contact page where I can find email and phone details of the castle, so I can get in contact if I have a question about an event.
-
-> As a User, I would like details on the location of the Castle, so I can find the castle and attend events.
-
-> As a User, I would like booking events to be simple, so I can avoid filling out too many inputs.
-
-> As a User, I would like confirmation of my bookings, so I can know that my purchase has worked.
-
-> As a User, I would like a date picker for event bookings, so I can easily visulise what date I'm picking and avoid filling in an input.
-
-> As a User with a profile, I would like a list of my upcoming and past events, so I can know what events I have booked.
-
-> As a Owner, I would like simple navigation to the event pages, so I can encourage users to buy tickets to events.
-
-> As a Owner, I would like lots of links back to event pages, so I can get users to buy more tickets.
-
-> As a Owner, I would like links between an event's details page and booking page, so I can make it easy for users to book events and reduce time spent thinking about this decision.
-
-> As a Owner, I would like professional and clean styling, so I can keep the site attractive to users without diminishing the castle brand.
-
-> As a Owner, I would like login validation, so I can prevent users from creating multiple accounts with the same email.
-
-> As a Owner, I would like email verification on accounts, so I can prevent malicious users from easily creating multiple accounts.
-
-> As a Owner, I would like a FAQ page, so I can prevent too many incoming calls and emails.
-
-> As a Owner, I would like details on visitings the castle, so I can make sure users know how to get to the castle.
-
-> As a Owner, I would like bookings to be kept in a basket, so I can make sure users only have to pay once, encouraging them to purchase more.
-
-> As a Owner, I would like order confirmation work even if a user navigates away from the checkout page, so I can Know users haven't purchased tickets without the models updating.
-
-> As a Owner, I would like dates where events are booked up to be unpickable, so I can know that users haven't purchased tickets to events which won't be able to cater for them.
-
-> As a Owner, I would like validation on the date picking input, so I can make sure users don't create bookings using dates which aren't correct.
-
-> As a Owner, I would like validation on the ticket input, so I can stop users booking too many tickets for events which are nearly full.
-
-> As a Owner/User, I would like responsive design, so I can easily use the site across multiple devices.
-
-> As a Owner/User, I would like message stlying to be intuitive (red for alerts, green for success), so I can quickly understand want the message is trying to convey.
 
 
 ### Bugs

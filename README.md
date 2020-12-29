@@ -365,6 +365,11 @@ contrast with the sites main palette.
 * #### Real-time Ratings 
     * A future feature would be to allow users to rate events which automatically 
     updates an events rating in real-time
+* #### Ticket Reservation
+    * With sites like ticketmaster, tickets are held for a period of time and cannot 
+    be booked whilst the another user has them in their basket. Currently this feature 
+    is not deemed neccessary as Elwood Caslte doesn't deal with the types of volumes 
+    that a major area deals with but it would be good to add in future.
 * #### Styled Superuser Dashboard 
     * With more time, a nicely styled dashboard would be created for super users.
     Currently it is just the standard Django admin dashboard which is usable but 

@@ -29,8 +29,10 @@ def contact(request):
             subject = contact_form.cleaned_data['subject']
             message = contact_form.cleaned_data['message']
             try:
-                send_mail(subject, message, user_email,
-                          [settings.EMAIL_HOST_USER])
+                send_mail(subject,
+                          message,
+                          user_email,
+                          [settings.DEFAULT_FROM_EMAIL])
                 messages.success(request, """Thanks for contacting Elwood
                                              Castle. A member of the team will
                                              be in touch within 48 hours.""")
