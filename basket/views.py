@@ -19,7 +19,6 @@ def add_to_basket(request, event_id):
     event_id = str(event_id)
 
     basket = request.session.get('basket', {})
-    event_id = str(event_id)
 
     if event_id in basket.keys():
         if date in basket[event_id]['event_dates'].keys():
@@ -98,5 +97,4 @@ def update_basket(request, event_id):
     except Exception as e:
         messages.error(request, f'''There was a problem updating your tickets to this event:
                                     {e}''')
-        print(e)
         return HttpResponse(status=500)

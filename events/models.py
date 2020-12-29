@@ -30,8 +30,8 @@ class Event(models.Model):
                                  blank=True)
     day_ticket_limit = models.PositiveIntegerField(blank=False,
                                                    validators=[
-                                                      MaxValueValidator(200)
-                                                    ])
+                                                       MaxValueValidator(200)
+                                                   ])
     supervision = models.BooleanField(default=True, null=True, blank=True)
     age_restricted = models.BooleanField(default=True, null=True, blank=False)
     image = models.ImageField(null=True, blank=True)

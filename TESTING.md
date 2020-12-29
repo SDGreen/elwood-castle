@@ -160,15 +160,18 @@ with an aim to make information more digestable (rather than just to make it mov
 
 * Toast messages are consistantly styled so error messages produce red toast headings, success messages produce green toast headings
 and info messages produce blue toast headings.
+
 ---
 #### Responsive Design Testing
-The responsive design was tested using multiple physical devices:
+The responsive design was tested using these physical devices:
 * Galaxy S8 (Chrome)
-* iPhone 6 plus (Safari)
+* Google Pixel 4a (Chrome)
 * iPad Air 2 (Safari)
 * Leveno IdeaPad S340 (Chrome)
-* MacBook (Chrome & Safari)
+* MacBook Pro(Chrome & Safari)
 * iPhone X (Safari)
+
+No major issues were uncovered
 
 Chrome DevTools was also used to test the design on the following devices:
 * Moto G4
@@ -181,23 +184,73 @@ Chrome DevTools was also used to test the design on the following devices:
 * iPhone X
 * iPad 
 * iPad Pro
+    * Some pages on the iPad Pro portait mode have a large amount of space before reaching the footer 
+
 
 ### Browser testing
-
 The app was physically tested on the following browsers:
-* Microsoft Edge version 86.0.622.63
+* Microsoft Edge version 87.0.664.66
 * Chrome version 87.0.4280.88 
-* Firefox version 81.0
-* Safari version 14.0.5 (15610.1.28.1.9)
+* Firefox version 82.0.2
+    * The ticket input on this browser automatically gets a red border 
+    after picking a date but this wasn't deemed a massive problem
+* Safari version 14.0 (15610.1.28.1.9, 15610)
 
 ### Code Validation
 * HTML5 code validated using [https://validator.w3.org/](https://validator.w3.org/)
 * CSS3 code validated using [https://jigsaw.w3.org/css-validator/](https://jigsaw.w3.org/css-validator/)
+    * No issues found
 * JS code validated using [https://jshint.com/](https://jshint.com/)
+    * 'let' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz). - Not deemed an issue
+    * 'template literal syntax' is only available in ES6 (use 'esversion: 6'). - Not deemed an issue
 * Python code validated using [Extend Class Python Validator](https://extendsclass.com/python-tester.html)
+    * Some issues with f-strings as the checker didn't deem them valid python. These were not considered a problem.
 
 
 
 ### Bugs
+During the development proccess many bugs (predictably) arose. Here are some of the more interesting 
+examples and how they were overcome:
 
+#### Adding tickets to a booking in the basket would create new items basket rather than update the current values:
+This occured because the basket was storing the event_ids as strings and the event_ids 
+coming from the database were integers. For the tickets values to be updated
+the event_id from the database had to be convereted to a string before it be used to find 
+a match in the basket.
+
+#### Basket data could not be stored in the payment intent meta data, this kept failing.
+This issue kept occuring and I was convinced it was to do with trying to store the event (as an object not id)
+in the payment intent after it had been JSON serialised. After numberous attempts it was discovered the actual 
+variable causing the issue was total. Total was a Decimal and json.dumps() couldn't handle that type of input.
+Instead the total was changed to a float and the basket and user data could be stored in the payment intent.
+
+#### Toast messages failed to load the toast templates.
+After setting up messages and toast templates unfortunatly they wouldn't load on the page.
+It turned out the template logic `{% if tag == 'SUCCESS' %}` was using the wrong case.
+The correct code was `{% if tag == 'success' %}` after which the toasts loaded correctly.
+
+#### Bookings would not save their totals.
+This issues occured due to a simple slip of the mind. I was using:  
+`self.total = self.bookings.aggregate(Sum(booking_total))`
+Which is the correct way to aggregate a value but not to access it.
+To access the total I shoul have used:  
+`self.total = self.bookings.aggregate(Sum(booking_total))[booking_total__sum]`
+
+#### The main logo in the navbar would appear off center on smaller screens.
+This issue had an obvious cause. On smaller screens the logo jumps to the center of 
+the navbar and aligns itself so it has an equal margin between elements either side.
+As there are two elements on the right hand side and only one on the left this meant the 
+logo would naturally align itself off the center of the page.  
+Despite trying absolute positioning and mutliple other css tricks the answer was really simple.
+I added extra margin to the element on the left of the logo so it was forced to align itself
+towards the center of the page.
+
+#### Migrating the database to Heroku Postgres failed.
+This issue stumped me as I couldn't work out why the models wouldn't migrate over 
+to the new database. The original error was:  
+`psycopg2.errors.StringDataRightTruncation: value too long for type character varying(27)`  
+In the end I followed the advice found [Here](https://stackoverflow.com/questions/9036102/databaseerror-value-too-long-for-type-character-varying100)
+(the fourth answer) and deleted all my migration files other than __init__.py which fixed the issue.
+I'm still not 100% sure why this worked but imagine it is to with separate migration files
+conflicting with each other during the migration process. 
     
