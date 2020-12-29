@@ -226,6 +226,7 @@ Overall I feel these fonts maintain the castles brand whilst aiding the bussines
 of attracting visiters and bookings as they keep the website easy to read and use.
 
 ##### Colour Palette
+![Elwood Colour Palette](https://github.com/SDGreen/elwood-castle/blob/master/images_for_readme/elwood-castle-colour-palette.png?raw=true)
 
 
 #### Target Demographic
