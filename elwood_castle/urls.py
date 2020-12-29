@@ -18,6 +18,9 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+admin.site.site_header = 'Elwood Castle Admin'
+admin.site.index_title = 'Database administration'
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('account/', include('allauth.urls')),

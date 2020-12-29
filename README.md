@@ -248,25 +248,6 @@ contrast with the sites main palette.
 ---
 ## Features
 ### Existing Features
-* #### Responsive Fixed Navbar
-  * Includes dropdown links to account pages which change depending on if the 
-  user in logged in, a superuser or an anonymous user.
-  * Logo text disappears on smaller screens, key elements (basket and account dropdown) 
-  remain as icons whilst less essential links are stored in a dropdown.
-  * Logo image changes size depening on screen size.
-  * Due to it's small size it remains fixed to the top of the page to eliminate the need
-  for a "back to top" button.
-* #### Simple Footer
-    * Footer remains consistant across the site and includes 3 social links and a link
-    to the creaters github page. All external links create a new tab rather than change the 
-    current windows location. 
-    The social links aren't live and so currently redirect back to the index page with a
-    message explaining why.
-* #### Dynamic Landing Page 
-    * Has a scrolling background of Elwood Castles grand vista images.
-    * Elwood's logo appears above the key links highlighted on the page.
-    * On very small devices the less used contact link is removed to maintain 
-    the balance of the page.
 * #### Dynamic Event Search Bar 
     * Events can be searched by description, name and category using the search 
     bar.
@@ -296,7 +277,7 @@ contrast with the sites main palette.
     * The information within the "Key Details" and "Notes" sections changes depending on 
     wether the event requires adult supervision, is age restricted and on the events 
     category.
-* Smart Date Picker
+* #### Smart Date Picker
     * The date picker automatically disables fully booked dates (days where the amount of 
     tickets booked matches the event's 'day_ticket_limit' value), along with dates over a year in 
     the future, one day in the future, past days of the current month, Christmas dates and New Years day when the 
@@ -307,10 +288,91 @@ contrast with the sites main palette.
     if this value is 5 or less. If the avaliable ticker value is 0 but the date isn't disabled 
     due to the user having these tickets in their basket (which isn't checked when disabled 
     dates are generated) then the input is disabled and the user is asked to pick a new date.
-
+* #### Smart Ticket Update input
+    * Users can update their ticket quantities in their basket. The update script checks 
+    the database for bookings to make sure the day_ticket_limit of that event isn't exceeded.
+* #### Stripe Payments 
+    * Users can checkout and purchase event tickets using the Stripe API
+* #### Smart Checkout Validator
+    * User details and basket are validated twice before the stripe API is called to make 
+    the payment. Once to check the user details are valid, along with checking that no
+    tickets in the basket somehow exceed the day_ticket_limit of the event they are purchasing.
+    If ticket quantities in the basket do exceed the day_ticket_limit then they are removed 
+    from the basket. This feature also prevents users from purchasing tickets that may have been 
+    in their basket whilst other users have already purchased the maximum tickets for that day thus 
+    preventing overbooking.
+    If there are any issues with the details or basket items the payment can't take place 
+    and the page is reloaded showing the user the error and assuring them the purchase hasn't 
+    gone through.
+* #### Checkout Redundancy
+    * If somehow the users navigate away from the checkout page before the order is submitted 
+    to the database then it is created in the webhooks
+* #### Order and Booking Confirmation/Emails
+    * Once a payment is successful the user gets an email confirming thier order, along 
+    with induvidual emails for bookings which they can use to pick up thier tickets. 
+    * Once an order is created the user is redirected to a checkout summary page displaying 
+    information about that order.
+* #### Account Creation 
+    * Users can create an account with Elwood Castle, this automatically creates 
+    a UserAccount entry for the User in the database. They can use the account to 
+    view previous orders, upcoming and past events.
+* #### User Account
+    * Users can store their details and use them next time 
+    a user reaches checkout.
+    * User details can be updated from their account page. This will not affect their 
+    user details (username, email, password) and this is outlined under the update details form.
+* #### Password Reset 
+    * Users can update their password using their email if they have forgotton their current 
+    one.
+* #### Contact Form
+    * Users can send emails to Elwood's Gmail account using the contact form. 
+    If the user in logged in it will proload their saved email into the email 
+    field of the form.
+* #### Toast Alerts 
+    * Throughout the site Toast alerts are used to give the user feedback suchas 
+    when a user logs in, logs out, adds items to a basket, removes/updates 
+    basket items, checkouts out successfully etc
+    * Alerts change colour depending on the type of message used to create them, 
+    red for error, green for success and blue for infomation (i.e. email verification emails being sent)
+* #### Responsive Basket
+    * The basket won't allow users to checkout if their basket is empty.
+    * If the basket is empty it offers a link back to events.
+* #### Responsive Fixed Navbar
+  * Includes dropdown links to account pages which change depending on if the 
+  user in logged in, a superuser or an anonymous user.
+  * Logo text disappears on smaller screens, key elements (basket and account dropdown) 
+  remain as icons whilst less essential links are stored in a dropdown.
+  * Logo image changes size depening on screen size.
+  * Due to it's small size it remains fixed to the top of the page to eliminate the need
+  for a "back to top" button.
+* #### Simple Footer
+    * Footer remains consistant across the site and includes 3 social links and a link
+    to the creaters github page. All external links create a new tab rather than change the 
+    current windows location. 
+    The social links aren't live and so currently redirect back to the index page with a
+    message explaining why.
+* #### Dynamic Landing Page 
+    * Has a scrolling background of Elwood Castles grand vista images.
+    * Elwood's logo appears above the key links highlighted on the page.
+    * On very small devices the less used contact link is removed to maintain 
+    the balance of the page.
 
 ### Features Left to Implement
-* #### :
+* #### Subcription Service
+    * In future it would be great to create a subcription service where uses pay 
+    either per year or month which entitles them to a certain amount of free 
+    tickets
+* #### Real-time Ratings 
+    * A future feature would be to allow users to rate events which automatically 
+    updates an events rating in real-time
+* #### Styled Superuser Dashboard 
+    * With more time, a nicely styled dashboard would be created for super users.
+    Currently it is just the standard Django admin dashboard which is usable but 
+    one fitting with rest of the site would be better for UX.
+* #### Custom 404 Page 
+    * Fairly self explanitory but this feature wasn't deemed neccessary for the site 
+    to be deployed.
+
 ---
 ## Technologies Used
 ### Languages
