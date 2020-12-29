@@ -252,5 +252,11 @@ to the new database. The original error was:
 In the end I followed the advice found [Here](https://stackoverflow.com/questions/9036102/databaseerror-value-too-long-for-type-character-varying100)
 (the fourth answer) and deleted all my migration files other than __init__.py which fixed the issue.
 I'm still not 100% sure why this worked but imagine it is to with separate migration files
-conflicting with each other during the migration process. 
+conflicting with each other during the migration process.
+
+#### Contact messages sent via Gmail lose the users inputted email.
+Although the message functionality worked fine in the console, when sending messages via Gmail the users 
+email is removed from the "from" section and replaced by Elwoods Gmail account.
+Rather than fix this, the issue was circumvented by tacking on the user email to the end of the 
+message the user sent.
     
