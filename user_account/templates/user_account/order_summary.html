@@ -6,70 +6,74 @@ Order Summary
 {% endblock %}
 
 {% block content %}
-<div class="color-overlay">
-    <div class="container-fluid guttered p-3">
-        <div class="row pt-1 mb-2">
-            <div class="col-12 mb-2">
-                <h2 class="heading-text color-title text-l d-block">Order Summary</h2>
-                <h2 class="heading-text color-title text-s d-block">Order No. {{order.order_number}}</h2>
-
-                <hr class="mb-1">
+<div id="small-page">
+    <div class="color-overlay">
+        <div class="container-fluid guttered p-3">
+            <div class="row pt-1 mb-2">
+                <div class="col-12 mb-2">
+                    <h2 class="heading-text color-title text-l d-block">Order Summary</h2>
+                    <h2 class="heading-text color-title text-s d-block">Order No. {{order.order_number}}</h2>
+                    <hr class="mb-1">
+                </div>
             </div>
-        </div>
-        <div class="row mt-1 mb-3">
-            <div class="col-3">
-                <p class="heading-text text-m">Total: £{{order.total}}</p>
-            </div>
-            <div class="col-3">
-                <p class="heading-text text-m">Date: {{order.date|date:"d/m/y"}}</p>
-            </div>
-            
-        </div>
-        <div class="row mt-1 mb-3">
-            <div class="col-12 mb-lg-0">
-                <h5 class="heading-text text-m mb-2">Ordered Events:</h5>
-                <div class="booking-container below-shadow p-4">
-                    <table class="table mb-1 table-responsive-sm">
-                        <thead class="heading-text text-m">
-                            <tr>
-                                <th scope="col">Event:</th>
-                                <th scope="col"></th>
-                                <th scope="col">Date:</th>
-                                <th scope="col">Tickets:</th>
-                            </tr>
-                        </thead>
-                        <tbody class="body-text text-m">
-                            {% for booking in order.bookings.all %}
-                            <tr>
-                                <td colspan="2">
-                                    {{ booking.event }}
-                                </td>
-                                <td>
-                                    {{ booking.date|date:"d/m/y"}}
-                                </td>
-                                <td>{{ booking.ticket_quantity }}
-                                </td>
-                                <td class="d-none d-md-inline-block">
-                                {% if booking.event.image %}
-                                    <img class="img-fluid" src="{{ booking.event.image.url }}" alt="{{ booking.event.name }}">
-                                {% else %}
-                                    <img class="img-fluid" src="{{ MEDIA_URL }}no-image.jpg" alt="{{ booking.event.name }}">
-                                {% endif %}
-                                </td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                    <hr class="mt-0 mb-3">
+            <div class="row mt-1 mb-3">
+                <div class="col-3">
+                    <p class="heading-text text-m">Total: £{{order.total}}</p>
+                </div>
+                <div class="col-3">
+                    <p class="heading-text text-m">Date: {{order.date|date:"d/m/y"}}</p>
                 </div>
 
             </div>
-        </div>
-        <div class="row mt-1 mb-3">
-            <div class="col-12 text-center">
-                <a href="{% url 'user_home' %}" class="heading-text text-link text-m"><i class="fas fa-arrow-left"></i> <strong>Back to your account</strong></a>
-            </div>       
-        </div>
+            <div class="row mt-1 mb-3">
+                <div class="col-12 mb-lg-0">
+                    <h5 class="heading-text text-m mb-2">Ordered Events:</h5>
+                    <div class="booking-container below-shadow p-4">
+                        <table class="table mb-1 table-responsive-sm">
+                            <thead class="heading-text text-m">
+                                <tr>
+                                    <th scope="col">Event:</th>
+                                    <th scope="col"></th>
+                                    <th scope="col">Date:</th>
+                                    <th scope="col">Tickets:</th>
+                                </tr>
+                            </thead>
+                            <tbody class="body-text text-m">
+                                {% for booking in order.bookings.all %}
+                                <tr>
+                                    <td colspan="2">
+                                        {{ booking.event }}
+                                    </td>
+                                    <td>
+                                        {{ booking.date|date:"d/m/y"}}
+                                    </td>
+                                    <td>{{ booking.ticket_quantity }}
+                                    </td>
+                                    <td class="d-none d-md-inline-block">
+                                        {% if booking.event.image %}
+                                        <img class="img-fluid" src="{{ booking.event.image.url }}"
+                                            alt="{{ booking.event.name }}">
+                                        {% else %}
+                                        <img class="img-fluid" src="{{ MEDIA_URL }}no-image.jpg"
+                                            alt="{{ booking.event.name }}">
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        <hr class="mt-0 mb-3">
+                    </div>
+
+                </div>
+            </div>
+            <div class="row mt-1 mb-3">
+                <div class="col-12 text-center">
+                    <a href="{% url 'user_home' %}" class="heading-text text-link text-m"><i
+                            class="fas fa-arrow-left"></i> <strong>Back to your account</strong></a>
+                </div>
+            </div>
         </div>
     </div>
-    {% endblock %}
+</div>
+{% endblock %}
