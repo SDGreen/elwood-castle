@@ -1,4 +1,5 @@
 ## Testing
+
 ### User Stories tested
 
 > As a User, I would like simple navigation to the whole site, so I can find exactly what I want without searching through links.
@@ -89,68 +90,77 @@ and add more bookings.
 
 > As a Owner, I would like links between an event's details page and booking page, so I can make it easy for users to book events and reduce time spent thinking about this decision.
 
+* On every event details page there is a direct link to book the event, along with one on the event's card before the user 
+even clicks on the event to get more details.
+
 > As a Owner, I would like professional and clean styling, so I can keep the site attractive to users without diminishing the castle brand.
+
+* Throughout the site attention has been page not to overcrowd pages and keep styling consistant. All buttons have the same styling,
+along with text-links following the same styling. Clear fonts which have some character have been used which don't 
+take away from the seriousness of Elwood Castle.
 
 > As a Owner, I would like login validation, so I can prevent users from creating multiple accounts with the same email.
 
+* By using the AllAuth package, all accounts must have a distinct email.
+
 > As a Owner, I would like email verification on accounts, so I can prevent malicious users from easily creating multiple accounts.
+
+* All users have to verify their account via the email they used to create it, otherwise it cannot be accessed.
 
 > As a Owner, I would like a FAQ page, so I can prevent too many incoming calls and emails.
 
+* A FAQ page has been set up which provides answers to most common questions. An accordion has been picked 
+to display the information in a clean manner. Users can quickly identify their issues and open up the relevant 
+answer without crowding the page.
+
 > As a Owner, I would like details on visitings the castle, so I can make sure users know how to get to the castle.
+
+* The Visit page offers users a google map of the location of the castle, aswell as the full address and contact details.
 
 > As a Owner, I would like bookings to be kept in a basket, so I can make sure users only have to pay once, encouraging them to purchase more.
 
+* As users navigate through the site, unpaid bookings are held in a basket which relys on session data to stay up-to-date.
+Users can use this basket to add more bookings, update bookings and remove bookings before they have to checkout.
+
 > As a Owner, I would like order confirmation work even if a user navigates away from the checkout page, so I can Know users haven't purchased tickets without the models updating.
+
+* If the user navigates away from the checkout page before the order is submitted to the model it is handled by the webhooks instead.
+This way users can still recieve the confirmation they'd need and the Order and EventBooking models aren't missing
+entries which they should have. The webhook checks the database for a order with a matching stripe_id to the 
+payment intent. If this isn't found after 10 searches then the webhook handler creates the order and send the confirmation
+emails.
 
 > As a Owner, I would like dates where events are booked up to be unpickable, so I can know that users haven't purchased tickets to events which won't be able to cater for them.
 
+* When users navigate to the book and event page, the date picker is given an array of dates which are unbookable due to the ticket 
+limit being reached. The date picker then disables these dates to prevent users from booking them. 
+
 > As a Owner, I would like validation on the date picking input, so I can make sure users don't create bookings using dates which aren't correct.
+
+* To prevent users inputting dates, the date input only accepts inputs from the date picker.
 
 > As a Owner, I would like validation on the ticket input, so I can stop users booking too many tickets for events which are nearly full.
 
+* The ticket datepicker input has an event listener. This checks booked events in the database and the user's basket tickets to make sure 
+they can't accidently book more ticket then are avaliable. Booked up dates in the database are disabled on the date picker. If the user
+has all the tickets for a particular day in their basket then the input for that date is disabled to prevent them getting
+more. If for some reason the ticket amount in the user's basket exceeds the amount avaliable at checkout, this item is rejected and 
+removed from the basket before the payment can be processed as an added layer of security against over booking.
+
 > As a Owner/User, I would like responsive design, so I can easily use the site across multiple devices.
 
+* The site has responsive elements on almost everypage. The homepage hides the contact button on smaller devices. The navbar
+collapses to a mobile dropdown on medium and small devices. The event cards hide extra detail that can be found on 
+their induvidual pages on smaller screens along with reducing how many cards appear on each row. Information on the event details page,
+checkout and visit page all shifts to make it easier to view on smaller devices. Images are cut from the smallest screens 
+for basket, order and booking summaries to make the infomation easier to understand. Overall the site has very responsive design 
+with an aim to make information more digestable (rather than just to make it move).
+
 > As a Owner/User, I would like message stlying to be intuitive (red for alerts, green for success), so I can quickly understand want the message is trying to convey.
-### Database CRUD Operations:
-* #### 
 
-* #### Update Operations:
-    * When a user tries to update one of their films, a form is generated with all the existing data already filled in.
-    * Once updated, the new data now is in the database instead.
-    * If a user adds a movie to their watchlist or favourites, that movie's ID appears in the users relevant list.
-
-* #### Delete Operations:
-    * When a user deletes their movie, it is removed from the database and their submitted movies list.
-
-### User Validation:
-
-* #### Login Validation:
-    * Users can't login with an incorrect password. The respective error message appears.
-    * Users can't login with the incorrect username. The appropriate error message appears.
-
-* #### Sign Up Validation:
-    * Users can't create an account with a username currently in the database. The appropriate error message appears.
-    * Users can't create an account with an email currently in the database. The correct error message appears.
-    * If the password and retype password fields don't match, the login button is disabled.
-    * Users can't create passwords under 5 or over 20 characters long.
-    * Users can't create usernames under 3 or over 10 characters long.
-
-* #### User is Logged On Validation:
-    * If a user is logged in, the navbar "Login" button turns into an account dropdown menu.
-    * If the user is logged in, links to the login page on the homepage and footer redirect to the user's homepage.
-    * If the user is logged in, the movie cards display "add to watchlist" and "add to favourites" options.
-    * If the user is logged in, the movie pages display "add to watchlist" and "add to favourites" options at the bottom of the page.
-    * If the user is logged in and on a movie page they created, the update and delete buttons appear.
-    * If a user isn't logged in, calls to login appear on the browse, search and movie pages.
-    * Movie cards and movie pages will display remove from watchlist/favourites option if that movie is already in the list in question.
-
-### DOM Manipulation:
-
-* If the options arrow is clicked on the search bar, a larger form will appear below with more search fields. If clicked again this form is collapsed.
-* If a user clicks on the plus icon on the update/insert movie forms, a new input field will appear.
-* If the minus icon is click on the update/insert movie forms, new inputs will be deleted but the original cannot be.
-
+* Toast messages are consistantly styled so error messages produce red toast headings, success messages produce green toast headings
+and info messages produce blue toast headings.
+---
 #### Responsive Design Testing
 The responsive design was tested using multiple physical devices:
 * Galaxy S8 (Chrome)
