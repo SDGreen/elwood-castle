@@ -2,14 +2,14 @@
 ![Elwood Castle](https://github.com/SDGreen/elwood-castle/blob/master/flat_pages/static/flat_pages/images/background.jpg?raw=true)
 ### Deployed site: [https://elwood-castle.herokuapp.com/](https://elwood-castle.herokuapp.com/)
 
-#### For testing the following credentials be used:
+#### For testing the following credentials can be used:
 * User Credentials:  
   - Username: TestUser  
   - Password: testingelwood  
   - Email: test@test.com 
 
 * Card payments:
-  - card number: 4242 4242 4242 4242
+  - Card number: 4242 4242 4242 4242
   - Zip & CCV must be filled out with any integers
 ---
 ## Table of Contents
@@ -22,7 +22,7 @@
 7. [Credits](#credits) 
 ---
 ## Aim
-The aim of this django app is to create an interactive interface where users can find out
+The aim of this Django app is to create an interactive interface where users can find out
 information about Elwood Castle and book tickets to events held there.  
 This app is to be a one stop shop where users can create accounts,
 learn more about events and visiting the castle, contact the castle if required and
@@ -36,7 +36,7 @@ purchase tickets to upcoming events.
 | :------ | :-------------- | :----------- |
 | User    | Simple navigation to the whole site | Find exactly what I want without searching through links |
 | User    | To easily see my basket | Checkout quickly |
-| User    | Consistant styling across the site | Navigate across the site without having to think too hard about what elements do |
+| User    | Consistent styling across the site | Navigate across the site without having to think too hard about what elements do |
 | User    | A profile page |	Quickly see my orders and checkout details |
 | Returning User | To be able to save my default settings | Easily use them to book new events |
 | New User | To be able to create an account | Save my details and view my orders |
@@ -45,7 +45,7 @@ purchase tickets to upcoming events.
 | User    | Details on the location of the Castle | Find the castle and attend events |
 | User    | Booking events to be simple | Avoid filling out too many inputs |
 | User    | Confirmation of my bookings | Know that my purchase has worked |
-| User    | A date picker for event bookings | Easily visulise what date I'm picking and avoid filling in an input |
+| User    | A date picker for event bookings | Easily visualize what date I'm picking and avoid filling in an input |
 | User with a profile | A list of my upcoming and past events | Know what events I have booked |
 
 #### Owners:
@@ -54,42 +54,42 @@ purchase tickets to upcoming events.
 | Owner	| Simple navigation to the event pages | Encourage users to buy tickets to events |
 | Owner	| Lots of links back to event pages | To get users to buy more tickets |
 | Owner	| Links between an event's details page and booking page | Make it easy for users to book events and reduce time spent thinking about this decision |
-| Owner	| Professional and clean styling | Keep the site attractive to users without diminishing the castle brand |
+| Owner	| Professional and clean styling | Keep the site attractive to users without diminishing the castle's brand |
 | Owner	| Login validation | To prevent users from creating multiple accounts with the same email |
 | Owner	| Email verification on accounts | To prevent malicious users from easily creating multiple accounts |
-| Owner	| A FAQ page | Prevent too many incoming calls and emails |
-| Owner	| Details on visitings the castle | Make sure users know how to get to the castle |	
+| Owner	| An FAQ page | Prevent too many incoming calls and emails |
+| Owner	| Details on visiting the castle | Make sure users know how to get to the castle |	
 | Owner	| Bookings to be kept in a basket  | Make sure users only have to pay once, encouraging them to purchase more |
-| Owner	| Order Confirmation work even if a user navigates away from the checkout page | Know users haven't purchased tickets without the models updating |
-| Owner	| Dates where events are booked up to be unpickable | Know that users haven't purchased tickets to events which won't be able to cater for them |
+| Owner	| Order Confirmation to work even if a user navigates away from the checkout page | Know users haven't purchased tickets without the models updating |
+| Owner	| Dates where events are fully booked to be unpickable | Know that users haven't purchased tickets to events which won't be able to cater for them |
 | Owner	| Validation on the date picking input | Make sure users don't create bookings using dates which aren't correct |
 | Owner	| Validation on the ticket input | Stop users booking too many tickets for events which are nearly full |
 | Owner/User | Responsive design | Easily use the site across multiple devices |
-| Owner/User | Message stlying to be intuitive (red for alerts, green for success) | Quickly understand want the message is trying to convey |	
+| Owner/User | Message styling to be intuitive (red for alerts, green for success) | Quickly understand what the message is trying to convey |	
 
 ### Information Architecture
 #### Overview
 For Elwood Castle a relational database using SQL was the best choice to store the information.
 The reasoning behind this choice is because users can't directly add items to the database which
 would have wildly unknown values. All orders would follow a similar structure which is where the
-users have most control over what is inputted. Unlinke a movie database where each field may store
+users have most control over what is inputted. Unlink a movie database, where each field may store
 very different values, here all entries would have a very similar structure with values which don't vary
 in data type (i.e. strings or integers) so a relational database made sense. The models built in the Django
-framework provide great validation ot prevent incorrect values being added so its extremely unlikely
-that Elwood Castle would need a databse structure like MongoDB where unknown values are expected to
+framework provide great validation to prevent incorrect values being added, so it's extremely unlikely
+that Elwood Castle would need a database structure like MongoDB where unknown values are expected to
 be inputted frequently.
 
 The information in each model would also be related to another model in almost all cases. All *orders* have
-*bookings* which have *events* etc, having such interlinked models required a relational database to easily
-handle the data and prevent creating a large database with lot's of repeated values.
+*bookings* which have *events* etc. Having such interlinked models required a relational database to easily
+handle the data and prevent creating a large database with many repeated values.
 
 #### Models 
 ##### User
-This inbuilt model is used by Django. Here there was no changes made as it would suit the rest of the models nicely
+This inbuilt model is used by Django. Here there was no changes made as it would suit the rest of the models nicely.
 
 ##### UserAccount
 This model builds on the user model provided by Django so that a user could save which orders and
-bookings they have made. In the future, if a Subcription service was created it would also tack on
+bookings they have made. In the future, if a subscription service was created it would also tack on
 nicely to this model.
 | Field | Field Type | Validation |
 | :---- | :--------- | :--------- |
@@ -101,10 +101,10 @@ nicely to this model.
 
 ##### Event 
 This model stores the key information used by our date picker to validate
-ticket numbers and dates which are full when a user tries to book and event.
-Other than having these key details this model also stores information the user may
+ticket numbers and dates which are full when a user tries to book an event.
+Other than having these key details, this model also stores information the user may
 want to know about an event before they book it.
-In future if events start taking place on selective days of the week, this would
+In future, if events start taking place on selective days of the week, this would
 slot in nicely to this model.
 | Field | Field Type | Validation |
 | :---- | :--------- | :--------- |
@@ -120,9 +120,9 @@ slot in nicely to this model.
 | image | ImageField | null=True, blank=True |
 
 ##### Category
-This model is a simple one used to store the different type of categories each event can fall into.
-New categories can be easily added in the castle decides to start hosting new types of events, along
-with allowing current event to easily change their category.
+This is a simple model used to store the different types of categories each event can fall into.
+New categories can be easily added if the castle decides to start hosting new types of events, along
+with allowing current events to easily change their category.
 | Field | Field Type | Validation |
 | :---- | :--------- | :--------- |
 | name | CharField | max_length=50, null=False, blank=False |
@@ -131,8 +131,7 @@ with allowing current event to easily change their category.
 ##### Order
 This is a simple model used to store orders which contain EventBookings.  
 It's relation to EventBookings and UserAccounts allows users to see their upcoming
-and past bookings on their profile page. It also has a stripe_id so site owners
-can check to see for multiple bookings and validation preventing orders from being created
+and past bookings on their profile page. It also has a stripe_id field for validation, preventing orders from being created
 twice by mistake.
 | Field | Field Type | Validation |
 | :---- | :--------- | :--------- |
@@ -148,7 +147,7 @@ twice by mistake.
 
 ##### EventBooking
 This model is used to store each event booked by a user, along with the date and amount of tickets.  
-The EventBookings relation to order is used to show upcoming and past events on the users
+The EventBooking's relation to the Order model is used to show upcoming and past events on the user's
 profile page. The ticket and date fields are also used by the ticket and date validators
 when a user tries to book a new event.
 | Field | Field Type | Validation |
@@ -161,10 +160,10 @@ when a user tries to book a new event.
 | booking_total | DecimalField | max_digits=7, decimal_places=2, null=False, blank=False, editable=False, default=0 |
 
 ### Wireframes
-All wireframes can be found in [Here](https://github.com/SDGreen/elwood-castle/tree/master/wireframes)  
+All wireframes can be found [Here](https://github.com/SDGreen/elwood-castle/tree/master/wireframes)  
 I reccomend viewing the [Navbar](https://github.com/SDGreen/elwood-castle/blob/master/wireframes/navbars.pdf)
 and [Footer](https://github.com/SDGreen/elwood-castle/blob/master/wireframes/footers.pdf) files first to give context to the rest of the wireframes.  
-For induvidual files, please click the relevant name:
+For individual files, please click the relevant name:
   * [Navbar](https://github.com/SDGreen/elwood-castle/blob/master/wireframes/navbars.pdf)
   * [Footer](https://github.com/SDGreen/elwood-castle/blob/master/wireframes/footers.pdf)
   * [Index page](https://github.com/SDGreen/elwood-castle/blob/master/wireframes/index.pdf)
@@ -185,64 +184,64 @@ For induvidual files, please click the relevant name:
 
 ### Design Choices
 #### Overview
-For the Elwood Castle website, the design is informed by other castle websites in structure. Looking
+For the Elwood Castle website, the design is informed by other castle websites. Looking
 at [Leeds Castle](https://www.leeds-castle.com/), [Hever Castle](https://www.hevercastle.co.uk/), [Alnwick Castle](https://www.alnwickcastle.com/),
-[Sandringham Castle](https://sandringhamestate.co.uk/) & the [English Heritage](https://www.english-heritage.org.uk/)
-identified aspects we'd link to include (heritage fonts, large vista images) but also helped inform what Elwood Caslte's
+[Sandringham Castle](https://sandringhamestate.co.uk/) & the [English Heritage](https://www.english-heritage.org.uk/) websites
+identified aspects to include (heritage fonts, large vista images) but also helped inform what Elwood Castle's
 site would like to do differently.
 
 ##### Layout
 Of the sites mentioned above, one issue they all suffered from was cluttered and blockly
 layout (particularly the navbars). For this site, to keep UX high, the site will 
 have a much cleaner layout with a slim navbar. As a site with a large target demographic 
-with varying levels of computor literacy, it's important to keep the avaliable space 
+with varying levels of computer literacy, it's important to keep the available space 
 easy to read and thus use.
 
 ##### Images
 One thing borrowed from other castle sites was the use of large vista images on the landing page.
-This accomplishes two goals, firslt the images protect the castles brand as the your opening impression
-of Elwood Caslte are it's grand views and imprerssive grounds. Secondly
-it acts as an advertisement to visit the castle which furthurs the bussiness goal
-of attracting visitors.  
-For event images I've taken the stylistic choice to use tight focused images of
-rather than large wide images. The idea behind this choice is to keep the page
+This accomplishes two goals: firstly, the images protect Elwood Castle's brand as the opening impression
+of Elwood Castle is it's grand views and impressive grounds. Secondly,
+it acts as an advertisement to visit the castle which furthers the bussiness goal
+of attracting new visitors.  
+For event images, I've taken the stylistic choice to use tight focused images
+rather than large, wide images. The idea behind this choice is to keep the page
 feeling uncluttered when mutliple images are shown. Using these more intimate shots
-preserves a feeling of outside space where lot's of large wide images would be
+preserves a feeling of outside space whereas lots of large, wide images would be
 confusing when placed together. The smaller shots will also look better when shrunk
-onto cards where large shots would be hard to see when reduced in size (without cropping).
+onto cards, whereas large shots would be hard to see when reduced in size (without cropping).
 
 ##### Fonts
-To keep brand consistancy, [IM Fell French Canon SC](https://fonts.google.com/specimen/IM+Fell+French+Canon+SC)
-is used as the Logo font. The font projects a heritage feel whislt remaining readable.  
+To keep brand consistency, [IM Fell French Canon SC](https://fonts.google.com/specimen/IM+Fell+French+Canon+SC)
+is used as the Logo font. This font projects a heritage feel whilst remaining readable.  
 For headings and buttons [Lora](https://fonts.google.com/specimen/Lora) has been used. This is because
-the font still retains a feel for the Logo font (it's contains serifs) whilst being very
+the font still retains a feel for the Logo font (it contains serifs) whilst being very
 readable. Other sites mentioned above used their logo font (typically all capitals like Elwood Castle's)
 which gave their sites an erractic, angry feel. To maintain a good UX whilst keeping this feeling of
-tradition Lora is similar to our Logo text but lacks the readablity and impression
+tradition, Lora is similar to our Logo text but lacks the readablity and impression
 issues an all caps font would have. 
-Lastly [Raleway](https://fonts.google.com/specimen/Raleway) has been used for body text. This is to maintain
+Lastly, [Raleway](https://fonts.google.com/specimen/Raleway) has been used for body text. This is to maintain
 readablity as it's often used in blocks of text where serif fonts can start to feel cluttered.  
-Overall I feel these fonts maintain the castles brand whilst aiding the bussiness goal 
-of attracting visiters and bookings as they keep the website easy to read and use.
+Overall, I feel these fonts maintain the castle's brand whilst aiding the business goal 
+of attracting visitors and new bookings as they keep the website easy to read and use.
 
 ##### Colour Palette
 ![Elwood Colour Palette](https://github.com/SDGreen/elwood-castle/blob/master/images_for_readme/elwood-castle-colour-palette.jpg?raw=true)  
-The colour palette used for the Elwood Caslte site is actually just colours
-picked from the the main image of [Elwood Caslte](https://github.com/SDGreen/elwood-castle/blob/master/flat_pages/static/flat_pages/images/background.jpg?raw=true).  
+The colour palette used for the Elwood Castle site is actually just colours
+picked from the main image of [Elwood Castle](https://github.com/SDGreen/elwood-castle/blob/master/flat_pages/static/flat_pages/images/background.jpg?raw=true).  
 The choice to use colours picked from Elwood's main brand image is to maintain
-brand consistancy and to keep the palette looking natural.  
-This sites used for researching castles (mentioned above) all either relied on 
+brand consistency and to keep the palette looking natural.  
+The sites used for researching castles (mentioned above) all either relied on 
 red or dark tones which I feel diminishes UX. Darker colours force the user 
-to search for content due to the lack of contrast and deep reds are 
+to search for content due to the lack of contrast, deep reds are 
 often used as warning colours which doesn't lend to a positive UX.
 By keeping the colours natural and light the site helps distingush itself 
 from competitors and provides a positive UX.
 
-For messages three very standard colours were used. Red for errors, green 
-for success and blue for infomation. By keeping these colours consistant with 
-user expectations the site can quickly and clearly communicate what type of 
-message the user is recieving without them even having to read it. On slight 
-difference is the red green and blue used are all pastels to prevent a jarring
+For messages, three very standard colours were used. Red for errors, green 
+for success and blue for infomation. By keeping these colours consistent with 
+user expectations, the site can quickly and clearly communicate what type of 
+message the user is receiving without them even having to read it. One slight 
+difference is the red, green and blue used are all pastels to prevent a jarring
 contrast with the sites main palette.
 
 ---
@@ -251,32 +250,26 @@ contrast with the sites main palette.
 * #### Dynamic Event Search Bar 
     * Events can be searched by description, name and category using the search 
     bar.
-    * Dropdown menus allow the user to search by category, price & rating (highest to lowest and vice vera).
-    * The search bar dropdowns for price and rating change to icons on smaller screens, the category 
-    dropdown turns to an icon on only the smallest screens as it's meaning is hard to 
+    * Dropdown menus allow the user to search by category, price & rating (highest to lowest and vice versa).
+    * The search bar dropdowns for price and rating change to icons on smaller screens, where as the category 
+    dropdown turns to an icon on only the smallest screens as it's meaning is hardest to 
     translate into an icon.
-    * Number of results for searchs and categories is dynamically displayed on the page underneath 
+    * Number of results for searches and categories is dynamically displayed on the page underneath 
     the search bar (search terms are not shown to prevent profanities being displayed on the page).
-* #### Dismissable Alert Banner
-    * On the events page a banner appears linking users to the FAQ page if the want 
-    information about Elwood Castles Covid-19 policy.
-    * Banner is dismissable but reappears each time a user goes on the events page 
-    where it's message is most important.
 * #### Dynamic Event Cards
-    * Each event card features an image of the event or the stock missing image photo
-    if no image has ben uploaded for the event.
-    * On larger screens the price and rating are displayed on each card, on smaller
+    * Each event card features an image of the event or the stock missing image
+    if no image has been uploaded for the event.
+    * On larger screens, the price and rating are displayed on each card; on smaller
     pages these are hidden to keep the page looking tidy.
-    * Each card has links to the events details page and a link directly to the booking page.
-    * the number of cards per row changes dynamically depeninding on screen size, 
+    * Each card has links to the event details page and a direct link to the booking page.
+    * The number of cards per row changes dynamically depeninding on screen size, 
     this keeps the page looking uncluttered and prevents the images from becoming too 
     small to understand or comically large.
 * #### Dynamic Event Details Page 
     * Each event has an event details page which renders the information stored in the database. 
     * The layout shifts depending on screen size to keep the information easy to read.
     * The information within the "Key Details" and "Notes" sections changes depending on 
-    wether the event requires adult supervision, is age restricted and on the events 
-    category.
+    the event's category, if it requires adult supervision, or is age restricted.
 * #### Smart Date Picker
     * The date picker automatically disables fully booked dates (days where the amount of 
     tickets booked matches the event's 'day_ticket_limit' value), along with dates over a year in 
@@ -284,32 +277,32 @@ contrast with the sites main palette.
     castle is closed. 
     * The date picker searches the user's basket to prevent them from booking too many tickets 
     even if the values aren't present in the database.
-    * The ticket input alets users to avaliable tickets for their chosen date and warns them 
-    if this value is 5 or less. If the avaliable ticker value is 0 but the date isn't disabled 
+    * The ticket input alerts users to available tickets for their chosen date and warns them 
+    if this value is 5 or less. If the available tickect value is 0, but the date isn't disabled 
     due to the user having these tickets in their basket (which isn't checked when disabled 
     dates are generated) then the input is disabled and the user is asked to pick a new date.
 * #### Smart Ticket Update input
     * Users can update their ticket quantities in their basket. The update script checks 
     the database for bookings to make sure the day_ticket_limit of that event isn't exceeded.
 * #### Stripe Payments 
-    * Users can checkout and purchase event tickets using the Stripe API
+    * Users can checkout and purchase event tickets using the Stripe API.
 * #### Smart Checkout Validator
     * User details and basket are validated twice before the stripe API is called to make 
     the payment. Once to check the user details are valid, along with checking that no
     tickets in the basket somehow exceed the day_ticket_limit of the event they are purchasing.
-    If ticket quantities in the basket do exceed the day_ticket_limit then they are removed 
+    If ticket quantities in the basket do exceed the day_ticket_limit, then they are removed 
     from the basket. This feature also prevents users from purchasing tickets that may have been 
-    in their basket whilst other users have already purchased the maximum tickets for that day thus 
+    in their basket, whilst other users have already purchased the maximum tickets for that day, thus 
     preventing overbooking.
     If there are any issues with the details or basket items the payment can't take place 
-    and the page is reloaded showing the user the error and assuring them the purchase hasn't 
+    and the page is reloaded showing the user an error message and assuring them the purchase hasn't 
     gone through.
 * #### Checkout Redundancy
-    * If somehow the users navigate away from the checkout page before the order is submitted 
-    to the database then it is created in the webhooks
+    * If somehow the user navigate away from the checkout page before the order is submitted 
+    to the database then it is created in the webhooks.
 * #### Order and Booking Confirmation/Emails
-    * Once a payment is successful the user gets an email confirming thier order, along 
-    with induvidual emails for bookings which they can use to pick up thier tickets. 
+    * Once a payment is successful the user gets an email confirming their order, along 
+    with individual emails for bookings which they can use to pick up their tickets. 
     * Once an order is created the user is redirected to a checkout summary page displaying 
     information about that order.
 * #### Account Creation 
@@ -326,56 +319,61 @@ contrast with the sites main palette.
     one.
 * #### Contact Form
     * Users can send emails to Elwood's Gmail account using the contact form. 
-    If the user in logged in it will proload their saved email into the email 
+    If the user is logged in, it will preload their saved email into the email 
     field of the form.
 * #### Toast Alerts 
-    * Throughout the site Toast alerts are used to give the user feedback suchas 
+    * Throughout the site Toast alerts are used to give the user feedback, such as 
     when a user logs in, logs out, adds items to a basket, removes/updates 
-    basket items, checkouts out successfully etc
+    basket items, checks out out successfully etc.
     * Alerts change colour depending on the type of message used to create them, 
-    red for error, green for success and blue for infomation (i.e. email verification emails being sent)
+    red for error, green for success and blue for information (i.e. email verification emails being sent).
 * #### Responsive Basket
     * The basket won't allow users to checkout if their basket is empty.
-    * If the basket is empty it offers a link back to events.
+    * If the basket is empty it offers a link back to events page.
 * #### Responsive Fixed Navbar
   * Includes dropdown links to account pages which change depending on if the 
-  user in logged in, a superuser or an anonymous user.
+  user is logged in, a superuser or an anonymous user.
   * Logo text disappears on smaller screens, key elements (basket and account dropdown) 
-  remain as icons whilst less essential links are stored in a dropdown.
+  remain as icons, whilst less essential links are stored in a mobile dropdown.
   * Logo image changes size depening on screen size.
   * Due to it's small size it remains fixed to the top of the page to eliminate the need
   for a "back to top" button.
 * #### Simple Footer
-    * Footer remains consistant across the site and includes 3 social links and a link
-    to the creaters github page. All external links create a new tab rather than change the 
+    * Footer remains consistent across the site and includes three social links and a link
+    to the creator's github page. All external links create a new tab rather than change the 
     current windows location. 
     The social links aren't live and so currently redirect back to the index page with a
     message explaining why.
+* #### Dismissable Alert Banner
+    * On the events page, a banner appears linking users to the FAQ page if they want 
+    information about Elwood Castle's Covid-19 policy.
+    * The banner is dismissable but reappears each time a user goes to the events page 
+    where it's message is most important.
 * #### Dynamic Landing Page 
-    * Has a scrolling background of Elwood Castles grand vista images.
+    * Has a scrolling background of Elwood Castle's grand vista images.
     * Elwood's logo appears above the key links highlighted on the page.
     * On very small devices the less used contact link is removed to maintain 
     the balance of the page.
 
 ### Features Left to Implement
-* #### Subcription Service
-    * In future it would be great to create a subcription service where uses pay 
-    either per year or month which entitles them to a certain amount of free 
-    tickets
+* #### Subscription Service
+    * In future it would be great to create a subscription service where uses pay 
+    either per year or month, which entitles them to a certain amount of free 
+    tickets.
 * #### Real-time Ratings 
     * A future feature would be to allow users to rate events which automatically 
-    updates an events rating in real-time
+    updates an event's rating in real-time.
 * #### Ticket Reservation
-    * With sites like ticketmaster, tickets are held for a period of time and cannot 
-    be booked whilst the another user has them in their basket. Currently this feature 
-    is not deemed neccessary as Elwood Caslte doesn't deal with the types of volumes 
-    that a major area deals with but it would be good to add in future.
+    * With sites like Ticketmaster, tickets are held for a period of time and cannot 
+    be booked whilst another user has them in their basket. Currently this feature 
+    is not deemed necessary as Elwood Castle doesn't deal with the types of volumes 
+    that a major arena deals with but it would be good to add in future.
 * #### Styled Superuser Dashboard 
     * With more time, a nicely styled dashboard would be created for super users.
     Currently it is just the standard Django admin dashboard which is usable but 
-    one fitting with rest of the site would be better for UX.
+    one fitting with the rest of the site would be better for UX.
 * #### Custom 404 Page 
-    * Fairly self explanitory but this feature wasn't deemed neccessary for the site 
+    * Fairly self explanatory, but this feature wasn't deemed necessary for the site 
     to be deployed.
 
 ---
@@ -383,22 +381,23 @@ contrast with the sites main palette.
 ### Languages
 * [HTML5](https://html.spec.whatwg.org/multipage/) - Used to create the structure of the website.
 * [CSS3](https://www.w3.org/Style/CSS/Overview.en.html) - Used to style the website.
-* [JavaScript](https://www.javascript.com/) - Used for stripe functionality, as well as Bootstrap & google maps api functionality and the date-picker element.
+* [JavaScript](https://www.javascript.com/) - Used for stripe functionality, as well as Bootstrap & Google maps API functionality and the date-picker element.
 * [Python (v3.8.6)](https://www.python.org/) - Used to handle backend programming within the Django framework.
 ### Libraries
 * [Google Fonts](https://fonts.google.com/) - Used for website fonts [Lora](https://fonts.google.com/specimen/Lora) for headings, [Raleway](https://fonts.google.com/specimen/Raleway) for content text and [IM Fell French Canon SC](https://fonts.google.com/specimen/IM+Fell+French+Canon+SC) for logo text.
 * [Font Awesome](https://fontawesome.com/) - This library provided the Icons used across the site.
-* [jQuery](https://jquery.com/) - Included with Bootstrap, also used to code various elements such as the date-picker, stripe functionality and google maps api.
+* [jQuery](https://jquery.com/) - Included with Bootstrap, also used to code various elements such as the date picker, stripe functionality and Google maps API.
 * [Stripe API Library](https://stripe.com/gb) - Used to handle the payments send from the Elwood Website.
 ### Frameworks
 * [Django v3.1.4](https://docs.djangoproject.com/en/3.1/) - Framework used to create the app along with inbuilt templating language.
-* [Bootstrap v4.5](https://getbootstrap.com/docs/4.5/getting-started/introduction/) - Framework to add structure & styling to the site, along with resposive breakpoints and pre-built elements.
+* [Bootstrap v4.5](https://getbootstrap.com/docs/4.5/getting-started/introduction/) - Framework to add structure & styling to the site, along with
+responsive breakpoints and pre-built elements.
 ### Tools 
 * [Git](https://git-scm.com/) - Used for version control and tracking changes to the code whilst in development.
 * [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools) - Key for finding bugs and testing responsive design.
-* [Autoprefixer](https://autoprefixer.github.io/) - Used to prefix the css, allowing it to work across different browsers.
+* [Autoprefixer](https://autoprefixer.github.io/) - Used to prefix the CSS, allowing it to work across different browsers.
 * [AWS S3](https://aws.amazon.com/s3/) - Used for storing static and media files used across the site.
-* [Heroku]() - Used to deploy and host the finished site.
+* [Heroku](https://www.heroku.com/home) - Used to deploy and host the finished site.
 * [Heroku Postgres](https://www.heroku.com/postgres) - Used to serve the database Elwood Castle manages event and user data with.
 ---
 ## Testing
@@ -411,7 +410,7 @@ See the [testing write up](https://github.com/SDGreen/elwood-castle/blob/master/
 The Elwood Castle app was coded using the GitPod IDE. The git repository is stored loacally before being pushed online 
 to the remote repository online at GitHub.
 
-To run Elwood Caslte's app locally you will need the following:
+To run Elwood Castle's app locally you will need the following:
     * Python installed on your enviroment
     * An AWS account
     * A stripe account
@@ -456,7 +455,7 @@ At this point =
 `<script async defer
     src="https://maps.googleapis.com/maps/api/js?key<YOUR_KEY_HERE>&callback=initMap"
     type="text/javascript"></script>`  
-Make sure you restrict your googleAPI to just your local enviroment (and deployed site if created)
+Make sure you restrict your google API to just your local enviroment (and deployed site if created)
 
 #### Running the app
 1. If you are using your AWS bucket to serve the static and media files, fo to the bucket and create 
