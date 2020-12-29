@@ -161,22 +161,22 @@ when a user tries to book a new event.
 | booking_total | DecimalField | max_digits=7, decimal_places=2, null=False, blank=False, editable=False, default=0 |
 
 ### Wireframes
-All wireframes can be found in [Here]()
+All wireframes can be found in [Here](https://github.com/SDGreen/elwood-castle/tree/master/wireframes)
 For induvidual files, click the relevant name:
-  * [Navbar]()
-  * [Footer]()
-  * [Index page]()
-  * [Events page]()
-  * [Event Details page]()
-  * [Book Event page]()
-  * [View Basket page]()
-  * [Checkout page]()
-  * [Checkout Success page]()
-  * [User Home page]()
-  * [Order Summary page]()
-  * [Visit page]()
-  * [FAQ page]()
-  * [Contact page]()
+  * [Navbar](https://github.com/SDGreen/elwood-castle/blob/master/wireframes/navbars.pdf)
+  * [Footer](https://github.com/SDGreen/elwood-castle/blob/master/wireframes/footers.pdf)
+  * [Index page](https://github.com/SDGreen/elwood-castle/blob/master/wireframes/index.pdf)
+  * [Events page](https://github.com/SDGreen/elwood-castle/blob/master/wireframes/events.pdf)
+  * [Event Details page](https://github.com/SDGreen/elwood-castle/blob/master/wireframes/event-detail.pdf)
+  * [Book Event page](https://github.com/SDGreen/elwood-castle/blob/master/wireframes/book-event.pdf)
+  * [View Basket page](https://github.com/SDGreen/elwood-castle/blob/master/wireframes/view-basket.pdf)
+  * [Checkout page](https://github.com/SDGreen/elwood-castle/blob/master/wireframes/checkout.pdf)
+  * [Checkout Success page](https://github.com/SDGreen/elwood-castle/blob/master/wireframes/checkout-success.pdf)
+  * [User Home page](https://github.com/SDGreen/elwood-castle/blob/master/wireframes/user-home.pdf)
+  * [Order Summary page](https://github.com/SDGreen/elwood-castle/blob/master/wireframes/order-summary.pdf)
+  * [Visit page](https://github.com/SDGreen/elwood-castle/blob/master/wireframes/visit.pdf)
+  * [FAQ page](https://github.com/SDGreen/elwood-castle/blob/master/wireframes/faq.pdf)
+  * [Contact page](https://github.com/SDGreen/elwood-castle/blob/master/wireframes/contact.pdf)
 
 ### Design Choices
 #### Target Demographic
