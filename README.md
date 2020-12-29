@@ -161,6 +161,22 @@ when a user tries to book a new event.
 | booking_total | DecimalField | max_digits=7, decimal_places=2, null=False, blank=False, editable=False, default=0 |
 
 ### Wireframes
+All wireframes can be found in [Here]()
+For induvidual files, click the relevant name:
+  * [Navbar]()
+  * [Footer]()
+  * [Index page]()
+  * [Events page]()
+  * [Event Details page]()
+  * [Book Event page]()
+  * [View Basket page]()
+  * [Checkout page]()
+  * [Checkout Success page]()
+  * [User Home page]()
+  * [Order Summary page]()
+  * [Visit page]()
+  * [FAQ page]()
+  * [Contact page]()
 
 ### Design Choices
 #### Target Demographic
@@ -195,7 +211,7 @@ when a user tries to book a new event.
 * [Heroku Postgres](https://www.heroku.com/postgres) - Used to serve the database Elwood Castle manages event and user data with.
 ---
 ## Testing
-See the [testing write up]() for full details on testing.
+See the [testing write up](https://github.com/SDGreen/elwood-castle/blob/master/TESTING.md) for full details on testing.
 
 ---
 ## Deployment
