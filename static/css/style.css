@@ -314,6 +314,7 @@ footer>.row {
 #block-content{
     height: calc(100vh - 84px);
 }
+
 #small-page{
     min-height: calc(100vh - 84px);
 }
@@ -552,6 +553,14 @@ fieldset {
 @media (max-width: 750px){
     #event-search>div:nth-child(2)>li:last-child>div {
         left: -60px;
+    }
+
+    #block-content{
+    height: calc(100vh - 50px);
+}
+
+    #small-page{
+    min-height: calc(100vh - 50px);
     }
 
 }

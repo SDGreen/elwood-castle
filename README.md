@@ -226,7 +226,7 @@ Overall I feel these fonts maintain the castles brand whilst aiding the bussines
 of attracting visiters and bookings as they keep the website easy to read and use.
 
 ##### Colour Palette
-![Elwood Colour Palette](https://github.com/SDGreen/elwood-castle/blob/master/images_for_readme/elwood-castle-colour-palette.jpg?raw=true)
+![Elwood Colour Palette](https://github.com/SDGreen/elwood-castle/blob/master/images_for_readme/elwood-castle-colour-palette.jpg?raw=true)  
 The colour palette used for the Elwood Caslte site is actually just colours
 picked from the the main image of [Elwood Caslte](https://github.com/SDGreen/elwood-castle/blob/master/flat_pages/static/flat_pages/images/background.jpg?raw=true).  
 The choice to use colours picked from Elwood's main brand image is to maintain
@@ -248,7 +248,24 @@ contrast with the sites main palette.
 ---
 ## Features
 ### Existing Features
-* #### : 
+* #### Responsive Fixed Navbar
+  * Includes dropdown links to account pages which change depending on if the 
+  user in logged in, a superuser or an anonymous user.
+  * Logo text disappears on smaller screens, key elements (basket and account dropdown) 
+  remain as icons whilst less essential links are stored in a dropdown.
+  * Logo image changes size depening on screen size.
+  * Due to it's small size it remains fixed to the top of the page to eliminate the need
+  for a "back to top" button.
+* #### Simple Footer
+    * Footer remains consistant across the site and includes 3 social links and a link
+    to the creaters github page. All external links create a new tab rather than change the 
+    current windows location. 
+    The social links aren't live and so currently redirect back to the index page with a
+    message explaining why.
+* #### Dynamic Landing Page 
+    * Has a scrolling background of Elwood Castles grand vista images.
+    * Elwood's logo appears above the key links highlighted on the page.
+
 
 ### Features Left to Implement
 * #### :

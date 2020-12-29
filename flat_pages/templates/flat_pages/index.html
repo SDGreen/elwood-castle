@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'flat_pages/css/flat_pages.css' %}">
+<link rel="stylesheet" href="{% static 'flat_pages/css/flat_pages.css' %}">
 {% endblock %}
 
 {% block title %}
@@ -11,38 +11,39 @@ Elwood Castle
 
 {% block content %}
 <div id="block-content">
-<div id="image-overlay">
+    <div id="image-overlay">
 
-    <!-- Images proloaded here to prevent flashing on transition -->
-    <img class="d-none" src="{% static 'flat_pages/images/background.jpg' %}">
-    <img class="d-none" src="{% static 'flat_pages/images/background-grounds.jpg' %}">
-    <img class="d-none" src="{% static 'flat_pages/images/background-gardens.jpg' %}">
+        <!-- Images proloaded here to prevent flashing on transition -->
+        <img class="d-none" src="{% static 'flat_pages/images/background.jpg' %}">
+        <img class="d-none" src="{% static 'flat_pages/images/background-grounds.jpg' %}">
+        <img class="d-none" src="{% static 'flat_pages/images/background-gardens.jpg' %}">
 
-    <div class="wrapper">
-        <div class="my-auto align-middle">
-            <div id="main-logo">
-                <div>
-                    <img class="d-block mx-auto" height="200px" src="{% static 'logos/logo_dark_large.png' %}">
+        <div class="wrapper">
+            <div class="my-auto align-middle">
+                <div id="main-logo">
+                    <div>
+                        <img class="d-block mx-auto" height="200px" src="{% static 'logos/logo_dark_large.png' %}">
+                    </div>
                 </div>
-            </div>
-            <div class="row text-center heading-text">
-                <div class="col-12">
-                    <a href="{% url 'visit' %}" class="btn button fixed-width">Visit</a>
-                    <a href="{% url 'events' %}" class="btn button fixed-width mx-sm-2">Events</a>
-                    <a href="{% url 'contact' %}" class="d-none d-sm-inline-block btn button fixed-width">Contact</a>
+                <div class="row text-center heading-text">
+                    <div class="col-12">
+                        <a href="{% url 'visit' %}" class="btn button fixed-width">Visit</a>
+                        <a href="{% url 'events' %}" class="btn button fixed-width mx-sm-2">Events</a>
+                        <a href="{% url 'contact' %}"
+                            class="d-none d-sm-inline-block btn button fixed-width">Contact</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-</div>
 {% endblock %}
 
 {% block postload_js %}
 {{block.super}}
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $("#main-logo>div").delay(500).fadeIn(5000);
-        })
-    </script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#main-logo>div").delay(500).fadeIn(5000);
+    })
+</script>
 {% endblock %}
